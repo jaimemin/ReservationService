@@ -114,7 +114,7 @@
 	src: url('../font/NanumGothicBold.woff') format('woff')
 }
 
-@charset "utf-8"; 
+@charset "utf-8";
 
 body, html {
 	min-height: 100%
