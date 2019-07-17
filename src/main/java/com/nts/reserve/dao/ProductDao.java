@@ -31,5 +31,5 @@ public class ProductDao {
 		Map<String, Object> parameter = Collections.singletonMap("categoryId", categoryId);
 		return jdbc.queryForObject(GET_COUNT_BY_CATEGORY_ID, parameter, Integer.class);
 	}
-
+	
 }
