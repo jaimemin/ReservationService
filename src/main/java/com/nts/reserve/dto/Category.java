@@ -3,6 +3,7 @@ package com.nts.reserve.dto;
 public class Category {
 	int id;
 	String name;
+	// 추가한 멤버 변수
 	int count;
 
 	public int getId() {

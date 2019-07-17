@@ -9,7 +9,7 @@
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.nts.reserve.config.ApplicationConfig
+		<param-value>com.nts.reserve.configuration.ApplicationConfiguration
 		</param-value>
 	</context-param>
 	<!-- listener 설정 : 웹 어플리케이션이 시작되는 시점에 ApplicationContext을 로딩하며, 로딩된 빈정보는 
@@ -30,7 +30,7 @@
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>com.nts.reserve.reservation.config.WebMvcContextConfiguration
+			<param-value>com.nts.reserve.configuration.WebMvcContextConfiguration
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

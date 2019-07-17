@@ -1,6 +1,7 @@
 package com.nts.reserve.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
+@ComponentScan(basePackages = { "com.nts.reserve.controller" })
 public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	/**
 	 * 리소스 핸들러 설정 <resources location="/resources/" mapping="/resources/**">
