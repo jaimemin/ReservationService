@@ -1,0 +1,7 @@
+#promotion {
+	width: 100%;
+}
+
+#slidingPromotionDiv {
+	transition: 2s all ease-in-out;
+}
