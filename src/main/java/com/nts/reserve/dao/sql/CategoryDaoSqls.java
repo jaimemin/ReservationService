@@ -9,6 +9,6 @@ public class CategoryDaoSqls {
 				+ "INNER JOIN product" 
 				+ "on product.id = display_info.product_id"
 				+ "INNER JOIN category" 
-				+ "ON id = product.category_id " 
+				+ "ON category.id = product.category_id " 
 				+ "GROUP BY category.id";
 }

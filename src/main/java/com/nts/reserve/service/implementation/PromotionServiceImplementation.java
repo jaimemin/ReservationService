@@ -1,5 +1,5 @@
 package com.nts.reserve.service.implementation;
 
-public class ReservationServiceImplementation {
+public class PromotionServiceImplementation {
 
 }

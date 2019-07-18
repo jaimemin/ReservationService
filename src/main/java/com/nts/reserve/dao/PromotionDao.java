@@ -36,6 +36,7 @@ public class PromotionDao {
 	public List<Promotion> selectPromotionImages() {
 		Map<String, Object> parameter = new HashMap<>();
 		parameter.put("imageType", "th");
+		
 		return jdbc.query(SELECT_PROMOTION_IMAGE, parameter, rowMapper);
 	}
 }

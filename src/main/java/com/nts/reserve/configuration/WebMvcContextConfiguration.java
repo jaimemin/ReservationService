@@ -25,7 +25,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/img_map/**").addResourceLocations("/img_map/").setCachePeriod(31556926);
 		registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(31556926);
 	}
-
+	
 	/**
 	 * Default servlet handler 사용설정
 	 */
@@ -33,7 +33,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-
+	
 	/**
 	 * View Controller 설정
 	 */
@@ -45,11 +45,11 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	/**
 	 * 웹 어플리케이션의 WAR파일 내에 포함된 뷰 템플릿을 탐색
 	 */
-	@Bean
-	public InternalResourceViewResolver getInternalResourceViewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/htmls/");
-		resolver.setSuffix(".html");
-		return resolver;
-	}
+    @Bean
+    public InternalResourceViewResolver getInternalResourceViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
 }

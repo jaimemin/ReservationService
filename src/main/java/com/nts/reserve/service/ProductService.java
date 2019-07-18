@@ -1,5 +1,5 @@
 package com.nts.reserve.service;
 
-public class ReservationService {
+public class ProductService {
 
 }
