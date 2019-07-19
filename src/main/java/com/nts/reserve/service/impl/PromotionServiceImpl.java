@@ -1,4 +1,4 @@
-package com.nts.reserve.service.implementation;
+package com.nts.reserve.service.impl;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import com.nts.reserve.dao.PromotionDao;
 import com.nts.reserve.service.PromotionService;
 
 @Service
-public class PromotionServiceImplementation implements PromotionService {
+public class PromotionServiceImpl implements PromotionService {
 
 	@Autowired
 	PromotionDao promotionDao;

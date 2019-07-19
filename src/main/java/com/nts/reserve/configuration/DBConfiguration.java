@@ -33,6 +33,7 @@ public class DBConfiguration implements TransactionManagementConfigurer {
 		dataSource.setUrl(url);
 		dataSource.setUsername(username);
 		dataSource.setPassword(password);
+		
 		return dataSource;
 	}
 

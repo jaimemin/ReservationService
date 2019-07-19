@@ -1,4 +1,4 @@
-package com.nts.reserve.service.implementation;
+package com.nts.reserve.service.impl;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.nts.reserve.dto.Product;
 import com.nts.reserve.service.ProductService;
 
 @Service
-public class ProductServiceImplementation implements ProductService {
+public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductDao productDao;
 

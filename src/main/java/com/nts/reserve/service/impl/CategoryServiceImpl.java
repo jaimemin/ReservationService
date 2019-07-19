@@ -1,4 +1,4 @@
-package com.nts.reserve.service.implementation;
+package com.nts.reserve.service.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +13,7 @@ import com.nts.reserve.dto.Category;
 import com.nts.reserve.service.CategoryService;
 
 @Service
-public class CategoryServiceImplementation implements CategoryService {
+public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	CategoryDao categoryDao;
 

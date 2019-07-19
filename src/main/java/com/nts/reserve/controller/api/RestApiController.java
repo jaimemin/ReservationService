@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nts.reserve.dto.Category;
 import com.nts.reserve.dto.Promotion;
 import com.nts.reserve.service.CategoryService;
 import com.nts.reserve.service.ProductService;
@@ -26,10 +27,13 @@ public class RestApiController {
 	PromotionService promotionService;
 
 	@GetMapping("/categories")
-	public String getCategories() {
-		return "{\"category-list\": " 
-					+ categoryService.getAllCategories() 
-					+ "}";
+	public Map<String, Object> getCategories() {
+		List<Category> categoryList = categoryService.getAllCategories();
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("items",  categoryList);
+		
+		return map;
 	}
 
 	@GetMapping("/products")
