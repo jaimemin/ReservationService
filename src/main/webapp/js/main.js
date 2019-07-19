@@ -1,7 +1,6 @@
 let promotionImageUrl = [];
 
 let initialize = () => {
-
     let replaceTemplate = (imageUrl) => {
         let promotion = document.querySelector("#promotionItem").innerHTML;
         return promotion.replace("{productImageUrl}", imageUrl);
@@ -31,8 +30,8 @@ let initialize = () => {
         visualImage.classList.add("visual_img");
         visualImage.innerHTML = unorderedList.innerHTML;
 
-        let containerVisual = document.querySelector(".visual_img").parentElement;
-        containerVisual.replaceChild(visualImage, document.querySelector(".visual_img"));
+        let visualContainer = document.querySelector(".visual_img").parentElement;
+        visualContainer.replaceChild(visualImage, document.querySelector(".visual_img"));
     };
 
     let createSlideClass = () => {
