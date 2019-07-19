@@ -25,10 +25,6 @@ public class PromotionDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public List<Promotion> selectAll() {
-		return jdbc.query(SELECT_ALL_PROMOTION, rowMapper);	
-	}
-
 	/*
 	 * imageType
 	 * th: thumbnail (썸네일 사진 - 상품리스트 혹은 프로모션 정보에서 보여주는 이미지) 
