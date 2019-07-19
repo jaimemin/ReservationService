@@ -1,6 +1,5 @@
 package com.nts.reserve.dao;
 
-import static com.nts.reserve.dao.sql.CategoryDaoSqls.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +15,16 @@ import com.nts.reserve.dto.Category;
 
 @Repository
 public class CategoryDao {
+	private static final String SELECT_ALL_CATEGORIES 
+	= "SELECT category.id AS id," 
+			+ " category.name AS name,"
+			+ " COUNT(*) AS count" 
+			+ " FROM display_info" 
+			+ " INNER JOIN product" 
+			+ " ON product.id = display_info.product_id"
+			+ " INNER JOIN category" 
+			+ " ON category.id = product.category_id " 
+			+ " GROUP BY category.id";
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<Category> rowMapper = BeanPropertyRowMapper.newInstance(Category.class);
 

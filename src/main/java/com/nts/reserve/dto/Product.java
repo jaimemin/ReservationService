@@ -3,24 +3,24 @@ package com.nts.reserve.dto;
 import java.time.LocalDateTime;
 
 public class Product {
-	int id;
-	int categoryId;
-	String description;
-	String content;
-	String event;
-	LocalDateTime createdDate;
-	LocalDateTime modifiedDate;
+	private int id;
+	private int categoryId;
+	private String description;
+	private String content;
+	private String event;
+	private LocalDateTime createdDate;
+	private LocalDateTime modifiedDate;
 	// category
-	String categoryName;
+	private String categoryName;
 	// promotion
-	int promotionId;
+	private int promotionId;
 	// display_info
-	int diplayInfoId;
-	String placeName;
+	private int diplayInfoId;
+	private String placeName;
 	// product_image
-	int productImageId;
+	private int productImageId;
 	// file_info
-	String saveFileName;
+	private String saveFileName;
 
 	public int getId() {
 		return id;

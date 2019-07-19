@@ -1,7 +1,5 @@
 package com.nts.reserve.dao;
 
-import static com.nts.reserve.dao.sql.ProductDaoSqls.*;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +17,36 @@ import com.nts.reserve.dto.Product;
 @Repository
 public class ProductDao {
 	private static final int LIMIT_COUNT = 4;
+	private static final String SELECT_BY_ID
+		= "SELECT id,"
+			+ " category_id AS categoryId,"
+			+ " content,"
+			+ " event,"
+			+ " create_date AS createdDate,"
+			+ " modify_date AS modifiedDate"
+			+ " FROM product"
+			+ " WHERE category_id = :id";
+	private static final String GET_COUNT_BY_CATEGORY_ID
+		= "SELECT COUNT(*)"
+			+ " FROM product"
+			+ " where category_id = :categoryId";
+	private static final String SELECT_PRODUCT_ITEMS
+		= "SELECT product.id AS id,"
+			+ " product.category_id AS categoryId,"
+			+ " product.content AS content,"
+			+ " product.description AS description,"
+			+ " file_info.save_file_name AS saveFileName,"
+			+ " display_info.place_name AS placeName"
+			+ " FROM product"
+			+ " INNER JOIN product_image"
+			+ " ON product.id = product_image.product_id"
+			+ " INNER JOIN file_info"
+			+ " ON file_info.id = product_image.file_id"
+			+ " INNER JOIN display_info"
+			+ " ON product.id = display_info.product_id"
+			+ " WHERE product_image.type = :imageType"
+			+ " ${dynamicQuery}" // if category is specific, categoryId
+			+ " LIMIT :start, :count";
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<Product> rowMapper = BeanPropertyRowMapper.newInstance(Product.class);
 
@@ -26,13 +54,7 @@ public class ProductDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public Product selectProduct(int productId) {
-		Map<String, Object> parameter = Collections.singletonMap("id", productId);
-		
-		return jdbc.queryForObject(SELECT_BY_ID, parameter, rowMapper);
-	}
-
-	public int getCount(int categoryId) {
+	public int getProductCountByCategory(int categoryId) {
 		Map<String, Object> parameter = Collections.singletonMap("categoryId", categoryId);
 		
 		return jdbc.queryForObject(GET_COUNT_BY_CATEGORY_ID, parameter, Integer.class);
@@ -55,10 +77,4 @@ public class ProductDao {
 		return jdbc.query(sql, parameter, rowMapper);
 	}
 	
-	public List<Product> selectProductPromotions(){
-		Map<String, Object> parameter = new HashMap<>();
-		parameter.put("imageType", "th");
-		
-		return jdbc.query(SELECT_PRODUCT_PROMOTIONS,  parameter, rowMapper);
-	}
 }

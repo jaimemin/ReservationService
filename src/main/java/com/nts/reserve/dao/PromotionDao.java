@@ -1,7 +1,5 @@
 package com.nts.reserve.dao;
 
-import static com.nts.reserve.dao.sql.PromotionDaoSqls.*;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +16,16 @@ import com.nts.reserve.dto.Promotion;
 
 @Repository
 public class PromotionDao {
+	private static final String SELECT_PROMOTION_IMAGE 
+		= "SELECT promotion.id AS id,"
+				+ " promotion.product_id AS productId,"
+				+ " file_info.save_file_name AS saveFileName" 
+				+ " FROM promotion"
+				+ " INNER JOIN product_image" 
+				+ " ON promotion.product_id = product_image.product_id" 
+				+ " INNER JOIN file_info"
+				+ " ON file_info.id = product_image.file_id" 
+				+ " WHERE product_image.type = :imageType";
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<Promotion> rowMapper = BeanPropertyRowMapper.newInstance(Promotion.class);
 
