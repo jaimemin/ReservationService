@@ -1,6 +1,6 @@
 let promotionImageUrl = [];
 
-let initialize = () => {
+let initiateSliding = () => {
     let replaceTemplate = (imageUrl) => {
         let promotion = document.querySelector("#promotionItem").innerHTML;
         return promotion.replace("{productImageUrl}", imageUrl);
@@ -70,5 +70,5 @@ let initialize = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    initialize();
+    initiateSliding();
 });
