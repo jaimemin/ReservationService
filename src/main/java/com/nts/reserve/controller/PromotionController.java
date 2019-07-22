@@ -22,18 +22,8 @@ public class PromotionController {
 		this.promotionService = promotionService;
 	}
 
-//	@GetMapping("/promotions")
-//	public Map<String, Object> promotions() {
-//		List<Promotion> imageList = promotionService.getPromotionImages();
-//
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("items", imageList);
-//
-//		return map;
-//	}
-	
 	@GetMapping("/promotions")
-	public List<Promotion> promotions(){
+	public List<Promotion> getPromotionImages(){
 		return promotionService.getPromotionImages();
 	}
 }

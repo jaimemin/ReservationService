@@ -16,15 +16,13 @@ let createTemplate = (productList, event) => {
     let index = 0;
     let leftHTML = "";
     let rightHTML = "";
-    productList.forEach((product) => {
+    for(let index = 0; index < productList.length; index++) {
     	if (index % 2 == 0) {
-    		leftHTML += replaceTemplate(item, product, index);
+    		leftHTML += replaceTemplate(item, productList[index], index);
     	} else {
-    		rightHTML += replaceTemplate(item, product, index);
+    		rightHTML += replaceTemplate(item, productList[index], index);
     	}
-    	
-    	index++;
-    });
+    }
     
     let clickedClass = event.target.parentElement.className;
     
@@ -142,7 +140,7 @@ let showMoreProducts = (event) => {
     }
 };
 
-let categoryListObject = document.querySelector(".anchor");    // category 효과 타겟 기본 값
+let categoryListObject = document.querySelector(".anchor");								// 타겟 기본 값
 let categoryList = null;
 
 let loadProducts = (event) => {
@@ -177,6 +175,7 @@ let loadProducts = (event) => {
 
 let category = document.querySelector(".event_tab_lst");
 let moreButton = document.querySelector(".more");
+let entireCategory = document.querySelector("#autoClick");
 
 let loadContent = () => {
     category.addEventListener("click", loadProducts);
@@ -186,4 +185,5 @@ let loadContent = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     loadContent();
+    entireCategory.click();
 });

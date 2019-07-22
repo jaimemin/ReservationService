@@ -15,7 +15,6 @@ import com.nts.reserve.service.CategoryService;
 @RestController
 @RequestMapping(path = "/api")
 public class CategoryController {
-	@Autowired
 	private CategoryService categoryService;
 	
 	@Autowired
@@ -23,18 +22,9 @@ public class CategoryController {
 		this.categoryService = categoryService;
 	}
 
-//	@GetMapping("/categories")
-//	public Map<String, Object> getCategories() {
-//		List<Category> categoryList = categoryService.getAllCategories();
-//
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("items", categoryList);
-//
-//		return map;
-//	}
-	
+
 	@GetMapping("/categories")
-	public List<Category> getCategories() {
+	public List<Category> getAllCategories() {
 		return categoryService.getAllCategories();
 	}
 }

@@ -14,10 +14,13 @@ import com.nts.reserve.service.PromotionService;
 
 @Service
 public class PromotionServiceImpl implements PromotionService {
+	private PromotionDao promotionDao;
 
 	@Autowired
-	PromotionDao promotionDao;
-
+	public PromotionServiceImpl(PromotionDao promotionDao) {
+		this.promotionDao = promotionDao;
+	}
+	
 	@Override
 	public List<Promotion> getPromotionImages() {
 		return promotionDao.selectPromotionImages();

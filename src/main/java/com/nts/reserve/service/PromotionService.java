@@ -5,5 +5,5 @@ import java.util.List;
 import com.nts.reserve.dto.Promotion;
 
 public interface PromotionService {
-	public List<Promotion> getPromotionImages();
+	List<Promotion> getPromotionImages();
 }

@@ -32,7 +32,7 @@ public class CategoryDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public List<Category> selectAll() {
+	public List<Category> selectAllCategories() {
 		return jdbc.query(SELECT_ALL_CATEGORIES, rowMapper);
 	}
 }

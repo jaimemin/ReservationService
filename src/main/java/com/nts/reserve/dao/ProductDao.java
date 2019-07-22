@@ -47,7 +47,7 @@ public class ProductDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public int getProductCountByCategory() {
+	public int selectProductCountByCategory() {
 		return jdbc.queryForObject(GET_COUNT_BY_CATEGORY_ID, Collections.emptyMap(), Integer.class);
 	}
 
@@ -64,9 +64,6 @@ public class ProductDao {
 		parameter.put("start", start);
 		parameter.put("count", LIMIT_COUNT);
 		parameter.put("imageType", "th");
-		System.out.println("category: " + categoryId);
-		System.out.println("start: " + start);
-		System.out.println(sql);
 		
 		return jdbc.query(sql, parameter, rowMapper);
 	}

@@ -14,12 +14,15 @@ import com.nts.reserve.service.CategoryService;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-	@Autowired
-	CategoryDao categoryDao;
+	private CategoryDao categoryDao;
+	
+	public CategoryServiceImpl(CategoryDao categoryDao) {
+		this.categoryDao = categoryDao;
+	}
 
 	@Override
 	public List<Category> getAllCategories() {
-		return categoryDao.selectAll();
+		return categoryDao.selectAllCategories();
 	}
 
 }

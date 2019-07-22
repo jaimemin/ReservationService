@@ -24,23 +24,11 @@ public class ProductController {
 	public ProductController(ProductService productService) {
 		this.productService = productService;
 	}
-	
-//	@GetMapping("/products")
-//	public Map<String, Object> getProducts(
-//			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
-//			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
-//		List<Product> productList = productService.selectProductItems(categoryId, start);
-//
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("items", productList);
-//
-//		return map;
-//	}
-	
+
 	@GetMapping("/products")
-	public List<Product> getProducts(
+	public List<Product> getProductItems(
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
-		return productService.selectProductItems(categoryId, start);
+		return productService.getProductItems(categoryId, start);
 	}
 }

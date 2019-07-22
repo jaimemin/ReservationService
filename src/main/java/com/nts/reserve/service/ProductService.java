@@ -1,11 +1,12 @@
 package com.nts.reserve.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.nts.reserve.dto.Product;
 
 public interface ProductService {
-	public int getCategoryCount();
+	int getCategoryCount();
 
-	public List<Product> selectProductItems(int categoryId, int start);
+	List<Product> getProductItems(int categoryId, int start);
 }
