@@ -17,14 +17,24 @@ import com.nts.reserve.service.CategoryService;
 public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	public CategoryController(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
 
+//	@GetMapping("/categories")
+//	public Map<String, Object> getCategories() {
+//		List<Category> categoryList = categoryService.getAllCategories();
+//
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("items", categoryList);
+//
+//		return map;
+//	}
+	
 	@GetMapping("/categories")
-	public Map<String, Object> getCategories() {
-		List<Category> categoryList = categoryService.getAllCategories();
-
-		Map<String, Object> map = new HashMap<>();
-		map.put("items", categoryList);
-
-		return map;
+	public List<Category> getCategories() {
+		return categoryService.getAllCategories();
 	}
 }

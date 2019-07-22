@@ -15,17 +15,25 @@ import com.nts.reserve.service.PromotionService;
 @RestController
 @RequestMapping(path = "/api")
 public class PromotionController {
-
-	@Autowired
 	private PromotionService promotionService;
+	
+	@Autowired
+	public PromotionController(PromotionService promotionService) {
+		this.promotionService = promotionService;
+	}
 
+//	@GetMapping("/promotions")
+//	public Map<String, Object> promotions() {
+//		List<Promotion> imageList = promotionService.getPromotionImages();
+//
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("items", imageList);
+//
+//		return map;
+//	}
+	
 	@GetMapping("/promotions")
-	public Map<String, Object> promotions() {
-		List<Promotion> imageList = promotionService.getPromotionImages();
-
-		Map<String, Object> map = new HashMap<>();
-		map.put("items", imageList);
-
-		return map;
+	public List<Promotion> promotions(){
+		return promotionService.getPromotionImages();
 	}
 }

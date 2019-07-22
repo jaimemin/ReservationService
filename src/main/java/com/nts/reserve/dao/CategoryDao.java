@@ -16,7 +16,7 @@ import com.nts.reserve.dto.Category;
 @Repository
 public class CategoryDao {
 	private static final String SELECT_ALL_CATEGORIES 
-	= "SELECT category.id AS id," 
+		= "SELECT category.id AS id," 
 			+ " category.name AS name,"
 			+ " COUNT(*) AS count" 
 			+ " FROM display_info" 

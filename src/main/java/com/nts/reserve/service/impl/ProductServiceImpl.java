@@ -13,15 +13,15 @@ import com.nts.reserve.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductDao productDao;
-	
+
 	@Override
-	public int getCount(int categoryId) {
-		return productDao.getProductCountByCategory(categoryId);
+	public int getCategoryCount() {
+		return productDao.getProductCountByCategory();
 	}
 
 	@Override
 	public List<Product> selectProductItems(int categoryId, int start) {
 		return productDao.selectProductItems(categoryId, start);
 	}
-	 
+
 }

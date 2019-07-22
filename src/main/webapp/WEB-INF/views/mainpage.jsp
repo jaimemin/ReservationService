@@ -138,7 +138,7 @@
         <li class="item">
             <a href="htmls/detail.html?id=${id}" class="item_book">
                 <div class="item_preview">
-                    <img alt="${description}" class="img_thumb" src="http://211.249.62.123/productImages/${id}?type=th">
+                    <img alt="${description}" class="img_thumb" src="http://127.0.0.1:8080/Reservation/{productImageUrl}">
                     <span class="img_border"></span>
                 </div>
                 <div class="event_txt">
@@ -150,5 +150,6 @@
     </script>
 
 	<script src="js/main.js"></script>
+	<script src="js/category.js"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.nts.reserve.dto.Product;
@@ -17,19 +18,11 @@ import com.nts.reserve.dto.Product;
 @Repository
 public class ProductDao {
 	private static final int LIMIT_COUNT = 4;
-	private static final String SELECT_BY_ID
-		= "SELECT id,"
-			+ " category_id AS categoryId,"
-			+ " content,"
-			+ " event,"
-			+ " create_date AS createdDate,"
-			+ " modify_date AS modifiedDate"
-			+ " FROM product"
-			+ " WHERE category_id = :id";
 	private static final String GET_COUNT_BY_CATEGORY_ID
-		= "SELECT COUNT(*)"
-			+ " FROM product"
-			+ " where category_id = :categoryId";
+		= "SELECT count(*) "
+				+ " FROM product"
+				+ " INNER JOIN display_info" 
+				+ " ON product.id = display_info.product_id";
 	private static final String SELECT_PRODUCT_ITEMS
 		= "SELECT product.id AS id,"
 			+ " product.category_id AS categoryId,"
@@ -54,10 +47,8 @@ public class ProductDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public int getProductCountByCategory(int categoryId) {
-		Map<String, Object> parameter = Collections.singletonMap("categoryId", categoryId);
-		
-		return jdbc.queryForObject(GET_COUNT_BY_CATEGORY_ID, parameter, Integer.class);
+	public int getProductCountByCategory() {
+		return jdbc.queryForObject(GET_COUNT_BY_CATEGORY_ID, Collections.emptyMap(), Integer.class);
 	}
 
 	public List<Product> selectProductItems(int categoryId, int start) {
@@ -73,6 +64,9 @@ public class ProductDao {
 		parameter.put("start", start);
 		parameter.put("count", LIMIT_COUNT);
 		parameter.put("imageType", "th");
+		System.out.println("category: " + categoryId);
+		System.out.println("start: " + start);
+		System.out.println(sql);
 		
 		return jdbc.query(sql, parameter, rowMapper);
 	}

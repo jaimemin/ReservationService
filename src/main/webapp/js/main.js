@@ -54,8 +54,8 @@ let initiateSliding = () => {
     		return;
     	}
     	
-    	if(xmlHttpRequest.readyState === 4){
-    		let imageList = JSON.parse(xmlHttpRequest.responseText).items;
+    	if(xmlHttpRequest.readyState === 4) {
+    		let imageList = JSON.parse(xmlHttpRequest.responseText);
     		imageList.forEach((image) => {
     			promotionImageUrl.push(image.saveFileName);
     		});
