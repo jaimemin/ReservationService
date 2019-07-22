@@ -70,10 +70,10 @@ let initializeTotalCount = () => {
     		let eventNum = 0;
     		let categoryList = JSON.parse(xmlHttpRequest.responseText);
     		categoryList.forEach((category) => {
-    	        eventNum += category.count;
-    	    });
+    			eventNum += category.count;
+    		});
     	        
-    	    buttonLimit = Math.ceil(eventNum / 4) - 1;
+    		buttonLimit = Math.ceil(eventNum / 4) - 1;
     	}
     }
 
