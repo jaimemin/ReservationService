@@ -16,6 +16,7 @@ import com.nts.reserve.service.CategoryService;
 public class CategoryServiceImpl implements CategoryService {
 	private CategoryDao categoryDao;
 	
+	@Autowired
 	public CategoryServiceImpl(CategoryDao categoryDao) {
 		this.categoryDao = categoryDao;
 	}
