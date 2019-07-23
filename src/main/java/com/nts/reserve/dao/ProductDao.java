@@ -47,12 +47,12 @@ public class ProductDao {
 			+ " WHERE product_image.type = :imageType"
 			+ " ${dynamicQuery}" // if category is specific, categoryId
 			+ " LIMIT :start, :count";
-	private NamedParameterJdbcTemplate jdbc;
+	private NamedParameterJdbcTemplate jdbcTemplate;
 	private RowMapper<Product> rowMapper = BeanPropertyRowMapper.newInstance(Product.class);
 
 	@Autowired
-	public ProductDao(NamedParameterJdbcTemplate jdbc) {
-		this.jdbc = jdbc;
+	public ProductDao(NamedParameterJdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
 
 	public int selectProductCountByCategory(int categoryId) {
@@ -60,7 +60,7 @@ public class ProductDao {
 		parameter.put("imageType", "th");
 		parameter.put("categoryId", categoryId);
 		
-		return jdbc.queryForObject(GET_COUNT_BY_CATEGORY_ID, parameter, Integer.class);
+		return jdbcTemplate.queryForObject(GET_COUNT_BY_CATEGORY_ID, parameter, Integer.class);
 	}
 
 	public List<Product> selectProductItems(int categoryId, int start) {
@@ -77,7 +77,7 @@ public class ProductDao {
 		parameter.put("count", LIMIT_COUNT);
 		parameter.put("imageType", "th");
 		
-		return jdbc.query(sql, parameter, rowMapper);
+		return jdbcTemplate.query(sql, parameter, rowMapper);
 	}
 	
 }

@@ -26,15 +26,15 @@ public class CategoryDao {
 			+ " INNER JOIN category" 
 			+ " ON category.id = product.category_id " 
 			+ " GROUP BY category.id";
-	private NamedParameterJdbcTemplate jdbc;
+	private NamedParameterJdbcTemplate jdbcTemplate;
 	private RowMapper<Category> rowMapper = BeanPropertyRowMapper.newInstance(Category.class);
 
 	@Autowired
-	public CategoryDao(NamedParameterJdbcTemplate jdbc) {
-		this.jdbc = jdbc;
+	public CategoryDao(NamedParameterJdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
 	
 	public List<Category> selectAllCategories() {
-		return jdbc.query(SELECT_ALL_CATEGORIES, rowMapper);
+		return jdbcTemplate.query(SELECT_ALL_CATEGORIES, rowMapper);
 	}
 }

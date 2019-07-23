@@ -1,14 +1,24 @@
-let replaceTemplate = (item, product, index) => {
-    let resultHTML = item.replace("{id}", product.id)
-        .replace("{description}", product.description)
-        .replace("{placeName}", product.placeName)
-        .replace("{content}", product.content)
-        .replace("{productImageUrl}", product.saveFileName);
-    return resultHTML;
-};
+let replaceTemplate = (product) => (
+	`
+	<li class="item">
+    	<a href="htmls/detail.html?id=${product.id}" class="item_book">
+        	<div class="item_preview">
+            	<img alt="${product.description}" class="img_thumb" src="http://127.0.0.1:8080/Reservation/${product.saveFileName}">
+				<span class="img_border"></span>
+        	</div>
+        	<div class="event_txt">
+            	<h4 class="event_txt_tit"> 
+            		<span>${product.description}</span> 
+            		<small class="sm">${product.placeName}</small> 
+            	</h4>
+				<p class="event_txt_dsc">${product.content}</p>
+        	</div>
+    	</a>
+	</li>
+	`
+);
 
 let createTemplate = (productList, event) => {
-    let item = document.querySelector("#itemList").innerHTML;
     let list = document.querySelectorAll(".lst_event_box");
     let leftList = list[0];
     let rightList = list[1];
@@ -18,9 +28,9 @@ let createTemplate = (productList, event) => {
     let rightHTML = "";
     for(let index = 0; index < productList.length; index++) {
     	if (index % 2 === 0) {
-    		leftHTML += replaceTemplate(item, productList[index], index);
+    		leftHTML += replaceTemplate(productList[index]);
     	} else {
-    		rightHTML += replaceTemplate(item, productList[index], index);
+    		rightHTML += replaceTemplate(productList[index]);
     	}
     }
     
@@ -32,7 +42,7 @@ let createTemplate = (productList, event) => {
         rightList.innerHTML += rightHTML;
     }
     else if (clickedClass.contains("anchor") 
-    		|| clickedClass.contains("anchor active")) {
+    		|| clickedClass.contains("active")){
         leftList.innerHTML = leftHTML;
         rightList.innerHTML = rightHTML;
     }
@@ -140,7 +150,8 @@ let showMoreProducts = (event) => {
     }
 };
 
-let categoryListObject = document.querySelector(".anchor");								// 타겟 기본 값
+let categoryListObject = document.querySelector(".anchor");								// 타겟
+																						// 기본 값
 let categoryList = null;
 
 let loadProducts = (event) => {

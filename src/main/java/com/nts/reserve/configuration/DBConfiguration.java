@@ -44,7 +44,7 @@ public class DBConfiguration implements TransactionManagementConfigurer {
 	}
 
 	@Bean
-	public NamedParameterJdbcTemplate registerJdbc() {
+	public NamedParameterJdbcTemplate registerJdbcTemplate() {
 		return new NamedParameterJdbcTemplate(dataSource());
 	}
 }

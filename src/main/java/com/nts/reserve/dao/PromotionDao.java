@@ -27,12 +27,12 @@ public class PromotionDao {
 				+ " INNER JOIN file_info"
 				+ " ON file_info.id = product_image.file_id" 
 				+ " WHERE product_image.type = :imageType";
-	private NamedParameterJdbcTemplate jdbc;
+	private NamedParameterJdbcTemplate jdbcTemplate;
 	private RowMapper<Promotion> rowMapper = BeanPropertyRowMapper.newInstance(Promotion.class);
 
 	@Autowired
-	public PromotionDao(NamedParameterJdbcTemplate jdbc) {
-		this.jdbc = jdbc;
+	public PromotionDao(NamedParameterJdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
 
 	/*
@@ -45,6 +45,6 @@ public class PromotionDao {
 		Map<String, Object> parameter = new HashMap<>();
 		parameter.put("imageType", "th");
 		
-		return jdbc.query(SELECT_PROMOTION_IMAGE, parameter, rowMapper);
+		return jdbcTemplate.query(SELECT_PROMOTION_IMAGE, parameter, rowMapper);
 	}
 }

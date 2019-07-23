@@ -134,21 +134,6 @@
     	</li>
     </script>
 
-	<script type="rv-template" id="itemList">
-        <li class="item">
-            <a href="htmls/detail.html?id=${id}" class="item_book">
-                <div class="item_preview">
-                    <img alt="${description}" class="img_thumb" src="http://127.0.0.1:8080/Reservation/{productImageUrl}">
-                    <span class="img_border"></span>
-                </div>
-                <div class="event_txt">
-                    <h4 class="event_txt_tit"> <span>${description}</span> <small class="sm">${placeName}</small> </h4>
-                    <p class="event_txt_dsc">${content}</p>
-                </div>
-            </a>
-        </li>
-    </script>
-
 	<script src="js/main.js"></script>
 	<script src="js/category.js"></script>
 </body>
