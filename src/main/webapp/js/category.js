@@ -1,3 +1,5 @@
+const NUMBER_OF_REQUESTS = 4;
+
 let replaceTemplate = (product) => (
 	`
 	<li class="item">
@@ -65,25 +67,25 @@ let createCategoryCount = (categoryList, index) => {
     let numberOfEvent = document.querySelector(".pink");
     numberOfEvent.innerHTML = eventCount;
 
-    buttonLimit = Math.ceil(eventCount / 4) - 1;
+    buttonLimit = Math.ceil(eventCount / NUMBER_OF_REQUESTS) - 1;
 };
 
 let initializeTotalCount = () => {
     let xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.onreadystatechange = () => {
-    	if(xmlHttpRequest.status >= 400) {
+    	if(xmlHttpRequest.status >= ERROR_STATUS) {
     		alert("오류가 발생했습니다");
     		return;
     	}
 	
-    	if(xmlHttpRequest.readyState === 4) {
+    	if(xmlHttpRequest.readyState === READY_STATE) {
     		let eventNum = 0;
     		let categoryList = JSON.parse(xmlHttpRequest.responseText);
     		categoryList.forEach((category) => {
     			eventNum += category.count;
     		});
     	        
-    		buttonLimit = Math.ceil(eventNum / 4) - 1;
+    		buttonLimit = Math.ceil(eventNum / NUMBER_OF_REQUESTS) - 1;
     	}
     }
 
@@ -94,12 +96,12 @@ let initializeTotalCount = () => {
 let requestCategories = (categoryIndex) => {
     let xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.onreadystatechange = () => {
-    	if(xmlHttpRequest.status >= 400) {
+    	if(xmlHttpRequest.status >= ERROR_STATUS) {
     		alert("오류가 발생했습니다");
     		return;
     	}
 	
-    	if(xmlHttpRequest.readyState === 4) {
+    	if(xmlHttpRequest.readyState === READY_STATE) {
     		let categoryList = JSON.parse(xmlHttpRequest.responseText);
     		createCategoryCount(categoryList, categoryIndex);
     	}
@@ -112,12 +114,12 @@ let requestCategories = (categoryIndex) => {
 let requestProducts = (event) => {
     let xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.onreadystatechange = () => {
-    	if(xmlHttpRequest.status >= 400) {
+    	if(xmlHttpRequest.status >= ERROR_STATUS) {
     		alert("오류가 발생했습니다");
     		return;
     	}
 	
-    	if(xmlHttpRequest.readyState === 4) {
+    	if(xmlHttpRequest.readyState === READY_STATE) {
     		let productList = JSON.parse(xmlHttpRequest.responseText);
             createTemplate(productList, event);
     	}
@@ -141,7 +143,7 @@ let removeMoreButton = (event) => {
 let showMoreProducts = (event) => {
     if (event.target.nodeName === "BUTTON" 
     		|| event.target.nodeName === "SPAN") {
-        startIndex += 4;
+        startIndex += NUMBER_OF_REQUESTS;
         requestProducts(event);
         
         if (--buttonLimit === 0) {

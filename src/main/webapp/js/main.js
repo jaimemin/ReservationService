@@ -1,3 +1,6 @@
+const ERROR_STATUS = 400;
+const READY_STATE = 4;
+
 let promotionImageUrl = [];
 
 let initiateSliding = () => {
@@ -49,12 +52,12 @@ let initiateSliding = () => {
 
     let xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.onreadystatechange = () => {
-    	if(xmlHttpRequest.status >= 400) {
+    	if(xmlHttpRequest.status >= ERROR_STATUS) {
     		alert("오류가 발생했습니다");
     		return;
     	}
     	
-    	if(xmlHttpRequest.readyState === 4) {
+    	if(xmlHttpRequest.readyState === READY_STATE) {
     		let imageList = JSON.parse(xmlHttpRequest.responseText);
     		imageList.forEach((image) => {
     			promotionImageUrl.push(image.saveFileName);
