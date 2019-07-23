@@ -65,7 +65,7 @@ let createCategoryCount = (categoryList, index) => {
     }
     
     let numberOfEvent = document.querySelector(".pink");
-    numberOfEvent.innerHTML = eventCount;
+    numberOfEvent.innerHTML = eventCount + "개";
 
     buttonLimit = Math.ceil(eventCount / NUMBER_OF_REQUESTS) - 1;
 };
@@ -79,10 +79,10 @@ let initializeTotalCount = () => {
     	}
 	
     	if(xmlHttpRequest.readyState === READY_STATE) {
-    		let eventNum = 0;
+    		let eventCount = 0;
     		let categoryList = JSON.parse(xmlHttpRequest.responseText);
     		categoryList.forEach((category) => {
-    			eventNum += category.count;
+    			eventCount += category.count;
     		});
     	        
     		buttonLimit = Math.ceil(eventNum / NUMBER_OF_REQUESTS) - 1;
