@@ -44,7 +44,7 @@ let createTemplate = (productList, event) => {
         rightList.innerHTML += rightHTML;
     }
     else if (clickedClass.contains("anchor") 
-    		|| clickedClass.contains("active")){
+    		|| clickedClass.contains("active")) {
         leftList.innerHTML = leftHTML;
         rightList.innerHTML = rightHTML;
     }

@@ -20,15 +20,15 @@ import com.nts.reserve.dto.Product;
 public class ProductDao {
 	private static final String GET_COUNT_BY_CATEGORY_ID
 		= "SELECT COUNT(*) "
-				+ " FROM product"
-				+ " INNER JOIN display_info" 
-				+ " ON product.id = display_info.product_id"
-				+ " INNER JOIN product_image"
-				+ "	ON product.id = product_image.product_id"
-				+ " INNER JOIN file_info"
-				+ " ON product_image.file_id = file_info.id"
-				+ " AND product_image.type = :imageType"
-				+ " AND product.category_id = :categoryId";
+			+ " FROM product"
+			+ " INNER JOIN display_info" 
+			+ " ON product.id = display_info.product_id"
+			+ " INNER JOIN product_image"
+			+ "	ON product.id = product_image.product_id"
+			+ " INNER JOIN file_info"
+			+ " ON product_image.file_id = file_info.id"
+			+ " AND product_image.type = :imageType"
+			+ " AND product.category_id = :categoryId";
 	private static final String SELECT_PRODUCT_ITEMS
 		= "SELECT product.id AS id,"
 			+ " product.category_id AS categoryId,"

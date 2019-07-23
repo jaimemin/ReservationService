@@ -6,6 +6,7 @@ let promotionImageUrl = [];
 let initiateSliding = () => {
     let replaceTemplate = (imageUrl) => {
         let promotion = document.querySelector("#promotionItem").innerHTML;
+        
         return promotion.replace("{productImageUrl}", imageUrl);
     };
 
