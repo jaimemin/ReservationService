@@ -66,7 +66,7 @@ public class ProductDao {
 		Map<String, Object> parameter = new HashMap<>();
 		String dynamicQuery = "";
 		
-		if(categoryId >= 1) {
+		if (categoryId >= 1) {
 			dynamicQuery = "AND product.category_id = :categoryId";
 			parameter.put("categoryId", categoryId);
 		}

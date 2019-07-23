@@ -54,7 +54,7 @@ let categoryIndex = 0;
 let startIndex = 0;
 let buttonLimit = 0;
 
-let createCategoryCount = (categoryList, index) => {
+let setCategoryCount = (categoryList, index) => {
     let eventCount = 0;
     if (index >= 1) {
         eventCount = categoryList[index - 1].count;
@@ -103,7 +103,7 @@ let requestCategories = (categoryIndex) => {
 	
     	if(xmlHttpRequest.readyState === READY_STATE) {
     		let categoryList = JSON.parse(xmlHttpRequest.responseText);
-    		createCategoryCount(categoryList, categoryIndex);
+    		setCategoryCount(categoryList, categoryIndex);
     	}
     }
 
@@ -152,8 +152,7 @@ let showMoreProducts = (event) => {
     }
 };
 
-let categoryListObject = document.querySelector(".anchor");								// 타겟
-																						// 기본 값
+let categoryListObject = document.querySelector(".anchor");
 let categoryList = null;
 
 let loadProducts = (event) => {
