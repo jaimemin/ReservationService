@@ -17,22 +17,22 @@ let createTemplate = (productList, event) => {
     let leftHTML = "";
     let rightHTML = "";
     for(let index = 0; index < productList.length; index++) {
-    	if (index % 2 == 0) {
+    	if (index % 2 === 0) {
     		leftHTML += replaceTemplate(item, productList[index], index);
     	} else {
     		rightHTML += replaceTemplate(item, productList[index], index);
     	}
     }
     
-    let clickedClass = event.target.parentElement.className;
+    let clickedClass = event.target.parentElement.classList;
     
-    if (clickedClass === "btn" 
-    		|| clickedClass === "more"){
+    if (clickedClass.contains("btn") 
+    		|| clickedClass.contains("more")) {
     	leftList.innerHTML += leftHTML;
         rightList.innerHTML += rightHTML;
     }
-    else if (clickedClass === "anchor" 
-    		|| clickedClass === "anchor active") {
+    else if (clickedClass.contains("anchor") 
+    		|| clickedClass.contains("anchor active")) {
         leftList.innerHTML = leftHTML;
         rightList.innerHTML = rightHTML;
     }
@@ -121,9 +121,9 @@ let requestProducts = (event) => {
 let removeMoreButton = (event) => {
 	let clickedItem = event.target;
 	
-    if (clickedItem.className === "btn") {
+    if (clickedItem.classList.contains("btn")) {
         clickedItem.hidden = true;
-    } else if (clickedItem.parentElement.className === "btn") {
+    } else if (clickedItem.parentElement.classList.contains("btn")) {
         clickedItem.parentElement.hidden = true;
     }
 };
@@ -146,7 +146,7 @@ let categoryList = null;
 let loadProducts = (event) => {
     categoryList = event.target.parentElement.parentElement;
 
-    if (categoryList.className === "item") {
+    if (categoryList.classList.contains("item")) {
         categoryIndex = categoryList.dataset.category;
         startIndex = 0;
 

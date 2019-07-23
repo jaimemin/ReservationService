@@ -20,10 +20,16 @@ import com.nts.reserve.dto.Product;
 public class ProductDao {
 	private static final int LIMIT_COUNT = 4;
 	private static final String GET_COUNT_BY_CATEGORY_ID
-		= "SELECT count(*) "
+		= "SELECT COUNT(*) "
 				+ " FROM product"
 				+ " INNER JOIN display_info" 
-				+ " ON product.id = display_info.product_id";
+				+ " ON product.id = display_info.product_id"
+				+ " INNER JOIN product_image"
+				+ "	ON product.id = product_image.product_id"
+				+ " INNER JOIN file_info"
+				+ " ON product_image.file_id = file_info.id"
+				+ " AND product_image.type = :imageType"
+				+ " AND product.category_id = :categoryId";
 	private static final String SELECT_PRODUCT_ITEMS
 		= "SELECT product.id AS id,"
 			+ " product.category_id AS categoryId,"
@@ -49,8 +55,12 @@ public class ProductDao {
 		this.jdbc = jdbc;
 	}
 
-	public int selectProductCountByCategory() {
-		return jdbc.queryForObject(GET_COUNT_BY_CATEGORY_ID, Collections.emptyMap(), Integer.class);
+	public int selectProductCountByCategory(int categoryId) {
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("imageType", "th");
+		parameter.put("categoryId", categoryId);
+		
+		return jdbc.queryForObject(GET_COUNT_BY_CATEGORY_ID, parameter, Integer.class);
 	}
 
 	public List<Product> selectProductItems(int categoryId, int start) {
