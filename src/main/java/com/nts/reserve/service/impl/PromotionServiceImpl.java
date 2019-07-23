@@ -20,10 +20,10 @@ public class PromotionServiceImpl implements PromotionService {
 	public PromotionServiceImpl(PromotionDao promotionDao) {
 		this.promotionDao = promotionDao;
 	}
-	
+
 	@Override
-	public List<Promotion> getPromotionImages() {
-		return promotionDao.selectPromotionImages();
+	public List<Promotion> getPromotionImages(String imageType) {
+		return promotionDao.selectPromotionImages(imageType);
 	}
 
 }

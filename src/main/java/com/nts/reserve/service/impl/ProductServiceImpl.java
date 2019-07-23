@@ -21,13 +21,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public int getCategoryCount(int categoryId) {
-		return productDao.selectProductCountByCategory(categoryId);
+	public int getCategoryCount(int categoryId, String imageType) {
+		return productDao.selectProductCountByCategory(categoryId, imageType);
 	}
 
+	
 	@Override
-	public List<Product> getProductItems(int categoryId, int start) {
-		return productDao.selectProductItems(categoryId, start);
+	public List<Product> getProductItems(int categoryId, int start, int limitCount, String imageType) {
+		return productDao.selectProductItems(categoryId, start, limitCount, imageType);
 	}
 
 }

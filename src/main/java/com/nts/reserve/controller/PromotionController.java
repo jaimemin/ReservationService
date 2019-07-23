@@ -22,8 +22,14 @@ public class PromotionController {
 		this.promotionService = promotionService;
 	}
 
+	/*
+	 * imageType
+	 * th: thumbnail (썸네일 사진 - 상품리스트 혹은 프로모션 정보에서 보여주는 이미지) 
+	 * ma: main (메인 사진 - 상품 상세정보에서 보여주는 이미지) 
+	 * et: etc (기타 사진 - 상품 상세정보에서 추가적으로 보여주는 기타 이미지)
+	 */
 	@GetMapping("/promotions")
 	public List<Promotion> getPromotionImages(){
-		return promotionService.getPromotionImages();
+		return promotionService.getPromotionImages("th");
 	}
 }

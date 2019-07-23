@@ -6,7 +6,7 @@ import java.util.List;
 import com.nts.reserve.dto.Product;
 
 public interface ProductService {
-	int getCategoryCount(int categoryId);
+	int getCategoryCount(int categoryId, String imageType);
 
-	List<Product> getProductItems(int categoryId, int start);
+	List<Product> getProductItems(int categoryId, int start, int limitCount, String imageType);
 }

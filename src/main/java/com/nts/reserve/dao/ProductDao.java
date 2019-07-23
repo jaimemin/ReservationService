@@ -18,7 +18,6 @@ import com.nts.reserve.dto.Product;
 
 @Repository
 public class ProductDao {
-	private static final int LIMIT_COUNT = 4;
 	private static final String GET_COUNT_BY_CATEGORY_ID
 		= "SELECT COUNT(*) "
 				+ " FROM product"
@@ -55,15 +54,15 @@ public class ProductDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public int selectProductCountByCategory(int categoryId) {
+	public int selectProductCountByCategory(int categoryId, String imageType) {
 		Map<String, Object> parameter = new HashMap<>();
-		parameter.put("imageType", "th");
+		parameter.put("imageType", imageType);
 		parameter.put("categoryId", categoryId);
 		
 		return jdbcTemplate.queryForObject(GET_COUNT_BY_CATEGORY_ID, parameter, Integer.class);
 	}
 
-	public List<Product> selectProductItems(int categoryId, int start) {
+	public List<Product> selectProductItems(int categoryId, int start, int limitCount, String imageType) {
 		Map<String, Object> parameter = new HashMap<>();
 		String dynamicQuery = "";
 		
@@ -74,8 +73,8 @@ public class ProductDao {
 		
 		String sql = SELECT_PRODUCT_ITEMS.replace("${dynamicQuery}", dynamicQuery);
 		parameter.put("start", start);
-		parameter.put("count", LIMIT_COUNT);
-		parameter.put("imageType", "th");
+		parameter.put("count", limitCount);
+		parameter.put("imageType", imageType);
 		
 		return jdbcTemplate.query(sql, parameter, rowMapper);
 	}

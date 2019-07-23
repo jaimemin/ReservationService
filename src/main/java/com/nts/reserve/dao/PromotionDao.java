@@ -35,15 +35,9 @@ public class PromotionDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	/*
-	 * imageType
-	 * th: thumbnail (썸네일 사진 - 상품리스트 혹은 프로모션 정보에서 보여주는 이미지) 
-	 * ma: main (메인 사진 - 상품 상세정보에서 보여주는 이미지) 
-	 * et: etc (기타 사진 - 상품 상세정보에서 추가적으로 보여주는 기타 이미지)
-	 */
-	public List<Promotion> selectPromotionImages() {
+	public List<Promotion> selectPromotionImages(String imageType) {
 		Map<String, Object> parameter = new HashMap<>();
-		parameter.put("imageType", "th");
+		parameter.put("imageType", imageType);
 		
 		return jdbcTemplate.query(SELECT_PROMOTION_IMAGE, parameter, rowMapper);
 	}
