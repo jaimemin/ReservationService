@@ -85,7 +85,7 @@ let initializeTotalCount = () => {
     			eventCount += category.count;
     		});
     	        
-    		buttonLimit = Math.ceil(eventNum / NUMBER_OF_REQUESTS) - 1;
+    		buttonLimit = Math.ceil(eventCount / NUMBER_OF_REQUESTS) - 1;
     	}
     }
 
@@ -152,26 +152,26 @@ let showMoreProducts = (event) => {
     }
 };
 
-let categoryListObject = document.querySelector(".anchor");
-let categoryList = null;
+let clickedCategory = document.querySelector(".anchor");
+let category = null;
 
 let loadProducts = (event) => {
-    categoryList = event.target.parentElement.parentElement;
+    category = event.target.parentElement.parentElement;
 
-    if (categoryList.classList.contains("item")) {
-        categoryIndex = categoryList.dataset.category;
+    if (category.classList.contains("item")) {
+        categoryIndex = category.dataset.category;
         startIndex = 0;
 
         let removeEffect = () => {
-        	categoryListObject.style.color = "black";
-        	categoryListObject.style.borderBottom = "none";
+        	clickedCategory.style.color = "black";
+        	clickedCategory.style.borderBottom = "none";
         };
 
         let changeTextToGreen = () => {
             removeEffect();
-            categoryListObject = categoryList.firstElementChild;
-            categoryListObject.style.color = "#0aba16";
-            categoryListObject.style.borderBottom = "2px solid #0aba16";
+            clickedCategory = category.firstElementChild;
+            clickedCategory.style.color = "#0aba16";
+            clickedCategory.style.borderBottom = "2px solid #0aba16";
         };
 
         requestProducts(event);
@@ -185,12 +185,12 @@ let loadProducts = (event) => {
     }
 };
 
-let category = document.querySelector(".event_tab_lst");
+let categoryList = document.querySelector(".event_tab_lst");
 let moreButton = document.querySelector(".more");
 let entireCategory = document.querySelector("#autoClick");
 
 let loadContent = () => {
-    category.addEventListener("click", loadProducts);
+    categoryList.addEventListener("click", loadProducts);
     moreButton.addEventListener("click", showMoreProducts);
     initializeTotalCount();
 };
