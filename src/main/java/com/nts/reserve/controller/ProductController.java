@@ -18,7 +18,6 @@ import com.nts.reserve.service.ProductService;
 @RestController
 @RequestMapping(path = "/api")
 public class ProductController {
-	private static final int LIMIT_COUNT = 4;
 	private ProductService productService;
 
 	@Autowired
@@ -30,6 +29,6 @@ public class ProductController {
 	public List<Product> getProductItems(
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
-		return productService.getProductItems(categoryId, start, LIMIT_COUNT, "th");
+		return productService.getProductItems(categoryId, start);
 	}
 }

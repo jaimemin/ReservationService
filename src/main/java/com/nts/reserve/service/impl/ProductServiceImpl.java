@@ -13,6 +13,7 @@ import com.nts.reserve.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+	private static final int LIMIT_COUNT = 4;
 	private ProductDao productDao;
 
 	@Autowired
@@ -21,14 +22,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public int getProductCountByCategory(int categoryId, String imageType) {
-		return productDao.selectProductCountByCategory(categoryId, imageType);
+	public int getProductCountByCategory(int categoryId) {
+		return productDao.selectProductCountByCategory(categoryId, "th");
 	}
 
 	
 	@Override
-	public List<Product> getProductItems(int categoryId, int start, int limitCount, String imageType) {
-		return productDao.selectProductItems(categoryId, start, limitCount, imageType);
+	public List<Product> getProductItems(int categoryId, int start) {
+		return productDao.selectProductItems(categoryId, start, LIMIT_COUNT, "th");
 	}
 
 }
