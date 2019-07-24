@@ -1,4 +1,4 @@
-const NUMBER_OF_REQUESTS = 4;
+const NUMBERS_PER_REQUEST = 4;
 
 let replaceTemplate = (product) => (
 	`
@@ -29,10 +29,12 @@ let createTemplate = (productList, event) => {
     let leftHTML = "";
     let rightHTML = "";
     for(let index = 0; index < productList.length; index++) {
+    	let product = productList[index];
+    	
     	if (index % 2 === 0) {
-    		leftHTML += replaceTemplate(productList[index]);
+    		leftHTML += replaceTemplate(product);
     	} else {
-    		rightHTML += replaceTemplate(productList[index]);
+    		rightHTML += replaceTemplate(product);
     	}
     }
     
@@ -57,17 +59,17 @@ let buttonLimit = 0;
 let setCategoryCount = (categoryList, index) => {
     let eventCount = 0;
     if (index >= 1) {
-        eventCount = categoryList[index - 1].count;
+        eventCount = categoryList[index - 1].categoryCount;
     } else {
         categoryList.forEach((category) => {
-            eventCount += category.count;
+            eventCount += category.categoryCount;
         });
     }
     
     let numberOfEvent = document.querySelector(".pink");
-    numberOfEvent.innerHTML = eventCount + "개";
+    numberOfEvent.innerHTML = `${eventCount}개`;
 
-    buttonLimit = Math.ceil(eventCount / NUMBER_OF_REQUESTS) - 1;
+    buttonLimit = Math.ceil(eventCount / NUMBERS_PER_REQUEST) - 1;
 };
 
 let initializeTotalCount = () => {
@@ -78,14 +80,14 @@ let initializeTotalCount = () => {
     		return;
     	}
 	
-    	if(xmlHttpRequest.readyState === READY_STATE) {
+    	if(xmlHttpRequest.readyState === COMPLETE_STATE) {
     		let eventCount = 0;
     		let categoryList = JSON.parse(xmlHttpRequest.responseText);
     		categoryList.forEach((category) => {
     			eventCount += category.count;
     		});
     	        
-    		buttonLimit = Math.ceil(eventCount / NUMBER_OF_REQUESTS) - 1;
+    		buttonLimit = Math.ceil(eventCount / NUMBERS_PER_REQUEST) - 1;
     	}
     }
 
@@ -101,7 +103,7 @@ let requestCategories = (categoryIndex) => {
     		return;
     	}
 	
-    	if(xmlHttpRequest.readyState === READY_STATE) {
+    	if(xmlHttpRequest.readyState === COMPLETE_STATE) {
     		let categoryList = JSON.parse(xmlHttpRequest.responseText);
     		setCategoryCount(categoryList, categoryIndex);
     	}
@@ -119,7 +121,7 @@ let requestProducts = (event) => {
     		return;
     	}
 	
-    	if(xmlHttpRequest.readyState === READY_STATE) {
+    	if(xmlHttpRequest.readyState === COMPLETE_STATE) {
     		let productList = JSON.parse(xmlHttpRequest.responseText);
             createTemplate(productList, event);
     	}
@@ -143,7 +145,7 @@ let removeMoreButton = (event) => {
 let showMoreProducts = (event) => {
     if (event.target.nodeName === "BUTTON" 
     		|| event.target.nodeName === "SPAN") {
-        startIndex += NUMBER_OF_REQUESTS;
+        startIndex += NUMBERS_PER_REQUEST;
         requestProducts(event);
         
         if (--buttonLimit === 0) {

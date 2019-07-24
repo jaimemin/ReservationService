@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 
 @Configuration
 @EnableTransactionManagement
-public class DBConfiguration implements TransactionManagementConfigurer {
+public class DBConfiguration {
 	@Value("${spring.datasource.driver-class-name}")
 	private String driverClassName;
 
@@ -27,7 +27,6 @@ public class DBConfiguration implements TransactionManagementConfigurer {
 	@Value("${spring.datasource.password}")
 	private String password;
 
-	@Bean
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(driverClassName);
@@ -38,13 +37,8 @@ public class DBConfiguration implements TransactionManagementConfigurer {
 		return dataSource;
 	}
 
-	@Override
-	public PlatformTransactionManager annotationDrivenTransactionManager() {
-		return new DataSourceTransactionManager(dataSource());
-	}
-
 	@Bean
-	public NamedParameterJdbcTemplate registerJdbcTemplate() {
+	public NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
 		return new NamedParameterJdbcTemplate(dataSource());
 	}
 }

@@ -19,7 +19,7 @@ public class CategoryDao {
 	private static final String SELECT_ALL_CATEGORIES 
 		= "SELECT category.id AS id," 
 			+ " category.name AS name,"
-			+ " COUNT(*) AS count" 
+			+ " COUNT(*) AS categoryCount" 
 			+ " FROM display_info" 
 			+ " INNER JOIN product" 
 			+ " ON product.id = display_info.product_id"

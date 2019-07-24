@@ -27,8 +27,8 @@ public class ProductDao {
 			+ "	ON product.id = product_image.product_id"
 			+ " INNER JOIN file_info"
 			+ " ON product_image.file_id = file_info.id"
-			+ " AND product_image.type = :imageType"
-			+ " AND product.category_id = :categoryId";
+			+ " WHERE product_image.type = :imageType"
+			+ " WHERE product.category_id = :categoryId";
 	private static final String SELECT_PRODUCT_ITEMS
 		= "SELECT product.id AS id,"
 			+ " product.category_id AS categoryId,"

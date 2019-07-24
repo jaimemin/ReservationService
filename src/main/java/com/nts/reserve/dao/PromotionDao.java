@@ -17,7 +17,7 @@ import com.nts.reserve.dto.Promotion;
 
 @Repository
 public class PromotionDao {
-	private static final String SELECT_PROMOTION_IMAGE 
+	private static final String SELECT_PROMOTION_IMAGES 
 		= "SELECT promotion.id AS id,"
 				+ " promotion.product_id AS productId,"
 				+ " file_info.save_file_name AS saveFileName" 
@@ -39,6 +39,6 @@ public class PromotionDao {
 		Map<String, Object> parameter = new HashMap<>();
 		parameter.put("imageType", imageType);
 		
-		return jdbcTemplate.query(SELECT_PROMOTION_IMAGE, parameter, rowMapper);
+		return jdbcTemplate.query(SELECT_PROMOTION_IMAGES, parameter, rowMapper);
 	}
 }

@@ -4,7 +4,7 @@ public class Category {
 	private int id;
 	private String name;
 	// 추가한 멤버 변수
-	private int count;
+	private int categoryCount;
 
 	public int getId() {
 		return id;
@@ -22,17 +22,17 @@ public class Category {
 		this.name = name;
 	}
 
-	public int getCount() {
-		return count;
+	public int getCategoryCount() {
+		return categoryCount;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setCategoryCount(int categoryCount) {
+		this.categoryCount = categoryCount;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", count=" + count + "]";
+		return "Category [id=" + id + ", name=" + name + ", count=" + categoryCount + "]";
 	}
 
 }

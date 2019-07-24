@@ -1,5 +1,5 @@
 const ERROR_STATUS = 400;
-const READY_STATE = 4;
+const COMPLETE_STATE = 4;
 
 let promotionImageUrl = [];
 
@@ -58,7 +58,7 @@ let initiateSliding = () => {
     		return;
     	}
     	
-    	if(xmlHttpRequest.readyState === READY_STATE) {
+    	if(xmlHttpRequest.readyState === COMPLETE_STATE) {
     		let imageList = JSON.parse(xmlHttpRequest.responseText);
     		imageList.forEach((image) => {
     			promotionImageUrl.push(image.saveFileName);

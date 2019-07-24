@@ -14,6 +14,7 @@ import com.nts.reserve.service.PromotionService;
 
 @Service
 public class PromotionServiceImpl implements PromotionService {
+	private static final String THUMB_NAIL = "th";
 	private PromotionDao promotionDao;
 
 	@Autowired
@@ -29,7 +30,7 @@ public class PromotionServiceImpl implements PromotionService {
 	 */
 	@Override
 	public List<Promotion> getPromotionImages() {
-		return promotionDao.selectPromotionImages("th");
+		return promotionDao.selectPromotionImages(THUMB_NAIL);
 	}
 
 }
