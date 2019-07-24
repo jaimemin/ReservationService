@@ -62,7 +62,7 @@ public class ProductDao {
 		return jdbcTemplate.queryForObject(SELECT_PRODUCT_COUNT_BY_CATEGORY, parameter, Integer.class);
 	}
 
-	public List<Product> selectProductItems(int categoryId, int start, int limitCount, String imageType) {
+	public List<Product> selectProductItems(int categoryId, int start, int productCountLimit, String imageType) {
 		Map<String, Object> parameter = new HashMap<>();
 		String dynamicQuery = "";
 		
@@ -73,7 +73,7 @@ public class ProductDao {
 		
 		String sql = SELECT_PRODUCT_ITEMS.replace("${dynamicQuery}", dynamicQuery);
 		parameter.put("start", start);
-		parameter.put("count", limitCount);
+		parameter.put("count", productCountLimit);
 		parameter.put("imageType", imageType);
 		
 		return jdbcTemplate.query(sql, parameter, rowMapper);
