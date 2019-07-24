@@ -18,7 +18,7 @@ import com.nts.reserve.dto.Product;
 
 @Repository
 public class ProductDao {
-	private static final String SELECT_COUNT_BY_CATEGORY_ID
+	private static final String SELECT_PRODUCT_COUNT_BY_CATEGORY
 		= "SELECT COUNT(*) "
 			+ " FROM product"
 			+ " INNER JOIN display_info" 
@@ -59,7 +59,7 @@ public class ProductDao {
 		parameter.put("imageType", imageType);
 		parameter.put("categoryId", categoryId);
 		
-		return jdbcTemplate.queryForObject(SELECT_COUNT_BY_CATEGORY_ID, parameter, Integer.class);
+		return jdbcTemplate.queryForObject(SELECT_PRODUCT_COUNT_BY_CATEGORY, parameter, Integer.class);
 	}
 
 	public List<Product> selectProductItems(int categoryId, int start, int limitCount, String imageType) {

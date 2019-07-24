@@ -13,7 +13,7 @@ import com.nts.reserve.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-	private static final int LIMIT_COUNT = 4;
+	private static final int LIMIT_PRODUCT_COUNT_FOR_EACH_REQUEST = 4;
 	private ProductDao productDao;
 
 	@Autowired
@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<Product> getProductItems(int categoryId, int start) {
-		return productDao.selectProductItems(categoryId, start, LIMIT_COUNT, "th");
+		return productDao.selectProductItems(categoryId, start, LIMIT_PRODUCT_COUNT_FOR_EACH_REQUEST, "th");
 	}
 
 }
