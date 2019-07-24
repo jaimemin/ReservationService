@@ -125,7 +125,7 @@ let requestProducts = (event) => {
     	}
     }
 
-    let url = "/Reservation/api/products?categoryId=" + categoryIndex + "&start=" + startIndex;
+    let url = `/Reservation/api/products?categoryId=${categoryIndex}&start=${startIndex}`;
     xmlHttpRequest.open("GET", url);
     xmlHttpRequest.send();
 };
