@@ -156,8 +156,8 @@ let clickedCategory = document.querySelector(".anchor");
 let category = null;
 
 let loadProducts = (event) => {
-    category = event.target.parentElement.parentElement;
-
+	category = event.target.closest("li");
+	
     if (category.classList.contains("item")) {
         categoryIndex = category.dataset.category;
         startIndex = 0;
