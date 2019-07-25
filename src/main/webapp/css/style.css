@@ -2259,7 +2259,6 @@ button {
 	font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
 		Helvetica Nenu, Helvetica, Roboto, Arial, NanumGothicWebB, '맑은고딕',
 		MalgunGothic, '돋움', Dotum, sans-serif;
-	font-weight: 600
 }
 
 .section_booking_ticket {
@@ -3200,7 +3199,6 @@ button {
 	font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
 		Helvetica Nenu, Helvetica, Roboto, Arial, NanumGothicWebR, '맑은고딕',
 		MalgunGothic, '돋움', Dotum, sans-serif;
-	font-weight: 400;
 	white-space: nowrap
 }
 
@@ -3377,7 +3375,6 @@ button {
 	font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
 		Helvetica Nenu, Helvetica, Roboto, Arial, NanumGothicWebB, '맑은고딕',
 		MalgunGothic, '돋움', Dotum, sans-serif;
-	font-weight: 600
 }
 
 .event .section_event_tab .event_tab_lst>.item .anchor.last {
