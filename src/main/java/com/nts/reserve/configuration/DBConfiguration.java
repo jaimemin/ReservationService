@@ -27,6 +27,7 @@ public class DBConfiguration {
 	@Value("${spring.datasource.password}")
 	private String password;
 
+	@Bean(destroyMethod="close")
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(driverClassName);

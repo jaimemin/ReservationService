@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nts.reserve.dao.ProductDao">
+	<select id="selectCategoryProductCount" resultType="_int">
+		SELECT 
+			COUNT(*)
+		FROM 
+			product
+		INNER JOIN 
+			display_info 
+				ON product.id = display_info.product_id
+		WHERE 
+			product.category_id = #{categoryId}
+	</select>
+	
+	<select id="selectProductItems" resultType="Product">
+		SELECT 
+			product.id AS id,
+			product.category_id AS categoryId,
+			product.content AS content,
+			product.description AS description,
+			file_info.save_file_name AS saveFileName,
+			display_info.place_name AS placeName
+		FROM 
+			product
+		INNER JOIN 
+			product_image
+				ON product.id = product_image.product_id
+		INNER JOIN 
+			file_info
+				ON file_info.id = product_image.file_id
+		INNER JOIN 
+			display_info
+				ON product.id = display_info.product_id
+		WHERE 
+			product_image.type = #{imageType}
+		<if test='categoryId != 0'>
+			AND product.category_id = #{categoryId}		
+		</if>
+		LIMIT 
+			#{start}, #{productCountLimit}
+	</select>
+</mapper>
