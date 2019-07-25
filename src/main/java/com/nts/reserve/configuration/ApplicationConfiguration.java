@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource({ "classpath:/property/application.properties" })
-@ComponentScan(basePackages = { "com.nts.reserve.service, com.nts.reserve.dao"})
+@ComponentScan(basePackages = { "com.nts.reserve.service", "com.nts.reserve.dao"})
 @Import({ DBConfiguration.class, ContextSqlMapper.class })
 public class ApplicationConfiguration {
 
