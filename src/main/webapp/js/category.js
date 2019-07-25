@@ -165,15 +165,15 @@ let loadProducts = (event) => {
         startIndex = 0;
 
         let removeEffect = () => {
-        	clickedCategory.style.color = "black";
-        	clickedCategory.style.borderBottom = "none";
+        	clickedCategory.classList.remove("highlighted");
+        	clickedCategory.classList.add("plain");
         };
 
         let changeTextToGreen = () => {
             removeEffect();
             clickedCategory = category.firstElementChild;
-            clickedCategory.style.color = "#0aba16";
-            clickedCategory.style.borderBottom = "2px solid #0aba16";
+            clickedCategory.classList.remove("plain");
+            clickedCategory.classList.add("highlighted");
         };
 
         requestProducts(event);

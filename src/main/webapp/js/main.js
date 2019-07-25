@@ -38,14 +38,14 @@ let initiateSliding = () => {
         visualContainer.replaceChild(visualImage, document.querySelector(".visual_img"));
     };
 
-    let createSlideClass = () => {
+    let createSlidingClass = () => {
         let visualImage = document.querySelector(".visual_img");
         visualImage.classList.add("sliding");
     };
 
     let slidePromotion = () => {
         setTimeout(() => {
-            createSlideClass();
+            createSlidingClass();
             addEventListener("transitionend", changeOrder);
             slidePromotion();
         }, 2000);

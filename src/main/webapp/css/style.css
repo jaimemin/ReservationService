@@ -2256,8 +2256,6 @@ button {
 .section_info_tab .info_tab_lst .item>.anchor.active {
 	padding: 10px 6px 11px;
 	margin-bottom: -1px;
-	border-bottom: 2px solid #0aba16;
-	color: #0aba16;
 	font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
 		Helvetica Nenu, Helvetica, Roboto, Arial, NanumGothicWebB, '맑은고딕',
 		MalgunGothic, '돋움', Dotum, sans-serif;
@@ -3370,15 +3368,12 @@ button {
 	display: inline-block;
 	margin-right: 13px;
 	padding: 10px 4.5px 10px 4px;
-	color: #000;
 	box-sizing: border-box;
 	line-height: 20px
 }
 
 .event .section_event_tab .event_tab_lst>.item .anchor.active {
 	padding: 10px 4.5px 9px 4px;
-	color: #0aba16;
-	border-bottom: 2px solid #0aba16;
 	font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
 		Helvetica Nenu, Helvetica, Roboto, Arial, NanumGothicWebB, '맑은고딕',
 		MalgunGothic, '돋움', Dotum, sans-serif;

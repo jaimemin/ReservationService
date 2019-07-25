@@ -1,0 +1,9 @@
+.plain {
+	color: black;
+	border-bottom: none;
+}
+
+.highlighted {
+	color: #0aba16;
+	border-bottom: 2px solid #0aba16;
+}

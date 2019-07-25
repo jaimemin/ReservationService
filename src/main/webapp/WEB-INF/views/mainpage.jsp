@@ -14,6 +14,7 @@
 <title>네이버 예약</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animation.css">
+<link rel="stylesheet" href="css/category.css">
 </head>
 
 <body>
@@ -65,7 +66,7 @@
 			</div>
 			<div class="section_event_tab">
 				<ul id="tab-list" class="event_tab_lst tab_lst_min">
-					<li class="item" data-category="0"><a class="anchor active">
+					<li class="item" data-category="0"><a class="anchor active highlighted">
 							<span id="autoClick">전체리스트</span>
 					</a></li>
 					<li class="item" data-category="1"><a class="anchor"> <span>전시</span>

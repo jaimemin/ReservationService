@@ -18,16 +18,11 @@ import com.nts.reserve.dto.Product;
 
 @Repository
 public class ProductDao {
-	private static final String SELECT_PRODUCT_COUNT_BY_CATEGORY
+	private static final String SELECT_CATEGORY_PRODUCT_COUNT
 		= "SELECT COUNT(*) "
 			+ " FROM product"
 			+ " INNER JOIN display_info" 
 			+ " ON product.id = display_info.product_id"
-			+ " INNER JOIN product_image"
-			+ "	ON product.id = product_image.product_id"
-			+ " INNER JOIN file_info"
-			+ " ON product_image.file_id = file_info.id"
-			+ " WHERE product_image.type = :imageType"
 			+ " WHERE product.category_id = :categoryId";
 	private static final String SELECT_PRODUCT_ITEMS
 		= "SELECT product.id AS id,"
@@ -54,12 +49,12 @@ public class ProductDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public int selectProductCountByCategory(int categoryId, String imageType) {
+	public int selectCategoryProductCount(int categoryId, String imageType) {
 		Map<String, Object> parameter = new HashMap<>();
 		parameter.put("imageType", imageType);
 		parameter.put("categoryId", categoryId);
 		
-		return jdbcTemplate.queryForObject(SELECT_PRODUCT_COUNT_BY_CATEGORY, parameter, Integer.class);
+		return jdbcTemplate.queryForObject(SELECT_CATEGORY_PRODUCT_COUNT, parameter, Integer.class);
 	}
 
 	public List<Product> selectProductItems(int categoryId, int start, int productCountLimit, String imageType) {

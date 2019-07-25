@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public int getProductCountByCategory(int categoryId) {
-		return productDao.selectProductCountByCategory(categoryId, THUMB_NAIL);
+		return productDao.selectCategoryProductCount(categoryId, THUMB_NAIL);
 	}
 
 	
