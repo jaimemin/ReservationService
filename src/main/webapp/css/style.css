@@ -2752,7 +2752,7 @@ button {
 	.section_my .my_summary .summary_board .item .link_summary_board .spr_book2
 		{
 		display: block;
-		margin: 0 auto
+		margin: 0 auto;
 	}
 }
 
@@ -3364,7 +3364,7 @@ button {
 
 .event .section_event_tab .event_tab_lst>.item .anchor {
 	display: inline-block;
-	margin-right: 13px;
+
 	padding: 10px 4.5px 10px 4px;
 	box-sizing: border-box;
 	line-height: 20px
