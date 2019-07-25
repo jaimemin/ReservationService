@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class CommonExceptionAdvice {
-	private static final Logger LOGGER = LoggerFactory.getLogger(CommonExceptionAdvice.class);
+public class ExceptionAdvice {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionAdvice.class);
 	
 	@ExceptionHandler(IOException.class)
 	public String errorException(Model model, Exception exception) {
