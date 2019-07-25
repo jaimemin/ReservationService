@@ -15,23 +15,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages= {"com.nts.reserve.dao"})
+@MapperScan(basePackages = { "com.nts.reserve.dao" })
 public class ContextSqlMapper {
-	@Autowired
-	ApplicationContext applicationContext;
-	
 	@Bean
-	public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) throws IOException
-	{
+	public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) throws IOException {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(dataSource);
-		factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:/mybatis/mappers/*.xml"));
+		factoryBean.setMapperLocations(
+				new PathMatchingResourcePatternResolver().getResources("classpath:/mybatis/mappers/*.xml"));
 		factoryBean.setTypeAliasesPackage("com.nts.reserve.dto");
-		
+
 		return factoryBean;
 	}
-	
-	@Bean
+
 	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}

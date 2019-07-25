@@ -72,7 +72,7 @@ let setCategoryCount = (categoryList, index) => {
     buttonLimit = Math.ceil(eventCount / NUMBERS_PER_REQUEST) - 1;
 };
 
-let initializeTotalCount = () => {
+let initializeButtonLimit = () => {
     let xmlHttpRequest = new XMLHttpRequest();
     xmlHttpRequest.onreadystatechange = () => {
     	if(xmlHttpRequest.status >= ERROR_STATUS) {
@@ -194,7 +194,7 @@ let entireCategory = document.querySelector("#autoClick");
 let loadContent = () => {
     categoryList.addEventListener("click", loadProducts);
     moreButton.addEventListener("click", showMoreProducts);
-    initializeTotalCount();
+    initializeButtonLimit();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
