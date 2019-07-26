@@ -8,5 +8,5 @@ import com.nts.reserve.dto.Product;
 public interface ProductService {
 	int getCategoryProductCount(int categoryId);
 
-	List<Product> getProductItems(int categoryId, int start);
+	List<Product> getProducts(int categoryId, int start);
 }

@@ -23,7 +23,7 @@ public class PromotionController {
 	}
 
 	@GetMapping("/promotions")
-	public List<Promotion> getPromotionImages(){
-		return promotionService.getPromotionImages();
+	public List<Promotion> getPromotions(){
+		return promotionService.getPromotions();
 	}
 }

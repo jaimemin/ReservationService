@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
 
 	
 	@Override
-	public List<Product> getProductItems(int categoryId, int start) {
-		return productDao.selectProductItems(categoryId, start, UPPER_LIMIT_COUNT, THUMB_NAIL);
+	public List<Product> getProducts(int categoryId, int start) {
+		return productDao.selectProducts(categoryId, start, UPPER_LIMIT_COUNT, THUMB_NAIL);
 	}
 
 }

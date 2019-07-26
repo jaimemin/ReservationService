@@ -29,8 +29,8 @@ public class PromotionServiceImpl implements PromotionService {
 	 * et: etc (기타 사진 - 상품 상세정보에서 추가적으로 보여주는 기타 이미지)
 	 */
 	@Override
-	public List<Promotion> getPromotionImages() {
-		return promotionDao.selectPromotionImages(THUMB_NAIL);
+	public List<Promotion> getPromotions() {
+		return promotionDao.selectPromotions(THUMB_NAIL);
 	}
 
 }

@@ -26,9 +26,9 @@ public class ProductController {
 	}
 
 	@GetMapping("/products")
-	public List<Product> getProductItems(
+	public List<Product> getProducts(
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
-		return productService.getProductItems(categoryId, start);
+		return productService.getProducts(categoryId, start);
 	}
 }

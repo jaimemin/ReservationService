@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Param;
 import com.nts.reserve.dto.Promotion;
 
 public interface PromotionDao {
-	List<Promotion> selectPromotionImages(@Param("imageType") String imageType);
+	List<Promotion> selectPromotions(String imageType);
 }

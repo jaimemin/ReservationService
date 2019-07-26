@@ -15,9 +15,8 @@ public class ExceptionAdvice {
 	 */
 	@ExceptionHandler(Exception.class)
 	public String handleException(Model model, Exception exception) {
-		LOGGER.info("@ControllerAdvice 방식 \n"
-				+ "###exception: " + exception.getMessage());
-		model.addAttribute("exception", exception);
+		LOGGER.error("error message {}. Details:",
+				exception.getMessage(), exception.getStackTrace());
 		
 		return "error/exception";
 	}

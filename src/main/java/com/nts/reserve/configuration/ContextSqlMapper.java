@@ -28,6 +28,7 @@ public class ContextSqlMapper {
 		return factoryBean;
 	}
 
+	@Bean
 	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}

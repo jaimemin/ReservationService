@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 @Configuration
-@EnableTransactionManagement
 public class DBConfiguration {
 	@Value("${spring.datasource.driver-class-name}")
 	private String driverClassName;
@@ -38,8 +37,4 @@ public class DBConfiguration {
 		return dataSource;
 	}
 
-	@Bean
-	public NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
-		return new NamedParameterJdbcTemplate(dataSource());
-	}
 }

@@ -137,10 +137,11 @@ let requestProducts = (event) => {
 
 let removeMoreButton = (event) => {
 	let clickedItem = event.target;
+	let clickedItemParent = clickedItem.parentElement;
 	
     if (clickedItem.classList.contains("btn")) {
         clickedItem.hidden = true;
-    } else if (clickedItem.parentElement.classList.contains("btn")) {
+    } else if (clickedItemParent.classList.contains("btn")) {
         clickedItem.parentElement.hidden = true;
     }
 };
