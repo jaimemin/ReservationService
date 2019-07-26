@@ -38,15 +38,17 @@ let createTemplate = (productList, event) => {
     	}
     }
     
-    let clickedClass = event.target.parentElement.classList;
-    
+    let clickedClass = event.target.parentElement.classList 
+    	|| event.target.classList;
+
     if (clickedClass.contains("btn") 
     		|| clickedClass.contains("more")) {
     	leftList.innerHTML += leftHTML;
         rightList.innerHTML += rightHTML;
     }
     else if (clickedClass.contains("anchor") 
-    		|| clickedClass.contains("active")) {
+    		|| clickedClass.contains("active")
+    		|| clickedClass.contains("item")) {
         leftList.innerHTML = leftHTML;
         rightList.innerHTML = rightHTML;
     }

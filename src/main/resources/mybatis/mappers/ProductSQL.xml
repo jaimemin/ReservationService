@@ -35,7 +35,7 @@
 				ON product.id = display_info.product_id
 		WHERE 
 			product_image.type = #{imageType}
-		<if test='categoryId != 0'>
+		<if test='categoryId gte 1 and categoryId lte 5'>
 			AND product.category_id = #{categoryId}		
 		</if>
 		LIMIT 
