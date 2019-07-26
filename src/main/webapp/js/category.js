@@ -60,6 +60,7 @@ let buttonLimit = 0;
 
 let setCategoryCount = (categoryList, index) => {
     let eventCount = 0;
+    
     if (index >= 1) {
         eventCount = categoryList[index - 1].categoryCount;
     } else {

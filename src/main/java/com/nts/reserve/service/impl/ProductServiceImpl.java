@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public int getProductCountByCategory(int categoryId) {
+	public int getCategoryProductCount(int categoryId) {
 		return productDao.selectCategoryProductCount(categoryId, THUMB_NAIL);
 	}
 
