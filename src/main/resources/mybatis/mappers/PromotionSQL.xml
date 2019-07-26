@@ -15,6 +15,7 @@
 		INNER JOIN 
 			file_info
 				ON file_info.id = product_image.file_id 
-		WHERE product_image.type = #{imageType};
+		WHERE 
+			product_image.type = #{imageType};
 	</select>
 </mapper>

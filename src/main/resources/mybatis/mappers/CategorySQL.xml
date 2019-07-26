@@ -15,6 +15,7 @@
 		INNER JOIN 
 			category 
 				ON category.id = product.category_id
-		GROUP BY category.id
+		GROUP BY 
+			category.id
 	</select>
 </mapper>
