@@ -1,7 +1,5 @@
 package com.nts.reserve.dto;
 
-import java.time.LocalDateTime;
-
 public class Product {
 	private int id;
 	private int categoryId;
