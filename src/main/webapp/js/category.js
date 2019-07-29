@@ -25,7 +25,6 @@ let createTemplate = (productList, event) => {
     let leftList = list[0];
     let rightList = list[1];
 
-    let index = 0;
     let leftHTML = "";
     let rightHTML = "";
     for(let index = 0; index < productList.length; index++) {
