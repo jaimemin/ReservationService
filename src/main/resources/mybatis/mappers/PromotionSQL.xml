@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nts.reserve.dao.PromotionDao">
+	<select id="selectPromotions" parameterType="String" resultType="Promotion">
+		SELECT 
+			promotion.id AS id,
+			promotion.product_id AS productId,
+			file_info.save_file_name AS saveFileName 
+		FROM 
+			promotion
+		INNER JOIN 
+			product_image 
+				ON promotion.product_id = product_image.product_id 
+		INNER JOIN 
+			file_info
+				ON file_info.id = product_image.file_id 
+		WHERE 
+			product_image.type = #{imageType};
+	</select>
+</mapper>
