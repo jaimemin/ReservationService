@@ -3,7 +3,6 @@ package com.nts.reserve.dto;
 public class Promotion {
 	private int id;
 	private int productId;
-	// file_info
 	private String saveFileName;
 
 	public int getId() {

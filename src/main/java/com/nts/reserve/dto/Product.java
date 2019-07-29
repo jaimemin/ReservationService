@@ -7,19 +7,7 @@ public class Product {
 	private int categoryId;
 	private String description;
 	private String content;
-	private String event;
-	private LocalDateTime createdDate;
-	private LocalDateTime modifiedDate;
-	// category
-	private String categoryName;
-	// promotion
-	private int promotionId;
-	// display_info
-	private int diplayInfoId;
 	private String placeName;
-	// product_image
-	private int productImageId;
-	// file_info
 	private String saveFileName;
 
 	public int getId() {
@@ -54,68 +42,12 @@ public class Product {
 		this.content = content;
 	}
 
-	public String getEvent() {
-		return event;
-	}
-
-	public void setEvent(String event) {
-		this.event = event;
-	}
-
-	public LocalDateTime getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDateTime createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public LocalDateTime getModifiedDate() {
-		return modifiedDate;
-	}
-
-	public void setModifiedDate(LocalDateTime modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
-	public int getPromotionId() {
-		return promotionId;
-	}
-
-	public void setPromotionId(int promotionId) {
-		this.promotionId = promotionId;
-	}
-
-	public int getDiplayInfoId() {
-		return diplayInfoId;
-	}
-
-	public void setDiplayInfoId(int diplayInfoId) {
-		this.diplayInfoId = diplayInfoId;
-	}
-
 	public String getPlaceName() {
 		return placeName;
 	}
 
 	public void setPlaceName(String placeName) {
 		this.placeName = placeName;
-	}
-
-	public int getProductImageId() {
-		return productImageId;
-	}
-
-	public void setProductImageId(int productImageId) {
-		this.productImageId = productImageId;
 	}
 
 	public String getSaveFileName() {
@@ -129,10 +61,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", categoryId=" + categoryId + ", description=" + description + ", content="
-				+ content + ", event=" + event + ", createdDate=" + createdDate + ", modifiedDate=" + modifiedDate
-				+ ", categoryName=" + categoryName + ", promotionId=" + promotionId + ", diplayInfoId=" + diplayInfoId
-				+ ", placeName=" + placeName + ", productImageId=" + productImageId + ", saveFileName=" + saveFileName
-				+ "]";
+				+ content + ", placeName=" + placeName + ", saveFileName=" + saveFileName + "]";
 	}
 
 }
