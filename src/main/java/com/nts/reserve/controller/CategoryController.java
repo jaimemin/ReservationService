@@ -16,12 +16,11 @@ import com.nts.reserve.service.CategoryService;
 @RequestMapping(path = "/api")
 public class CategoryController {
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	public CategoryController(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
-
 
 	@GetMapping("/categories")
 	public List<Category> getCategories() {

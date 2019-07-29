@@ -8,11 +8,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.nts.reserve.controller" })
+@ComponentScan(basePackages = { "com.nts.reserve.controller", "com.nts.reserve.error" })
 public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	/**
 	 * 리소스 핸들러 설정 <resources location="/resources/" mapping="/resources/**">
@@ -35,14 +36,6 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * View Controller 설정
-	 */
-	@Override
-	public void addViewControllers(final ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("mainpage");
-	}
-
-	/**
 	 * 웹 어플리케이션의 WAR파일 내에 포함된 뷰 템플릿을 탐색
 	 */
 	@Bean
@@ -50,7 +43,8 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
-		
+
 		return resolver;
 	}
+	
 }

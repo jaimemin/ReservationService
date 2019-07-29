@@ -26,7 +26,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
 		// Manage the lifecycle of the root application context
 		servletContext.addListener(new ContextLoaderListener(rootContext));
-
+		
 		ServletRegistration.Dynamic dispatcher 
 			= servletContext.addServlet("mvc", new DispatcherServlet(rootContext));
 		dispatcher.setLoadOnStartup(1);
