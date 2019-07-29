@@ -13,7 +13,7 @@ import com.nts.reserve.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 	private static final int UPPER_LIMIT_COUNT = 4;
 	private static final String THUMB_NAIL = "th";
-	private ProductDao productDao;
+	private final ProductDao productDao;
 
 	@Autowired
 	public ProductServiceImpl(ProductDao productDao) {

@@ -8,9 +8,9 @@
 			category.name AS name,
 			COUNT(*) AS categoryCount 
 		FROM 
-			display_info 
+			product
 		INNER JOIN 
-			product 
+			display_info 
 				ON product.id = display_info.product_id
 		INNER JOIN 
 			category 

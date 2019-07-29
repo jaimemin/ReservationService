@@ -13,7 +13,7 @@ import com.nts.reserve.service.PromotionService;
 @RestController
 @RequestMapping(path = "/api")
 public class PromotionController {
-	private PromotionService promotionService;
+	private final PromotionService promotionService;
 
 	@Autowired
 	public PromotionController(PromotionService promotionService) {

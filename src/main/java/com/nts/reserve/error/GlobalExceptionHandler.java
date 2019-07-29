@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleException(Exception exception) {
 		LOGGER.error("error message {}. Details:", 
-				exception.getMessage(), exception.getStackTrace());
+				exception.getMessage(), exception);
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName(DEFAULT_ERROR_VIEW);

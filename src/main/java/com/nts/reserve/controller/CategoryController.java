@@ -13,7 +13,7 @@ import com.nts.reserve.service.CategoryService;
 @RestController
 @RequestMapping(path = "/api")
 public class CategoryController {
-	private CategoryService categoryService;
+	private final CategoryService categoryService;
 
 	@Autowired
 	public CategoryController(CategoryService categoryService) {

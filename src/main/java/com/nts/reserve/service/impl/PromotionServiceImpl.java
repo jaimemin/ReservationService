@@ -12,7 +12,7 @@ import com.nts.reserve.service.PromotionService;
 @Service
 public class PromotionServiceImpl implements PromotionService {
 	private static final String THUMB_NAIL = "th";
-	private PromotionDao promotionDao;
+	private final PromotionDao promotionDao;
 
 	@Autowired
 	public PromotionServiceImpl(PromotionDao promotionDao) {
