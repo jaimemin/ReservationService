@@ -1,8 +1,6 @@
 package com.nts.reserve.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +19,12 @@ public class ProductServiceImpl implements ProductService {
 	public ProductServiceImpl(ProductDao productDao) {
 		this.productDao = productDao;
 	}
-	
+
 	@Override
 	public int getCategoryProductCount(int categoryId) {
 		return productDao.selectCategoryProductCount(categoryId, THUMB_NAIL);
 	}
 
-	
 	@Override
 	public List<Product> getProducts(int categoryId, int start) {
 		return productDao.selectProducts(categoryId, start, UPPER_LIMIT_COUNT, THUMB_NAIL);

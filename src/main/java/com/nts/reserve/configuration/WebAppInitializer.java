@@ -26,15 +26,14 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
 		// Manage the lifecycle of the root application context
 		servletContext.addListener(new ContextLoaderListener(rootContext));
-		
-		ServletRegistration.Dynamic dispatcher 
-			= servletContext.addServlet("mvc", new DispatcherServlet(rootContext));
+
+		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("mvc", new DispatcherServlet(rootContext));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
 
 		// encoding
-		FilterRegistration.Dynamic filterRegistration 
-			= servletContext.addFilter("encodingFilter", new CharacterEncodingFilter());
+		FilterRegistration.Dynamic filterRegistration = servletContext.addFilter("encodingFilter",
+				new CharacterEncodingFilter());
 		filterRegistration.setInitParameter("encoding", "UTF-8");
 		filterRegistration.setInitParameter("forceEncoding", "true");
 		filterRegistration.addMappingForUrlPatterns(null, false, "/*");

@@ -11,6 +11,6 @@ import com.nts.reserve.dto.Product;
 public interface ProductDao {
 	int selectCategoryProductCount(@Param("categoryId") int categoryId, @Param("imageType") String imageType);
 
-	List<Product> selectProducts(@Param("categoryId") int categoryId, @Param("start") int start
-			, @Param("productCountLimit") int productCountLimit, @Param("imageType") String imageType);
+	List<Product> selectProducts(@Param("categoryId") int categoryId, @Param("start") int start,
+			@Param("productCountLimit") int productCountLimit, @Param("imageType") String imageType);
 }
