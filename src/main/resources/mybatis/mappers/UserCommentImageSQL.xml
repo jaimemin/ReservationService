@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.nts.reserve.dao.UserCommentImageDao">
+	<select id="selectCommentImages" resultType="UserCommentImage">
+		SELECT
+			file_info.content_type AS contentType,
+			file_info.create_date AS createdDate,
+			file_info.delete_flag AS deleteFlag,
+			file_info.id AS fileId,
+			file_info.file_name AS fileName,
+			file_info.modify_date AS modifiedDate,
+			file_info.save_file_name AS saveFileName,
+			reservation_user_comment_image.id AS id,
+			reservation_info.id AS reservationInfoId
+		FROM
+			file_info
+		INNER JOIN
+			reservation_user_comment_image
+				ON file_info.id = reservation_user_comment_image.file_id
+		INNER JOIN
+			reservation_info
+				ON reservation_info.id 
+					= reservation_user_comment_image.reservation_info_id
+		INNER JOIN
+			reservation_user_comment
+				ON reservation_user_comment.id 
+					= reservation_user_comment_image.reservation_user_comment_id
+	</select>
+</mapper>

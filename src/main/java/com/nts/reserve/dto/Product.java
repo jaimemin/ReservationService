@@ -3,6 +3,7 @@ package com.nts.reserve.dto;
 public class Product {
 	private int id;
 	private int categoryId;
+	private int displayInfoId;
 	private String description;
 	private String content;
 	private String placeName;
@@ -22,6 +23,14 @@ public class Product {
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+	
+	public int getDisplayInfoId() {
+		return displayInfoId;
+	}
+
+	public void setDisplayInfoId(int displayInfoId) {
+		this.displayInfoId = displayInfoId;
 	}
 
 	public String getDescription() {
@@ -58,8 +67,9 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", categoryId=" + categoryId + ", description=" + description + ", content="
-				+ content + ", placeName=" + placeName + ", saveFileName=" + saveFileName + "]";
+		return "Product [id=" + id + ", categoryId=" + categoryId + ", displayInfoId=" + displayInfoId
+				+ ", description=" + description + ", content=" + content + ", placeName=" + placeName
+				+ ", saveFileName=" + saveFileName + "]";
 	}
 
 }
