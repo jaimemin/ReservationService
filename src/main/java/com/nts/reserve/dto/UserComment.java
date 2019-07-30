@@ -3,10 +3,10 @@ package com.nts.reserve.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class ReservationUserComment {
+public class UserComment {
 	private String comment;
 	private int id;
-	private List<ReservationUserCommentImage> commentImages;
+	private List<UserCommentImage> commentImages;
 	private LocalDateTime createdDate;
 	private LocalDateTime modifiedDate;
 	private int productId;
@@ -33,11 +33,11 @@ public class ReservationUserComment {
 		this.id = id;
 	}
 
-	public List<ReservationUserCommentImage> getCommentImages() {
+	public List<UserCommentImage> getCommentImages() {
 		return commentImages;
 	}
 
-	public void setCommentImages(List<ReservationUserCommentImage> commentImages) {
+	public void setCommentImages(List<UserCommentImage> commentImages) {
 		this.commentImages = commentImages;
 	}
 

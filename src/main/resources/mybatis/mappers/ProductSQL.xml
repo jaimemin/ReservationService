@@ -21,7 +21,8 @@
 			product.content AS content,
 			product.description AS description,
 			file_info.save_file_name AS saveFileName,
-			display_info.place_name AS placeName
+			display_info.place_name AS placeName,
+			display_info.id AS displayInfoId
 		FROM 
 			product
 		INNER JOIN 

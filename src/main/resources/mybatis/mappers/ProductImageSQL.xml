@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nts.reserve.dao.ProductImageDao">
+	<select id="selectProductImageCount" parameterType="int" resultType="_int">
+		SELECT
+			COUNT(*)
+		FROM
+			file_info
+		INNER JOIN
+			product_image
+				ON file_info.id = product_image.file_id
+		INNER JOIN
+			product
+				ON product_image.product_id = product.id
+		INNER JOIN
+			display_info
+				ON product.id = display_info.product_id
+		WHERE NOT
+			product_image.type = 'th'
+		AND
+			display_info.id = #{displayInfoId}
+	</select>
+
+	<select id="selectProductImages" parameterType="int" resultType="ProductImage">
+		SELECT
+			file_info.content_type AS contentType,
+			file_info.create_date AS createdDate,
+			file_info.delete_flag AS deleteFlag,
+			file_info.id AS fileId,
+			file_info.file_name AS fileName,
+			file_info.modify_date AS modifiedDate,
+			file_info.save_file_name AS saveFileName,
+			product.id AS productId,
+			product_image.id AS id,
+			product_image.type
+		FROM
+			file_info
+		INNER JOIN
+			product_image
+				ON file_info.id = product_image.file_id
+		INNER JOIN
+			product
+				ON product_image.product_id = product.id
+		INNER JOIN
+			display_info
+				ON product.id = display_info.product_id
+		WHERE NOT
+			product_image.type = 'th'
+		AND
+			display_info.id = #{displayInfoId}
+		LIMIT
+			2
+	</select>
+</mapper>

@@ -3,7 +3,7 @@ const NUMBERS_PER_REQUEST = 4;
 let replaceTemplate = (product) => (
 	`
 	<li class="item">
-    	<a href="htmls/detail.html?id=${product.id}" class="item_book">
+    	<a href="/Reservation/detail/${product.displayInfoId}" class="item_book">
         	<div class="item_preview">
             	<img alt="${product.description}" class="img_thumb" src="http://127.0.0.1:8080/Reservation/${product.saveFileName}">
 				<span class="img_border"></span>
