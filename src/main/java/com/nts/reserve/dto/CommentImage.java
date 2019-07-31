@@ -2,7 +2,7 @@ package com.nts.reserve.dto;
 
 import java.time.LocalDateTime;
 
-public class UserCommentImage {
+public class CommentImage {
 	private String contentType;
 	private LocalDateTime createdDate;
 	private boolean deleteFlag;

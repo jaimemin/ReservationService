@@ -287,7 +287,7 @@
 		</div>
 	</footer>
 	<div id="photoviwer"></div>
-	<div class="displayInfoId" id="${displayInfoId}"></div>
+	<input type="hidden" class="displayInfoId" id="${displayInfoId}">
 	
 	<script src="/Reservation/js/constant.js"></script>
 	<script src="/Reservation/js/detail.js"></script>

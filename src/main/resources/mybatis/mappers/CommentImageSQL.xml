@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper
-	namespace="com.nts.reserve.dao.UserCommentImageDao">
-	<select id="selectCommentImages" resultType="UserCommentImage">
+	namespace="com.nts.reserve.dao.CommentImageDao">
+	<select id="selectCommentImages" parameterType="int" resultType="CommentImage">
 		SELECT
 			file_info.content_type AS contentType,
 			file_info.create_date AS createdDate,
@@ -23,9 +23,7 @@
 			reservation_info
 				ON reservation_info.id 
 					= reservation_user_comment_image.reservation_info_id
-		INNER JOIN
-			reservation_user_comment
-				ON reservation_user_comment.id 
-					= reservation_user_comment_image.reservation_user_comment_id
+		WHERE
+			reservation_user_comment_image.reservation_user_comment_id = #{commentId}
 	</select>
 </mapper>

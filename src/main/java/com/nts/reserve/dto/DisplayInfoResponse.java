@@ -1,29 +1,28 @@
 package com.nts.reserve.dto;
 
-import java.math.BigDecimal;
 import java.util.List;
 
-public class DisplayInfoEntity {
-	private BigDecimal averageCommentScore;
-	private List<UserComment> comments;
+public class DisplayInfoResponse {
+	private Double averageCommentScore;
+	private List<Comment> comments;
 	private DisplayInfo displayInfo;
 	private DisplayInfoImage displayInfoImage;
 	private List<ProductImage> productImages;
 	private List<ProductPrice> productPrices;
 
-	public BigDecimal getAverageCommentScore() {
+	public Double getAverageCommentScore() {
 		return averageCommentScore;
 	}
 
-	public void setAverageCommentScore(BigDecimal averageCommentScore) {
+	public void setAverageCommentScore(Double averageCommentScore) {
 		this.averageCommentScore = averageCommentScore;
 	}
 
-	public List<UserComment> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<UserComment> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 
