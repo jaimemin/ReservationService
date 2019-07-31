@@ -135,6 +135,7 @@
     	</li>
     </script>
 
+	<script src="js/constant.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/category.js"></script>
 </body>

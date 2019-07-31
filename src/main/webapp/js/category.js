@@ -1,5 +1,3 @@
-const NUMBERS_PER_REQUEST = 4;
-
 let replaceTemplate = (product) => (
 	`
 	<li class="item">
