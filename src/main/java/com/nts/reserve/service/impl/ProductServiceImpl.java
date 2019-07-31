@@ -16,7 +16,7 @@ import com.nts.reserve.service.ProductService;
 @Service
 public class ProductServiceImpl implements ProductService {
 	private static final int UPPER_LIMIT_COUNT = 4;
-	private static final String THUMB_NAIL = "th";
+	private static final String THUMBNAIL = "th";
 	private final ProductDao productDao;
 	private final ProductPriceDao productPriceDao;
 	private final ProductImageDao productImageDao;
@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public int getCategoryProductCount(int categoryId) {
-		return productDao.selectCategoryProductCount(categoryId, THUMB_NAIL);
+		return productDao.selectCategoryProductCount(categoryId, THUMBNAIL);
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> getProducts(int categoryId, int start) {
-		return productDao.selectProducts(categoryId, start, UPPER_LIMIT_COUNT, THUMB_NAIL);
+		return productDao.selectProducts(categoryId, start, UPPER_LIMIT_COUNT, THUMBNAIL);
 	}
 
 	@Override

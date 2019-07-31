@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.nts.reserve.dao.UserCommentDao">
-	<select id="selectComments" parameterType="int" resultType="UserComment">
+<mapper namespace="com.nts.reserve.dao.CommentDao">
+	<select id="selectComments" parameterType="int" resultType="Comment">
 		SELECT
 			reservation_user_comment.comment AS comment,
 			reservation_user_comment.id AS id,
@@ -32,7 +32,7 @@
 			id DESC
 	</select>
 	
-	<select id="selectCommentAverageScore" parameterType="int" resultType="BigDecimal">
+	<select id="selectCommentAverageScore" parameterType="int" resultType="double">
 		SELECT
 			AVG(score)
 		FROM

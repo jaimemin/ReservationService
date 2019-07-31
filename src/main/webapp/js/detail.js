@@ -1,24 +1,24 @@
 let productImageTemplate = (image, displayInfo) => (	
 	`
-    <li class="item" style="width: 414px;">
+	<li class="item" style="width: 414px;">
 		<img alt="공연 포스터" class="img_thumb" src="http://127.0.0.1:8080/Reservation/${image.saveFileName}">
-        <span class="img_bg"></span>
-        <div class="visual_txt">
-            <div class="visual_txt_inn">
-                <h2 class="visual_txt_tit">
-                   	<span>${displayInfo.placeName}</span>
-                </h2>
-                <p class="visual_txt_dsc"></p>
-            </div>
-        </div>
-    </li>
+		<span class="img_bg"></span>
+		<div class="visual_txt">
+			<div class="visual_txt_inn">
+				<h2 class="visual_txt_tit">
+					<span>${displayInfo.placeName}</span>
+				</h2>
+				<p class="visual_txt_dsc"></p>
+			</div>
+		</div>
+	</li>
 	`
 );
 
 let appendTotalSpanTag = (count) => {
 	let totalNumber = document.createElement("span");
 	totalNumber.innerText = count;
-	
+
 	let off = document.querySelector(".figure_pagination > .off");
 	off.appendChild(totalNumber);
 }
@@ -65,7 +65,7 @@ let showProductImages = (productImageTemplates) => {
 
 let createProductImageTemplates = (productImages, displayInfo) => {
 	let templates = [];
-	
+
 	productImages.forEach((image) => {
 		templates.push(productImageTemplate(image, displayInfo));
 	});
@@ -140,26 +140,26 @@ let registerClickEvent = () => {
 
 let requestDatas = () => {
 	let xmlHttpRequest = new XMLHttpRequest();
-    xmlHttpRequest.onreadystatechange = () => {
-    	if(xmlHttpRequest.status >= ERROR_STATUS) {
-    		alert("오류가 발생했습니다");
-    		return;
-    	}
+	xmlHttpRequest.onreadystatechange = () => {
+		if(xmlHttpRequest.status >= ERROR_STATUS) {
+			alert("오류가 발생했습니다");
+			return;
+		}
 	
-    	if(xmlHttpRequest.readyState === COMPLETE_STATE) {
-    		let datas = JSON.parse(xmlHttpRequest.responseText);
+		if(xmlHttpRequest.readyState === COMPLETE_STATE) {
+			let datas = JSON.parse(xmlHttpRequest.responseText);
     		
-    		productImageTemplates = createProductImageTemplates(datas.productImages, datas.displayInfo);
-    		showProductImages(productImageTemplates);
+			productImageTemplates = createProductImageTemplates(datas.productImages, datas.displayInfo);
+			showProductImages(productImageTemplates);
     		
-    		registerClickEvent();
+			registerClickEvent();
     	}
-    }
+	}
     
-    let displayInfoId = document.querySelector(".displayInfoId").id;
+	let displayInfoId = document.querySelector(".displayInfoId").id;
 	let url = `/Reservation/api/products/${displayInfoId}`;
-    xmlHttpRequest.open("GET", url);
-    xmlHttpRequest.send();
+	xmlHttpRequest.open("GET", url);
+	xmlHttpRequest.send();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
