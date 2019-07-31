@@ -18,10 +18,7 @@ import com.nts.reserve.dto.Product;
 import com.nts.reserve.dto.ProductImage;
 import com.nts.reserve.dto.ProductPrice;
 import com.nts.reserve.dto.UserComment;
-import com.nts.reserve.service.DisplayInfoImageService;
 import com.nts.reserve.service.DisplayInfoService;
-import com.nts.reserve.service.ProductImageService;
-import com.nts.reserve.service.ProductPriceService;
 import com.nts.reserve.service.ProductService;
 import com.nts.reserve.service.UserCommentService;
 
@@ -31,23 +28,14 @@ public class ProductController {
 	private final ProductService productService;
 	private final UserCommentService userCommentService;
 	private final DisplayInfoService displayInfoService;
-	private final DisplayInfoImageService displayInfoImageService;
-	private final ProductImageService productImageService;
-	private final ProductPriceService productPriceService;
 
 	@Autowired
 	public ProductController(ProductService productService,
 			UserCommentService userCommentService,
-			DisplayInfoService displayInfoService,
-			DisplayInfoImageService displayInfoImageService,
-			ProductImageService productImageService,
-			ProductPriceService productPriceService) {
+			DisplayInfoService displayInfoService) {
 		this.productService = productService;
 		this.userCommentService = userCommentService;
 		this.displayInfoService = displayInfoService;
-		this.displayInfoImageService = displayInfoImageService;
-		this.productImageService = productImageService;
-		this.productPriceService = productPriceService;
 	}
 
 	@GetMapping("/products")
@@ -58,15 +46,14 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/{displayInfoId}")
-	public DisplayInfoEntity getDisplayInfoEntity(
-			@PathVariable("displayInfoId") int displayInfoId, Model model) {
+	public DisplayInfoEntity getDisplayInfoEntity(@PathVariable("displayInfoId") int displayInfoId, Model model) {
 		BigDecimal averageCommentScore = userCommentService.getCommentAverageScore(displayInfoId);
 		List<UserComment> comments = userCommentService.getComments(displayInfoId);
 		DisplayInfo displayInfo = displayInfoService.getDisplayInfo(displayInfoId);
-		DisplayInfoImage displayInfoImage = displayInfoImageService.getDisplayInfoImage(displayInfoId);
-		List<ProductImage> productImages = productImageService.getProductImages(displayInfoId);
-		List<ProductPrice> productPrices = productPriceService.getProductPrices(displayInfoId);
-		
+		DisplayInfoImage displayInfoImage = displayInfoService.getDisplayInfoImage(displayInfoId);
+		List<ProductImage> productImages = productService.getProductImages(displayInfoId);
+		List<ProductPrice> productPrices = productService.getProductPrices(displayInfoId);
+
 		DisplayInfoEntity displayInfoEntity = new DisplayInfoEntity();
 		displayInfoEntity.setAverageCommentScore(averageCommentScore);
 		displayInfoEntity.setComments(comments);
@@ -74,9 +61,9 @@ public class ProductController {
 		displayInfoEntity.setDisplayInfoImage(displayInfoImage);
 		displayInfoEntity.setProductImages(productImages);
 		displayInfoEntity.setProductPrices(productPrices);
-		
+
 		model.addAttribute("displayInfoEntity", displayInfoEntity);
-		
+
 		return displayInfoEntity;
 	}
 

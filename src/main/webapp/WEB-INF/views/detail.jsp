@@ -12,6 +12,7 @@
 	content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
 <title>네이버 예약</title>
 <link href="/Reservation/css/style.css" rel="stylesheet">
+<link href="/Reservation/css/detail.css" rel="stylesheet">
 <style>
 .container_visual {
 	height: 414px;
@@ -45,61 +46,20 @@
 								class="spr_bi ico_bk_logo">예약</span>
 							</a>
 						</h1>
-						<a href="htmls/myreservation.html" class="btn_my"> <span
+						<a href="/Reservation/htmls/myreservation.html" class="btn_my"> <span
 							class="viewReservation" title="예약확인">예약확인</span>
 						</a>
 					</header>
 					<div class="pagination">
 						<div class="bg_pagination"></div>
 						<div class="figure_pagination">
-							<span class="num">1</span> <span class="num off">/ <span>2</span></span>
+							<span class="num">1</span> <span class="num off">/</span>
 						</div>
 					</div>
 					<div class="group_visual">
 						<div>
 							<div class="container_visual" style="width: 414px;">
-								<ul class="visual_img detail_swipe">
-									<li class="item" style="width: 414px;"><img alt=""
-										class="img_thumb" src=""> <span class="img_bg"></span>
-										<div class="visual_txt">
-											<div class="visual_txt_inn">
-												<h2 class="visual_txt_tit">
-													<span></span>
-												</h2>
-												<p class="visual_txt_dsc"></p>
-											</div>
-										</div></li>
-									<li class="item" style="width: 414px;"><img alt=""
-										class="img_thumb" src=""> <span class="img_bg"></span>
-										<div class="visual_txt">
-											<div class="visual_txt_inn">
-												<h2 class="visual_txt_tit">
-													<span></span>
-												</h2>
-												<p class="visual_txt_dsc"></p>
-											</div>
-										</div></li>
-									<li class="item" style="width: 414px;"><img alt=""
-										class="img_thumb" src=""> <span class="img_bg"></span>
-										<div class="visual_txt">
-											<div class="visual_txt_inn">
-												<h2 class="visual_txt_tit">
-													<span></span>
-												</h2>
-												<p class="visual_txt_dsc"></p>
-											</div>
-										</div></li>
-									<li class="item" style="width: 414px;"><img alt=""
-										class="img_thumb" src=""> <span class="img_bg"></span>
-										<div class="visual_txt">
-											<div class="visual_txt_inn">
-												<h2 class="visual_txt_tit">
-													<span></span>
-												</h2>
-												<p class="visual_txt_dsc"></p>
-											</div>
-										</div></li>
-								</ul>
+								<!-- 추가해줘야 하는 부분 -->
 							</div>
 							<div class="prev">
 								<div class="prev_inn">
@@ -327,6 +287,10 @@
 		</div>
 	</footer>
 	<div id="photoviwer"></div>
+	<div class="displayInfoId" id="${displayInfoId}"></div>
+	
+	<script src="/Reservation/js/constant.js"></script>
+	<script src="/Reservation/js/detail.js"></script>
 </body>
 
 

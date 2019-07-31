@@ -1,0 +1,3 @@
+const ERROR_STATUS = 400;
+const COMPLETE_STATE = 4;
+const NUMBERS_PER_REQUEST = 4;
