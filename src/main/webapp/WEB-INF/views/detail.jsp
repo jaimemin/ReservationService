@@ -129,9 +129,9 @@
 								<!-- [D] 별점 graph_value는 퍼센트 환산하여 width 값을 넣어줌 -->
 								<span class="graph_mask"> <em class="graph_value"
 									style="width: 84%;"></em>
-								</span> <strong class="text_value"> <span>4.2</span> <em
+								</span> <strong class="text_value"> <span id="averageCommentScore"></span> <em
 									class="total">5.0</em>
-								</strong> <span class="join_count"><em class="green">52건</em> 등록</span>
+								</strong> <span class="join_count"><em class="green"></em> 등록</span>
 							</div>
 							<ul class="list_short_review">
 								<li class="list_item">
@@ -196,7 +196,7 @@
 								이용자가 남긴 평가입니다.</span>
 						</p>
 					</div>
-					<a class="btn_review_more" href="htmls/review.html"> <span>예매자
+					<a class="btn_review_more" href="/Reservation/review/${displayInfoId}"> <span>예매자
 							한줄평 더보기</span> <i class="fn fn-forward1"></i>
 					</a>
 				</div>
@@ -291,6 +291,7 @@
 	
 	<script src="/Reservation/js/constant.js"></script>
 	<script src="/Reservation/js/detail.js"></script>
+	<script src="/Reservation/js/comment.js"></script>
 </body>
 
 

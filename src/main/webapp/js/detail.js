@@ -191,6 +191,9 @@ let requestDatas = () => {
 			fillProductContentTemplate(datas.displayInfo);
     		
 			registerClickEvent();
+			
+			createCommentAverageScore(datas.averageCommentScore);
+			createCommentCount(datas.comments);
     	}
 	}
     
