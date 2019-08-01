@@ -134,61 +134,7 @@
 								</strong> <span class="join_count"><em class="green"></em> 등록</span>
 							</div>
 							<ul class="list_short_review">
-								<li class="list_item">
-									<div>
-										<div class="review_area">
-											<div class="thumb_area">
-												<a href="#" class="thumb" title="이미지 크게 보기"> <img
-													width="90" height="90" class="img_vertical_top"
-													src="http://naverbooking.phinf.naver.net/20170306_3/1488772023601A4195_JPEG/image.jpg?type=f300_300"
-													alt="리뷰이미지">
-												</a> <span class="img_count" style="display: none;">1</span>
-											</div>
-											<h4 class="resoc_name"></h4>
-											<p class="review">2층이어서 걱정했는데 꽤잘보여서 좋았습니다 고미오 너무 멋있었습니다
-												사진은 커튼콜때 찍었습니다 끝나고 퇴근길도 봐서 너무 좋았어요</p>
-										</div>
-										<div class="info_area">
-											<div class="review_info">
-												<span class="grade">4.0</span> <span class="name">dbfl****</span>
-												<span class="date">2017.3.5. 방문</span>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="list_item">
-									<div>
-										<div class="review_area no_img">
-											<h4 class="resoc_name"></h4>
-											<p class="review">
-												너무 재밌게봤구요~<br>마지막공연 후 뒷풀이도 잘봤습니다
-											</p>
-										</div>
-										<div class="info_area">
-											<div class="review_info">
-												<span class="grade">5.0</span> <span class="name">yyck****</span>
-												<span class="date">2017.3.5. 방문</span>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="list_item">
-									<div>
-										<div class="review_area no_img">
-											<h4 class="resoc_name"></h4>
-											<p class="review">
-												좋은 공연이었습니다. <br>머큐쇼역활 하신분의 열창이 기억에 남는 반면에,,, 로미오는 별로
-												기억에 남지 않네요..
-											</p>
-										</div>
-										<div class="info_area">
-											<div class="review_info">
-												<span class="grade">4.0</span> <span class="name">xero****</span>
-												<span class="date">2017.3.4. 방문</span>
-											</div>
-										</div>
-									</div>
-								</li>
+								
 							</ul>
 						</div>
 						<p class="guide">

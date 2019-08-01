@@ -194,6 +194,7 @@ let requestDatas = () => {
 			
 			createCommentAverageScore(datas.averageCommentScore);
 			createCommentCount(datas.comments);
+			createDetailPageComments(datas.comments, datas.displayInfo);
     	}
 	}
     
