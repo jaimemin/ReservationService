@@ -163,11 +163,15 @@ let registerClickEvent = () => {
 	let nextButton = document.querySelector(".nxt");
 	let openButton = document.querySelector("._open");
 	let closeButton = document.querySelector("._close");
+	let reserveButton = document.querySelector(".bk_btn");
 	
 	previousButton.addEventListener("click", swipeProductImage);
 	nextButton.addEventListener("click", swipeProductImage);
 	openButton.addEventListener("click", showProductContent);
 	closeButton.addEventListener("click", showProductContent);
+	reserveButton.addEventListener("click", () => {
+		location.href = "/Reservation/htmls/reserve.html";
+	});
 }
 
 let requestDatas = () => {
