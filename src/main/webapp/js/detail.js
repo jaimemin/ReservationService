@@ -73,6 +73,13 @@ let createProductImageTemplates = (productImages, displayInfo) => {
 	return templates;
 }
 
+let fillProductContentTemplate = (displayInfo) => {
+	let productContent = displayInfo.productContent;
+	let productContentTemplate = document.querySelector(".store_details > .dsc");
+	
+	productContentTemplate.innerText = productContent;
+}
+
 changeImageOrder = (productImages) => {
 	productImages.insertAdjacentElement("beforeend", productImages.firstElementChild);
 
@@ -130,12 +137,37 @@ let swipeProductImage = (event) => {
 	}
 }
 
+let showProductContent = (event) => {
+	let clickedButton = event.currentTarget;
+	let productContent = document.querySelector(".store_details");
+	let openButton = document.querySelector("._open");
+	let closeButton = document.querySelector("._close");
+	
+	if(clickedButton.classList.contains("_open")) {
+		productContent.classList.remove("close3");
+		openButton.classList.add("hide");
+		openButton.classList.remove("show");
+		closeButton.classList.add("show");
+		closeButton.classList.remove("hide");
+	} else if (clickedButton.classList.contains("_close")) {
+		productContent.classList.add("close3");
+		openButton.classList.add("show");
+		openButton.classList.remove("hide");
+		closeButton.classList.add("hide");
+		closeButton.classList.remove("show");
+	}
+}
+
 let registerClickEvent = () => {
 	let previousButton = document.querySelector(".prev");
 	let nextButton = document.querySelector(".nxt");
+	let openButton = document.querySelector("._open");
+	let closeButton = document.querySelector("._close");
 	
 	previousButton.addEventListener("click", swipeProductImage);
 	nextButton.addEventListener("click", swipeProductImage);
+	openButton.addEventListener("click", showProductContent);
+	closeButton.addEventListener("click", showProductContent);
 }
 
 let requestDatas = () => {
@@ -151,6 +183,8 @@ let requestDatas = () => {
     		
 			productImageTemplates = createProductImageTemplates(datas.productImages, datas.displayInfo);
 			showProductImages(productImageTemplates);
+			
+			fillProductContentTemplate(datas.displayInfo);
     		
 			registerClickEvent();
     	}
