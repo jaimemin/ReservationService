@@ -52,7 +52,7 @@ let showProductImages = (productImageTemplates) => {
 	let previousButton = document.querySelector(".prev");
 	let nextButton = document.querySelector(".nxt");
 	
-	if (imageCount == 1) {
+	if (imageCount === 1) {
 		previousButton.classList.add("hide");
 		nextButton.classList.add("hide");
 	}
@@ -96,7 +96,7 @@ let showPreviousImage = (productImages, index) => {
 		newProductImages.addEventListener("transitionend", () => {
 			changeCurrentIndex(index);
 		});
-	}, 0);
+	}, 4);
 }
 
 let showNextImage = (productImages, index) => {
