@@ -2,14 +2,18 @@ package com.nts.reserve.dto;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class DisplayInfoImage {
 	private String contentType;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime createdDate;
 	private boolean deleteFlag;
 	private int displayInfoId;
 	private int id;
 	private int fileId;
 	private String fileName;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime modifiedDate;
 	private String saveFileName;
 

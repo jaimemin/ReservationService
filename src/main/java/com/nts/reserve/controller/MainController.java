@@ -14,9 +14,16 @@ public class MainController {
 	}
 
 	@GetMapping(path = "/detail/{displayInfoId}")
-    public String detail(@PathVariable("displayInfoId") int displayInfoId, Model model) {
-        model.addAttribute("displayInfoId", displayInfoId);
+	public String detail(@PathVariable("displayInfoId") int displayInfoId, Model model) {
+		model.addAttribute("displayInfoId", displayInfoId);
 
-        return "detail";
-    }
+		return "detail";
+	}
+
+	@GetMapping(path = "/review/{displayInfoId}")
+	public String allReview(@PathVariable int displayInfoId, Model model) {
+		model.addAttribute("displayInfoId", displayInfoId);
+
+		return "review";
+	}
 }
