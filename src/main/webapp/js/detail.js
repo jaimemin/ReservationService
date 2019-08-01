@@ -96,7 +96,7 @@ let showPreviousImage = (productImages, index) => {
 		newProductImages.addEventListener("transitionend", () => {
 			changeCurrentIndex(index);
 		});
-	}, 4);
+	}, 0);
 }
 
 let showNextImage = (productImages, index) => {
