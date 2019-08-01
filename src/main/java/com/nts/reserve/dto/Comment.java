@@ -5,8 +5,7 @@ import java.util.List;
 
 public class Comment {
 	private String comment;
-	private int id;
-	private List<CommentImage> commentImages;
+	private int commentId;
 	private LocalDateTime createdDate;
 	private LocalDateTime modifiedDate;
 	private int productId;
@@ -16,6 +15,7 @@ public class Comment {
 	private String reservationName;
 	private String reservationTelephone;
 	private int score;
+	private List<CommentImage> commentImages;
 
 	public String getComment() {
 		return comment;
@@ -25,20 +25,12 @@ public class Comment {
 		this.comment = comment;
 	}
 
-	public int getId() {
-		return id;
+	public int getCommentId() {
+		return commentId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public List<CommentImage> getCommentImages() {
-		return commentImages;
-	}
-
-	public void setCommentImages(List<CommentImage> commentImages) {
-		this.commentImages = commentImages;
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
 	}
 
 	public LocalDateTime getCreatedDate() {
@@ -112,10 +104,19 @@ public class Comment {
 	public void setScore(int score) {
 		this.score = score;
 	}
+	
+	public List<CommentImage> getCommentImages() {
+		return commentImages;
+	}
+
+	public void setCommentImages(List<CommentImage> commentImages) {
+		this.commentImages = commentImages;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Comment [comment=" + comment + ", id=" + id + ", commentImages=" + commentImages + ", createdDate="
+		return "Comment [comment=" + comment + ", commentId=" + commentId + ", commentImages=" + commentImages + ", createdDate="
 				+ createdDate + ", modifiedDate=" + modifiedDate + ", productId=" + productId + ", reservationDate="
 				+ reservationDate + ", reservationEmail=" + reservationEmail + ", reservationInfoId="
 				+ reservationInfoId + ", reservationName=" + reservationName + ", reservationTelephone="
