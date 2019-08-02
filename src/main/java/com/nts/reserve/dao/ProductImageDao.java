@@ -9,6 +9,6 @@ import com.nts.reserve.dto.ProductImage;
 @Repository
 public interface ProductImageDao {
 	List<ProductImage> selectProductImages(int displayInfoId);
-	
+
 	int selectProductImageCount(int displayInfoId);
 }

@@ -13,21 +13,17 @@ import com.nts.reserve.dto.DisplayInfoResponse;
 import com.nts.reserve.dto.Product;
 import com.nts.reserve.service.DisplayInfoService;
 import com.nts.reserve.service.ProductService;
-import com.nts.reserve.service.CommentService;
 
 @RestController
 @RequestMapping(path = "/api")
 public class ProductController {
 	private final ProductService productService;
-	private final CommentService commentService;
 	private final DisplayInfoService displayInfoService;
 
 	@Autowired
-	public ProductController(ProductService productService, 
-			CommentService commentService,
-			DisplayInfoService displayInfoService) {
+	public ProductController(ProductService productService
+			, DisplayInfoService displayInfoService) {
 		this.productService = productService;
-		this.commentService = commentService;
 		this.displayInfoService = displayInfoService;
 	}
 
@@ -40,15 +36,7 @@ public class ProductController {
 
 	@GetMapping("/products/{displayInfoId}")
 	public DisplayInfoResponse getDisplayInfoResponse(@PathVariable("displayInfoId") int displayInfoId) {
-		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
-		displayInfoResponse.setAverageCommentScore(commentService.getCommentAverageScore(displayInfoId));
-		displayInfoResponse.setComments(commentService.getComments(displayInfoId));
-		displayInfoResponse.setDisplayInfo(displayInfoService.getDisplayInfo(displayInfoId));
-		displayInfoResponse.setDisplayInfoImage(displayInfoService.getDisplayInfoImage(displayInfoId));
-		displayInfoResponse.setProductImages(productService.getProductImages(displayInfoId));
-		displayInfoResponse.setProductPrices(productService.getProductPrices(displayInfoId));
-
-		return displayInfoResponse;
+		return displayInfoService.getDisplayInfoResponse(displayInfoId);
 	}
 
 }

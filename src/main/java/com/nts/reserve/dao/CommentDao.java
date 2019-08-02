@@ -10,7 +10,7 @@ import com.nts.reserve.dto.CommentImage;
 @Repository
 public interface CommentDao {
 	List<Comment> selectComments(int displayInfoId);
-	
+
 	List<CommentImage> selectCommentImages(int commentId);
 
 	Double selectCommentAverageScore(int displayInfoId);
