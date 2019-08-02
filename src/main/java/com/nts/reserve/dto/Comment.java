@@ -109,7 +109,7 @@ public class Comment {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
 	public List<CommentImage> getCommentImages() {
 		return commentImages;
 	}
@@ -118,14 +118,13 @@ public class Comment {
 		this.commentImages = commentImages;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Comment [comment=" + comment + ", commentId=" + commentId + ", commentImages=" + commentImages + ", createdDate="
-				+ createdDate + ", modifiedDate=" + modifiedDate + ", productId=" + productId + ", reservationDate="
-				+ reservationDate + ", reservationEmail=" + reservationEmail + ", reservationInfoId="
-				+ reservationInfoId + ", reservationName=" + reservationName + ", reservationTelephone="
-				+ reservationTelephone + ", score=" + score + "]";
+		return "Comment [comment=" + comment + ", commentId=" + commentId + ", commentImages=" + commentImages
+				+ ", createdDate=" + createdDate + ", modifiedDate=" + modifiedDate + ", productId=" + productId
+				+ ", reservationDate=" + reservationDate + ", reservationEmail=" + reservationEmail
+				+ ", reservationInfoId=" + reservationInfoId + ", reservationName=" + reservationName
+				+ ", reservationTelephone=" + reservationTelephone + ", score=" + score + "]";
 	}
 
 }

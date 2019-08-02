@@ -60,9 +60,9 @@ public class DisplayInfoResponse {
 
 	@Override
 	public String toString() {
-		return "DisplayInfoEntity [averageCommentScore=" + averageCommentScore + ", comments=" + comments + ", displayInfo="
-				+ displayInfo + ", displayInfoImage=" + displayInfoImage + ", productImages=" + productImages
-				+ ", productPrices=" + productPrices + "]";
+		return "DisplayInfoEntity [averageCommentScore=" + averageCommentScore + ", comments=" + comments
+				+ ", displayInfo=" + displayInfo + ", displayInfoImage=" + displayInfoImage + ", productImages="
+				+ productImages + ", productPrices=" + productPrices + "]";
 	}
 
 }

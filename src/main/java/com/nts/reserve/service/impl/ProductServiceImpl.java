@@ -22,9 +22,7 @@ public class ProductServiceImpl implements ProductService {
 	private final ProductImageDao productImageDao;
 
 	@Autowired
-	public ProductServiceImpl(ProductDao productDao,
-			ProductPriceDao productPriceDao,
-			ProductImageDao productImageDao) {
+	public ProductServiceImpl(ProductDao productDao, ProductPriceDao productPriceDao, ProductImageDao productImageDao) {
 		this.productDao = productDao;
 		this.productPriceDao = productPriceDao;
 		this.productImageDao = productImageDao;
@@ -34,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 	public int getCategoryProductCount(int categoryId) {
 		return productDao.selectCategoryProductCount(categoryId, THUMBNAIL);
 	}
-	
+
 	@Override
 	public int getProductImageCount(int displayInfoId) {
 		return productImageDao.selectProductImageCount(displayInfoId);
@@ -49,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductPrice> getProductPrices(int displayInfoId) {
 		return productPriceDao.selectProductPrices(displayInfoId);
 	}
-	
+
 	@Override
 	public List<ProductImage> getProductImages(int displayInfoId) {
 		return productImageDao.selectProductImages(displayInfoId);

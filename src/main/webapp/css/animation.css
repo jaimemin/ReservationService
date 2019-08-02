@@ -1,9 +1,9 @@
 .visual_img {
-    -webkit-transition: transform 2s;
-    -moz-transition: transform 2s;
-    -ms-transition: transform 2s;
-    -o-transition: transform 2s;
-    transition: transform 2s;
+	-webkit-transition: transform 2s;
+	-moz-transition: transform 2s;
+	-ms-transition: transform 2s;
+	-o-transition: transform 2s;
+	transition: transform 2s;
 }
 
 #promotionImage {
@@ -11,5 +11,5 @@
 }
 
 .sliding {
-    transform: translateX(-100%);
+	transform: translateX(-100%);
 }

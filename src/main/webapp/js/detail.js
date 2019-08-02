@@ -128,8 +128,8 @@ let showProductImages = (productImageTemplates) => {
 	let nextButton = document.querySelector(".nxt");
 	
 	if (imageCount === 1) {
-		previousButton.classList.add("hideDisplay");
-		nextButton.classList.add("hideDisplay");
+		previousButton.classList.add("hide");
+		nextButton.classList.add("hide");
 	}
 	
 	let visualContainer = document.querySelector(".container_visual");
@@ -226,15 +226,15 @@ let showProductContent = (event) => {
 	
 	if(clickedButton.classList.contains("_open")) {
 		productContent.classList.remove("close3");
-		openButton.classList.add("hideDisplay");
+		openButton.classList.add("hide");
 		openButton.classList.remove("show");
 		closeButton.classList.add("show");
-		closeButton.classList.remove("hideDisplay");
+		closeButton.classList.remove("hide");
 	} else if (clickedButton.classList.contains("_close")) {
 		productContent.classList.add("close3");
 		openButton.classList.add("show");
-		openButton.classList.remove("hideDisplay");
-		closeButton.classList.add("hideDisplay");
+		openButton.classList.remove("hide");
+		closeButton.classList.add("hide");
 		closeButton.classList.remove("show");
 	}
 }
