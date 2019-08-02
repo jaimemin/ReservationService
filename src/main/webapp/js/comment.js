@@ -69,33 +69,31 @@ let createCommentCount = (commentList) => {
 let createCommentTemplates = (commentList, displayInfo) => {
 	let commentTemplates = [];
 	
-	if(commentList.length >= 1) {
-		commentList.forEach((comment) => {
-			let commentInfo = {};
-			let email = comment.reservationEmail.substring(0, 4) + "****";
-			let date = comment.reservationDate;
-			let day = date.dayOfMonth;
-			let month = date.monthValue - 1;
-			let year = date.year;
-			let commentTemplate;
+	commentList.forEach((comment) => {
+		let commentInfo = {};
+		let email = comment.reservationEmail.substring(0, 4) + "****";
+		let date = comment.reservationDate;
+		let day = date.dayOfMonth;
+		let month = date.monthValue - 1;
+		let year = date.year;
+		let commentTemplate;
 
-			commentInfo.comment = comment.comment;
-			commentInfo.score = `${comment.score}.0`;
-			commentInfo.reservationEmail = email;
-			commentInfo.reservationDate = `${year} ${month} ${day}`;
-			commentInfo.productDescription = displayInfo.productDescription;
+		commentInfo.comment = comment.comment;
+		commentInfo.score = `${comment.score}.0`;
+		commentInfo.reservationEmail = email;
+		commentInfo.reservationDate = `${year} ${month} ${day}`;
+		commentInfo.productDescription = displayInfo.productDescription;
 
-			if (comment.commentImages.length >= 1) {
-				commentInfo.saveFileName = comment.commentImages[0].saveFileName;
+		if (comment.commentImages.length >= 1) {
+			commentInfo.saveFileName = comment.commentImages[0].saveFileName;
 
-				commentTemplate = commentWithImageTemplate(commentInfo);
-			} else {
-				commentTemplate = commentWithoutImageTemplate(commentInfo);
-			}
-
-			commentTemplates.push(commentTemplate);
-		});
-	}
+			commentTemplate = commentWithImageTemplate(commentInfo);
+		} else {
+			commentTemplate = commentWithoutImageTemplate(commentInfo);
+		}
+			
+		commentTemplates.push(commentTemplate);
+	});
 	
 	return commentTemplates;
 }
@@ -106,7 +104,7 @@ let createDetailPageComments = (commentList, displayInfo) => {
 	let innerHTML = "";
 	
 	if(commentTemplates.length === 0) {
-		innerHTML = "<li>등록된 댓글이 없습니다</li>";
+		innerHTML = `<li>등록된 댓글이 없습니다</li>`;
 	}  else if(commentTemplates.length > 3) {
 		for(let template = 0; template < 3; template++) {
 			innerHTML += commentTemplates[template];
