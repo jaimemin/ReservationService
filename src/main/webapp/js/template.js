@@ -1,4 +1,4 @@
-let replaceTemplate = (product) => (
+const replaceTemplate = (product) => (
 	`
 	<li class="item">
 		<a href="/Reservation/detail/${product.displayInfoId}" class="item_book">
@@ -18,7 +18,7 @@ let replaceTemplate = (product) => (
 	`
 );
 
-let commentWithoutImageTemplate = (commentInfo) => (
+const commentWithoutImageTemplate = (commentInfo) => (
 	`
 	<li class="list_item">
 		<div>
@@ -38,7 +38,7 @@ let commentWithoutImageTemplate = (commentInfo) => (
 	`
 );
 
-let commentWithImageTemplate = (commentInfo) => (
+const commentWithImageTemplate = (commentInfo) => (
 	`
 	<li class="list_item">
 		<div>
@@ -65,7 +65,7 @@ let commentWithImageTemplate = (commentInfo) => (
 	`
 );
 
-let productImageTemplate = (image, displayInfo) => (	
+const productImageTemplate = (image, displayInfo) => (	
 	`
 	<li class="item" style="width: 414px;">
 		<img alt="공연 포스터" class="img_thumb" src="http://127.0.0.1:8080/Reservation/${image.saveFileName}">
@@ -82,7 +82,7 @@ let productImageTemplate = (image, displayInfo) => (
 	`
 );
 
-let detailTemplate = (displayInfo) => (
+const detailTemplate = (displayInfo) => (
 	`
 	<div class="detail_area_wrap">
 		<div class="detail_area">
@@ -112,7 +112,7 @@ let detailTemplate = (displayInfo) => (
 	`
 );
 
-let directionTemplate = (displayInfo, displayInfoImage) => (
+const directionTemplate = (displayInfo, displayInfoImage) => (
 	`
 	<div class="detail_location hide">
 		<div class="box_store_info no_topline">

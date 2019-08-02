@@ -1,4 +1,4 @@
-let createCommentAverageScore = (averageCommentScore) => {
+const createCommentAverageScore = (averageCommentScore) => {
 	let averageCommentScoreTemplate = document.querySelector("#average_comment_score");
 	let starGraph = document.querySelector(".graph_value");
 
@@ -12,14 +12,14 @@ let createCommentAverageScore = (averageCommentScore) => {
 	}
 }
 
-let createCommentCount = (commentList) => {
+const createCommentCount = (commentList) => {
 	let numOfComments = commentList.length;
 	let commentCount = document.querySelector(".join_count > .green");
 	
 	commentCount.innerText = `${numOfComments}건`;
 }
 
-let createCommentTemplates = (commentList, displayInfo) => {
+const createCommentTemplates = (commentList, displayInfo) => {
 	let commentTemplates = [];
 	
 	commentList.forEach((comment) => {
@@ -50,7 +50,7 @@ let createCommentTemplates = (commentList, displayInfo) => {
 	return commentTemplates;
 }
 
-let createDetailPageComments = (commentList, displayInfo) => {
+const createDetailPageComments = (commentList, displayInfo) => {
 	let commentTemplates = createCommentTemplates(commentList, displayInfo);
 	let reviewUL = document.querySelector(".list_short_review");
 	let innerHTML = "";
@@ -70,7 +70,7 @@ let createDetailPageComments = (commentList, displayInfo) => {
 	reviewUL.innerHTML = innerHTML;
 }
 
-let createComments = (commentList, displayInfo) => {
+const createComments = (commentList, displayInfo) => {
 	let commentTemplates = createCommentTemplates(commentList, displayInfo);
 	let reviewUL = document.querySelector(".list_short_review");
 	let innerHTML = "";

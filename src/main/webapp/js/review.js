@@ -1,4 +1,4 @@
-let requestDatas = () => {
+const requestDatas = () => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
