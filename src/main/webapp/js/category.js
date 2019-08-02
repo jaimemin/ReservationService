@@ -1,23 +1,3 @@
-let replaceTemplate = (product) => (
-	`
-	<li class="item">
-		<a href="/Reservation/detail/${product.displayInfoId}" class="item_book">
-			<div class="item_preview">
-				<img alt="${product.description}" class="img_thumb" src="http://127.0.0.1:8080/Reservation/${product.saveFileName}">
-				<span class="img_border"></span>
-			</div>
-			<div class="event_txt">
-				<h4 class="event_txt_tit"> 
-					<span>${product.description}</span> 
-					<small class="sm">${product.placeName}</small> 
-				</h4>
-				<p class="event_txt_dsc">${product.content}</p>
-			</div>
-		</a>
-	</li>
-	`
-);
-
 let createTemplate = (productList, event) => {
 	let list = document.querySelectorAll(".lst_event_box");
 	let leftList = list[0];
@@ -181,9 +161,7 @@ let loadProducts = (event) => {
 		changeTextToGreen();
 
 		let moreButton = document.querySelector(".more");
-		moreButton.innerHTML = "<button class='btn'>" +
-			"<span>더보기</span>" +
-			"</button>";
+		moreButton.innerHTML = `<button class='btn'><span>더보기</span></button>`;
     }
 };
 

@@ -81,6 +81,7 @@
 	<input type="hidden" class="displayInfoId" id="${displayInfoId}">
 	
 	<script src="/Reservation/js/constant.js"></script>
+	<script src="/Reservation/js/template.js"></script>
 	<script src="/Reservation/js/comment.js"></script>
 	<script src="/Reservation/js/review.js"></script>
 	
