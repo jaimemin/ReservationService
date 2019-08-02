@@ -12,7 +12,7 @@ let requestDatas = () => {
 			createCommentAverageScore(datas.averageCommentScore);
 			createCommentCount(datas.comments);
 			createComments(datas.comments, datas.displayInfo);
-    	}
+		}
 	}
     
 	let displayInfoId = document.querySelector(".displayInfoId").id;
