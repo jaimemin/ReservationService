@@ -81,14 +81,14 @@ let createDetailDirectionTemplate = (displayInfo, displayInfoImage) => {
 
 let showPreviousImage = (productImages, index) => {
 	let visualImage = changeImageOrder(productImages);
-	visualImage.classList.add("placeRight");
+	visualImage.classList.add("place_right");
 	
 	let visualContainer = document.querySelector(".container_visual");
 	visualContainer.replaceChild(visualImage, productImages);
 	
 	setTimeout(() => {
 		let newProductImages = visualContainer.firstElementChild;
-		newProductImages.classList.add("swipeRight");
+		newProductImages.classList.add("swipe_right");
 		newProductImages.addEventListener("transitionend", () => {
 			changeCurrentIndex(index);
 		});
@@ -96,10 +96,10 @@ let showPreviousImage = (productImages, index) => {
 }
 
 let showNextImage = (productImages, index) => {
-	if (productImages.classList.contains("swipeRight")) {
-		productImages.classList.remove("swipeRight");
-	} else if (productImages.classList.contains("swipeLeft") === false) {
-		productImages.classList.add("swipeLeft");
+	if (productImages.classList.contains("swipe_right")) {
+		productImages.classList.remove("swipe_right");
+	} else if (productImages.classList.contains("swipe_left") === false) {
+		productImages.classList.add("swipe_left");
 	}
 	
 	productImages.addEventListener("transitionend", () => {
@@ -132,7 +132,7 @@ let showProductContent = (event) => {
 	let openButton = document.querySelector("._open");
 	let closeButton = document.querySelector("._close");
 	
-	if(clickedButton.classList.contains("_open")) {
+	if (clickedButton.classList.contains("_open")) {
 		productContent.classList.remove("close3");
 		openButton.classList.add("hide");
 		openButton.classList.remove("show");
@@ -149,8 +149,8 @@ let showProductContent = (event) => {
 
 let showDetail = (event) => {
 	let tab = event.target.closest("li");
-	let detail = document.querySelector("#detailTab");
-	let direction = document.querySelector("#directionTab");
+	let detail = document.querySelector("#detail_tab");
+	let direction = document.querySelector("#direction_tab");
 	let detailAreaWrap = document.querySelector(".detail_area_wrap");
 	let detailLocation = document.querySelector(".detail_location");
 	
@@ -166,8 +166,8 @@ let showDetail = (event) => {
 
 let showDirection = (event) => {
 	let tab = event.target.closest("li");
-	let detail = document.querySelector("#detailTab");
-	let direction = document.querySelector("#directionTab");
+	let detail = document.querySelector("#detail_tab");
+	let direction = document.querySelector("#direction_tab");
 	let detailAreaWrap = document.querySelector(".detail_area_wrap");
 	let detailLocation = document.querySelector(".detail_location");
 
@@ -224,10 +224,10 @@ let requestDatas = () => {
 			createDetailDirectionTemplate(datas.displayInfo, datas.displayInfoImage);
 			
 			registerClickEvent();
-    	}
+		}
 	}
     
-	let displayInfoId = document.querySelector(".displayInfoId").id;
+	let displayInfoId = document.querySelector("#display_info_id").value;
 	let url = `/Reservation/api/products/${displayInfoId}`;
 	xmlHttpRequest.open("GET", url);
 	xmlHttpRequest.send();

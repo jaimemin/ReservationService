@@ -23,14 +23,4 @@ public class CommentServiceImpl implements CommentService {
 		return commentDao.selectComments(displayInfoId);
 	}
 
-	@Override
-	public Double getCommentAverageScore(int displayInfoId) {
-		return commentDao.selectCommentAverageScore(displayInfoId);
-	}
-
-	@Override
-	public int getCommentCount(int displayInfoId) {
-		return commentDao.selectCommentCount(displayInfoId);
-	}
-
 }

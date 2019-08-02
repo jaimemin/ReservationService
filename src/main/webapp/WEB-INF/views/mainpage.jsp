@@ -120,8 +120,8 @@
 		</div>
 	</footer>
 
-	<script type="rv-template" id="promotionItem">
-    	<li class="item" id="promotionImage" style="background-image: url(http://127.0.0.1:8080/Reservation/{productImageUrl});">
+	<script type="rv-template" id="promotion_item">
+    	<li class="item" id="promotion_image" style="background-image: url(http://127.0.0.1:8080/Reservation/{productImageUrl});">
         	<a href="#"> 
 				<span class="img_btm_border"></span> 
 				<span class="img_right_border"></span> 

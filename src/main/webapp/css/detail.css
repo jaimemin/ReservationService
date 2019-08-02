@@ -2,7 +2,7 @@
 	display: block;
 }
 
-.placeRight {
+.place_right {
 	right: 100%;
 }
 
@@ -14,10 +14,10 @@
 	transition: transform 0.5s;
 }
 
-.swipeRight {
+.swipe_right {
 	transform: translateX(100%);
 }
 
-.swipeLeft {
+.swipe_left {
 	transform: translateX(-100%);
 }

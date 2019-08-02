@@ -1,5 +1,5 @@
 let createCommentAverageScore = (averageCommentScore) => {
-	let averageCommentScoreTemplate = document.querySelector("#averageCommentScore");
+	let averageCommentScoreTemplate = document.querySelector("#average_comment_score");
 	let starGraph = document.querySelector(".graph_value");
 
 	if(averageCommentScore === null) {
@@ -24,7 +24,6 @@ let createCommentTemplates = (commentList, displayInfo) => {
 	
 	commentList.forEach((comment) => {
 		let commentInfo = {};
-		let email = comment.reservationEmail.substring(0, 4) + "****";
 		let date = comment.createdDate;
 		let day = date.dayOfMonth;
 		let month = date.monthValue - 1;
@@ -33,7 +32,7 @@ let createCommentTemplates = (commentList, displayInfo) => {
 
 		commentInfo.comment = comment.comment;
 		commentInfo.score = `${comment.score}.0`;
-		commentInfo.reservationEmail = email;
+		commentInfo.reservationEmail = comment.reservationEmail;
 		commentInfo.createdDate = `${year} ${month} ${day}`;
 		commentInfo.productDescription = displayInfo.productDescription;
 
@@ -58,7 +57,7 @@ let createDetailPageComments = (commentList, displayInfo) => {
 	
 	if(commentTemplates.length === 0) {
 		innerHTML = `<li>등록된 댓글이 없습니다</li>`;
-	}  else if(commentTemplates.length > 3) {
+	} else if (commentTemplates.length > 3) {
 		for(let template = 0; template < 3; template++) {
 			innerHTML += commentTemplates[template];
 		}

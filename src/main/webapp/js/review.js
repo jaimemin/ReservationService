@@ -15,7 +15,7 @@ let requestDatas = () => {
 		}
 	}
     
-	let displayInfoId = document.querySelector(".displayInfoId").id;
+	let displayInfoId = document.querySelector("#display_info_id").value;
 	let url = `/Reservation/api/products/${displayInfoId}`;
 	xmlHttpRequest.open("GET", url);
 	xmlHttpRequest.send();
