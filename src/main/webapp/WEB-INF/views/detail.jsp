@@ -129,7 +129,7 @@
 								<!-- [D] 별점 graph_value는 퍼센트 환산하여 width 값을 넣어줌 -->
 								<span class="graph_mask"> <em class="graph_value"
 									style="width: 84%;"></em>
-								</span> <strong class="text_value"> <span id="averageCommentScore"></span> <em
+								</span> <strong class="text_value"> <span id="average_comment_score"></span> <em
 									class="total">5.0</em>
 								</strong> <span class="join_count"><em class="green"></em> 등록</span>
 							</div>
@@ -149,9 +149,9 @@
 					<!-- [D] tab 선택 시 anchor에 active 추가 -->
 					<ul class="info_tab_lst">
 						<li class="item active _detail"><a
-							class="anchor active" id="detailTab"> <span>상세정보</span>
+							class="anchor active" id="detail_tab"> <span>상세정보</span>
 						</a></li>
-						<li class="item _path"><a class="anchor" id="directionTab"> <span>오시는길</span>
+						<li class="item _path"><a class="anchor" id="direction_tab"> <span>오시는길</span>
 						</a></li>
 					</ul>
 					<!-- [D] 상세정보 외 다른 탭 선택 시 detail_area_wrap에 hide 추가 -->
@@ -174,7 +174,7 @@
 		</div>
 	</footer>
 	<div id="photoviwer"></div>
-	<input type="hidden" class="displayInfoId" id="${displayInfoId}">
+	<input type="hidden" id="display_info_id" value="${displayInfoId }">
 	
 	<script src="/Reservation/js/constant.js"></script>
 	<script src="/Reservation/js/template.js"></script>

@@ -50,7 +50,7 @@
 								<span class="graph_mask"> <em class="graph_value"
 									style="width: 88%;"></em>
 								</span> <strong class="text_value"> <span
-									id="averageCommentScore"></span> <em class="total">5.0</em>
+									id="average_comment_score"></span> <em class="total">5.0</em>
 								</strong> <span class="join_count"><em class="green"></em> 등록</span>
 							</div>
 							<ul class="list_short_review">
@@ -78,7 +78,7 @@
 			<span class="copyright">© NAVER Corp.</span>
 		</div>
 	</footer>
-	<input type="hidden" class="displayInfoId" id="${displayInfoId}">
+	<input type="hidden" id="display_info_id" value="${displayInfoId }">
 	
 	<script src="/Reservation/js/constant.js"></script>
 	<script src="/Reservation/js/template.js"></script>

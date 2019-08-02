@@ -71,34 +71,4 @@
 		WHERE
 			commentImage.reservation_user_comment_id = #{commentId}
 	</select>
-	
-	<select id="selectCommentAverageScore" parameterType="int" resultType="double">
-		SELECT
-			AVG(score)
-		FROM
-			reservation_user_comment AS comment
-		INNER JOIN
-			reservation_info
-				ON reservation_info.id = comment.reservation_info_id
-		INNER JOIN
-			display_info
-				ON display_info.product_id = comment.product_id
-		WHERE
-			display_info.id = #{displayInfoId}
-	</select>
-	
-	<select id="selectCommentCount" parameterType="int" resultType="_int">
-		SELECT
-			COUNT(*)
-		FROM
-			reservation_user_comment AS comment
-		INNER JOIN
-			reservation_info
-				ON comment.reservation_info_id = reservation_info.id
-		INNER JOIN
-			display_info
-				ON display_info.product_id = comment.product_id
-		WHERE
-			display_info.id = #{displayInfoId}
-	</select>
 </mapper>
