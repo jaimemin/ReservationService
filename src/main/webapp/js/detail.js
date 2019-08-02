@@ -63,7 +63,7 @@ let fillProductContentTemplate = (displayInfo) => {
 	productContentTemplate.innerText = productContent;
 }
 
-changeImageOrder = (productImages) => {
+let changeImageOrder = (productImages) => {
 	productImages.insertAdjacentElement("beforeend", productImages.firstElementChild);
 
 	let visualImage = document.createElement("ul");
