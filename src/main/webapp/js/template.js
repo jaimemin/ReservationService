@@ -30,7 +30,7 @@ let commentWithoutImageTemplate = (commentInfo) => (
 				<div class="review_info">
 					<span class="grade">${commentInfo.score}</span> 
 					<span class="name">${commentInfo.reservationEmail}</span>
-					<span class="date">${commentInfo.reservationDate} 방문</span>
+					<span class="date">${commentInfo.createdDate} 방문</span>
 				</div>
 			</div>
 		</div>

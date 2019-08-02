@@ -25,7 +25,7 @@ let createCommentTemplates = (commentList, displayInfo) => {
 	commentList.forEach((comment) => {
 		let commentInfo = {};
 		let email = comment.reservationEmail.substring(0, 4) + "****";
-		let date = comment.reservationDate;
+		let date = comment.createdDate;
 		let day = date.dayOfMonth;
 		let month = date.monthValue - 1;
 		let year = date.year;
@@ -34,7 +34,7 @@ let createCommentTemplates = (commentList, displayInfo) => {
 		commentInfo.comment = comment.comment;
 		commentInfo.score = `${comment.score}.0`;
 		commentInfo.reservationEmail = email;
-		commentInfo.reservationDate = `${year} ${month} ${day}`;
+		commentInfo.createdDate = `${year} ${month} ${day}`;
 		commentInfo.productDescription = displayInfo.productDescription;
 
 		if (comment.commentImages.length >= 1) {
