@@ -17,6 +17,7 @@ public class DisplayInfo {
 	private String openingHours;
 	private String placeLot;
 	private String placeName;
+	private String placeStreet;
 	private String productContent;
 	private String productDescription;
 	private String productEvent;
@@ -143,13 +144,22 @@ public class DisplayInfo {
 		this.telephone = telephone;
 	}
 
+	public String getPlaceStreet() {
+		return placeStreet;
+	}
+
+	public void setPlaceStreet(String placeStreet) {
+		this.placeStreet = placeStreet;
+	}
+
 	@Override
 	public String toString() {
 		return "DisplayInfo [categoryId=" + categoryId + ", categoryName=" + categoryName + ", createdDate="
 				+ createdDate + ", id=" + id + ", email=" + email + ", homepage=" + homepage + ", modifiedDate="
 				+ modifiedDate + ", openingHours=" + openingHours + ", placeLot=" + placeLot + ", placeName="
-				+ placeName + ", productContent=" + productContent + ", productDescription=" + productDescription
-				+ ", productEvent=" + productEvent + ", productId=" + productId + ", telephone=" + telephone + "]";
+				+ placeName + ", placeStreet=" + placeStreet + ", productContent=" + productContent
+				+ ", productDescription=" + productDescription + ", productEvent=" + productEvent + ", productId="
+				+ productId + ", telephone=" + telephone + "]";
 	}
 
 }
