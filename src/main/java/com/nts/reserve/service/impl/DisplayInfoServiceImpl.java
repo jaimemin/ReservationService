@@ -1,7 +1,5 @@
 package com.nts.reserve.service.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +13,6 @@ import com.nts.reserve.service.DisplayInfoService;
 
 @Service
 public class DisplayInfoServiceImpl implements DisplayInfoService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(DisplayInfoServiceImpl.class);
 	private final CommentDao commentDao;
 	private final DisplayInfoDao displayInfoDao;
 	private final DisplayInfoImageDao displayInfoImageDao;
@@ -49,7 +46,6 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 			
 			return displayInfoResponse;
 		} else {
-			LOGGER.error("invalid displayInfoId");
 			throw new RuntimeException("invalid displayInfoId");
 		}
 	}
