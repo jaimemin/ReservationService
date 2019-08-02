@@ -1,13 +1,13 @@
 let promotionImageUrl = [];
 
-let initiateSliding = () => {
-	let replaceTemplate = (imageUrl) => {
-		let promotion = document.querySelector("#promotion_item").innerHTML;
+const initiateSliding = () => {
+	const replaceTemplate = (imageUrl) => {
+		const promotion = document.querySelector("#promotion_item").innerHTML;
 
 		return promotion.replace("{productImageUrl}", imageUrl);
 	};
 
-	let createTemplate = () => {
+	const createTemplate = () => {
 		let visualImage = document.createElement("ul");
 		visualImage.classList.add("visual_img");
 
@@ -22,7 +22,7 @@ let initiateSliding = () => {
 		containerVisual.replaceChild(visualImage, document.querySelector(".visual_img"));
 	};
 
-	let changeOrder = () => {
+	const changeOrder = () => {
 		let unorderedList = document.querySelector(".visual_img");
 		let firstChild = unorderedList.firstElementChild;
 		unorderedList.insertAdjacentElement("beforeend", firstChild);
@@ -35,12 +35,12 @@ let initiateSliding = () => {
 		visualContainer.replaceChild(visualImage, document.querySelector(".visual_img"));
 	};
 
-	let createSlidingClass = () => {
+	const createSlidingClass = () => {
 		let visualImage = document.querySelector(".visual_img");
 		visualImage.classList.add("sliding");
 	};
 
-	let slidePromotion = () => {
+	const slidePromotion = () => {
 		setTimeout(() => {
 			createSlidingClass();
 			addEventListener("transitionend", changeOrder);

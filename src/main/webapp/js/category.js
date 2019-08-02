@@ -1,4 +1,4 @@
-let createTemplate = (productList, event) => {
+const createTemplate = (productList, event) => {
 	let list = document.querySelectorAll(".lst_event_box");
 	let leftList = list[0];
 	let rightList = list[1];
@@ -34,7 +34,7 @@ let categoryIndex = 0;
 let startIndex = 0;
 let buttonLimit = 0;
 
-let setCategoryCount = (categoryList, index) => {
+const setCategoryCount = (categoryList, index) => {
 	let eventCount = 0;
 
 	 if (index >= 1) {
@@ -51,7 +51,7 @@ let setCategoryCount = (categoryList, index) => {
 	buttonLimit = Math.ceil(eventCount / NUMBERS_PER_REQUEST) - 1;
 };
 
-let initializeButtonLimit = () => {
+const initializeButtonLimit = () => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
@@ -74,7 +74,7 @@ let initializeButtonLimit = () => {
 	xmlHttpRequest.send();
 };
 
-let requestCategories = (categoryIndex) => {
+const requestCategories = (categoryIndex) => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
@@ -92,7 +92,7 @@ let requestCategories = (categoryIndex) => {
 	xmlHttpRequest.send();
 };
 
-let requestProducts = (event) => {
+const requestProducts = (event) => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
@@ -111,7 +111,7 @@ let requestProducts = (event) => {
 	xmlHttpRequest.send();
 };
 
-let removeMoreButton = (event) => {
+const removeMoreButton = (event) => {
 	let clickedItem = event.target;
 	let clickedItemParent = clickedItem.parentElement;
 	
@@ -122,7 +122,7 @@ let removeMoreButton = (event) => {
 	}
 };
 
-let showMoreProducts = (event) => {
+const showMoreProducts = (event) => {
 	if (event.target.nodeName === "BUTTON" 
 		|| event.target.nodeName === "SPAN") {
 		startIndex += NUMBERS_PER_REQUEST;
@@ -137,19 +137,19 @@ let showMoreProducts = (event) => {
 let clickedCategory = document.querySelector(".anchor");
 let category = null;
 
-let loadProducts = (event) => {
+const loadProducts = (event) => {
 	category = event.target.closest("li");
 	
 	if (category.classList.contains("item")) {
 		categoryIndex = category.dataset.category;
 		startIndex = 0;
 
-		let removeEffect = () => {
+		const removeEffect = () => {
 			clickedCategory.classList.remove("highlighted");
 			clickedCategory.classList.add("plain");
 		};
 
-		let changeTextToGreen = () => {
+		const changeTextToGreen = () => {
 			removeEffect();
 			clickedCategory = category.firstElementChild;
 			clickedCategory.classList.remove("plain");
@@ -169,7 +169,7 @@ let categoryList = document.querySelector(".event_tab_lst");
 let moreButton = document.querySelector(".more");
 let entireCategory = document.querySelector("#autoClick");
 
-let loadContent = () => {
+const loadContent = () => {
 	categoryList.addEventListener("click", loadProducts);
 	moreButton.addEventListener("click", showMoreProducts);
 	initializeButtonLimit();

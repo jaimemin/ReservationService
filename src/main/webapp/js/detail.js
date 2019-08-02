@@ -1,4 +1,4 @@
-let appendTotalSpanTag = (count) => {
+const appendTotalSpanTag = (count) => {
 	let totalNumber = document.createElement("span");
 	totalNumber.innerText = count;
 
@@ -6,7 +6,7 @@ let appendTotalSpanTag = (count) => {
 	off.appendChild(totalNumber);
 }
 
-let changeCurrentIndex = (index) => {
+const changeCurrentIndex = (index) => {
 	let currentIndex = document.createElement("span");
 	currentIndex.classList.add("num");
 	currentIndex.innerText = index;
@@ -15,7 +15,7 @@ let changeCurrentIndex = (index) => {
 	figurePagination.replaceChild(currentIndex, figurePagination.firstElementChild);
 }
 
-let createProductImageUnorderedList = (HTML) => {
+const createProductImageUnorderedList = (HTML) => {
 	let unorderedList = document.createElement("ul");
 	unorderedList.classList.add("visual_img", "swipe");
 	unorderedList.innerHTML = HTML;
@@ -23,7 +23,7 @@ let createProductImageUnorderedList = (HTML) => {
 	return unorderedList;
 }
 
-let showProductImages = (productImageTemplates) => {
+const showProductImages = (productImageTemplates) => {
 	let imageCount = productImageTemplates.length;
 	appendTotalSpanTag(imageCount);
 	
@@ -46,7 +46,7 @@ let showProductImages = (productImageTemplates) => {
 	visualContainer.appendChild(visualImage);
 }
 
-let createProductImageTemplates = (productImages, displayInfo) => {
+const createProductImageTemplates = (productImages, displayInfo) => {
 	let templates = [];
 
 	productImages.forEach((image) => {
@@ -56,14 +56,14 @@ let createProductImageTemplates = (productImages, displayInfo) => {
 	return templates;
 }
 
-let fillProductContentTemplate = (displayInfo) => {
+const fillProductContentTemplate = (displayInfo) => {
 	let productContent = displayInfo.productContent;
 	let productContentTemplate = document.querySelector(".store_details > .dsc");
 	
 	productContentTemplate.innerText = productContent;
 }
 
-let changeImageOrder = (productImages) => {
+const changeImageOrder = (productImages) => {
 	productImages.insertAdjacentElement("beforeend", productImages.firstElementChild);
 
 	let visualImage = document.createElement("ul");
@@ -73,13 +73,13 @@ let changeImageOrder = (productImages) => {
 	return visualImage;
 }
 
-let createDetailDirectionTemplate = (displayInfo, displayInfoImage) => {
+const createDetailDirectionTemplate = (displayInfo, displayInfoImage) => {
 	let sectionInfoTab = document.querySelector(".section_info_tab");
 	sectionInfoTab.innerHTML += detailTemplate(displayInfo);
 	sectionInfoTab.innerHTML += directionTemplate(displayInfo, displayInfoImage);
 }
 
-let showPreviousImage = (productImages, index) => {
+const showPreviousImage = (productImages, index) => {
 	let visualImage = changeImageOrder(productImages);
 	visualImage.classList.add("place_right");
 	
@@ -95,7 +95,7 @@ let showPreviousImage = (productImages, index) => {
 	}, 0);
 }
 
-let showNextImage = (productImages, index) => {
+const showNextImage = (productImages, index) => {
 	if (productImages.classList.contains("swipe_right")) {
 		productImages.classList.remove("swipe_right");
 	} else if (productImages.classList.contains("swipe_left") === false) {
@@ -111,7 +111,7 @@ let showNextImage = (productImages, index) => {
 	});
 }
 
-let swipeProductImage = (event) => {
+const swipeProductImage = (event) => {
 	let figurePagination = document.querySelector(".figure_pagination");
 	let currentPageIndex = parseInt(figurePagination.firstElementChild.innerHTML);
 	let index = (currentPageIndex === 1) ? 2 : 1;
@@ -126,7 +126,7 @@ let swipeProductImage = (event) => {
 	}
 }
 
-let showProductContent = (event) => {
+const showProductContent = (event) => {
 	let clickedButton = event.currentTarget;
 	let productContent = document.querySelector(".store_details");
 	let openButton = document.querySelector("._open");
@@ -147,7 +147,7 @@ let showProductContent = (event) => {
 	}
 }
 
-let showDetail = (event) => {
+const showDetail = (event) => {
 	let tab = event.target.closest("li");
 	let detail = document.querySelector("#detail_tab");
 	let direction = document.querySelector("#direction_tab");
@@ -164,7 +164,7 @@ let showDetail = (event) => {
 	}
 }
 
-let showDirection = (event) => {
+const showDirection = (event) => {
 	let tab = event.target.closest("li");
 	let detail = document.querySelector("#detail_tab");
 	let direction = document.querySelector("#direction_tab");
@@ -181,7 +181,7 @@ let showDirection = (event) => {
 	}
 }
 
-let registerClickEvent = () => {
+const registerClickEvent = () => {
 	let previousButton = document.querySelector(".prev");
 	let nextButton = document.querySelector(".nxt");
 	let openButton = document.querySelector("._open");
@@ -201,7 +201,7 @@ let registerClickEvent = () => {
 	directionTab.addEventListener("click", showDirection);
 }
 
-let requestDatas = () => {
+const requestDatas = () => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
