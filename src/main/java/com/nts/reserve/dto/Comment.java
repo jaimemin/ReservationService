@@ -3,17 +3,12 @@ package com.nts.reserve.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class Comment {
 	private String comment;
 	private int commentId;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime createdDate;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime modifiedDate;
 	private int productId;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime reservationDate;
 	private String reservationEmail;
 	private int reservationInfoId;
