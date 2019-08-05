@@ -2,17 +2,13 @@ package com.nts.reserve.dto;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class CommentImage {
 	private String contentType;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime createdDate;
 	private boolean deleteFlag;
 	private int fileId;
 	private String fileName;
 	private int id;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime modifiedDate;
 	private int reservationInfoId;
 	private int reservationUserCommentId;

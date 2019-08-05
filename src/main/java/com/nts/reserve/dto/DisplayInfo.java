@@ -2,17 +2,13 @@ package com.nts.reserve.dto;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class DisplayInfo {
 	private int categoryId;
 	private String categoryName;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime createdDate;
 	private int id;
 	private String email;
 	private String homepage;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime modifiedDate;
 	private String openingHours;
 	private String placeLot;

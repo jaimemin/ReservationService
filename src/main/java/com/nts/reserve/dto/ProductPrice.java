@@ -3,17 +3,13 @@ package com.nts.reserve.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class ProductPrice {
 	private int id;
 	private int productId;
 	private String priceTypeName;
 	private int price;
 	private BigDecimal discountRate;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime createdDate;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime modifiedDate;
 
 	public int getId() {
