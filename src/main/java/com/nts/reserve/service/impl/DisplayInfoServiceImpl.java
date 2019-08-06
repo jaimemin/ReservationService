@@ -1,6 +1,7 @@
 package com.nts.reserve.service.impl;
 
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,26 +36,28 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 
 	@Override
 	public DisplayInfoResponse getDisplayInfoResponse(int displayInfoId) {
-		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
-		DisplayInfo displayInfo = displayInfoDao.selectDisplayInfo(displayInfoId);
-
-		if (displayInfoId <= 0 || displayInfo == null) {
+		if (displayInfoId <= 0) {
 			throw new IllegalArgumentException("invalid displayInfoId");
 		}
 		
+		DisplayInfo displayInfo = displayInfoDao.selectDisplayInfo(displayInfoId);
+		
+		if(displayInfo == null) {
+			throw new NullPointerException("displayInfo returned null");
+		}
+		
 		List<Comment> comments = commentDao.selectComments(displayInfoId);
-		double scoreSum = 0.0;
+		
 		for(Comment comment : comments) {
 			String email = comment.getReservationEmail();
 			email = email.substring(0, 4) + "****";
 			
 			comment.setReservationEmail(email);
-			scoreSum += comment.getScore();
 		}
 		
-		int listSize = comments.size();
-		double average = (listSize == 0) ? 0.0 : (double)(scoreSum / listSize);
+		double average = comments.stream().mapToDouble(Comment::getScore).average().orElse(0.0);
 		
+		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
 		displayInfoResponse.setAverageCommentScore(average);
 		displayInfoResponse.setComments(comments);
 		displayInfoResponse.setDisplayInfo(displayInfo);

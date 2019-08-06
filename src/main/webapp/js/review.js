@@ -1,3 +1,6 @@
+const ERROR_STATUS = 400;
+const COMPLETE_STATE = 4;
+
 const requestDatas = () => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {

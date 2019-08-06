@@ -1,3 +1,5 @@
+const NUMBERS_PER_REQUEST = 4;
+
 const createTemplate = (productList, event) => {
 	let list = document.querySelectorAll(".lst_event_box");
 	let leftList = list[0];

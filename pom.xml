@@ -144,7 +144,7 @@
 				<version>3.2.1</version>
 				<configuration>
 					<warSourceDirectory>src/main/webapp</warSourceDirectory>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<!-- <failOnMissingWebXml>false</failOnMissingWebXml> -->
 				</configuration>
 			</plugin>
 		</plugins>

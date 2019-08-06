@@ -176,7 +176,6 @@
 	<div id="photoviwer"></div>
 	<input type="hidden" id="display_info_id" value="${displayInfoId }">
 	
-	<script src="/Reservation/js/constant.js"></script>
 	<script src="/Reservation/js/template.js"></script>
 	<script src="/Reservation/js/detail.js"></script>
 	<script src="/Reservation/js/comment.js"></script>
