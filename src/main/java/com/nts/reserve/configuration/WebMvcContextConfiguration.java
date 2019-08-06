@@ -44,5 +44,5 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 
 		return resolver;
 	}
-
+	
 }
