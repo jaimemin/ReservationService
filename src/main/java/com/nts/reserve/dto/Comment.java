@@ -1,7 +1,10 @@
 package com.nts.reserve.dto;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Comment {
 	private String comment;
@@ -37,6 +40,11 @@ public class Comment {
 		return createdDate;
 	}
 
+	@JsonProperty("createdDate")
+	public String getCreatedDateView() {
+		return (createdDate == null) ? null : createdDate.format(DateTimeFormatter.ofPattern("yyyy.M.d."));
+	}
+
 	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
@@ -67,6 +75,11 @@ public class Comment {
 
 	public String getReservationEmail() {
 		return reservationEmail;
+	}
+
+	@JsonProperty("reservationEmail")
+	public String getReservationEmailView() {
+		return (reservationEmail == null) ? null : reservationEmail.substring(0, 4) + "****";
 	}
 
 	public void setReservationEmail(String reservationEmail) {
