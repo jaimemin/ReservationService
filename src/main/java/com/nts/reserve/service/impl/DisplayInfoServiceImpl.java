@@ -47,14 +47,6 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		}
 		
 		List<Comment> comments = commentDao.selectComments(displayInfoId);
-		
-		for(Comment comment : comments) {
-			String email = comment.getReservationEmail();
-			email = email.substring(0, 4) + "****";
-			
-			comment.setReservationEmail(email);
-		}
-		
 		double average = comments.stream().mapToDouble(Comment::getScore).average().orElse(0.0);
 		
 		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();

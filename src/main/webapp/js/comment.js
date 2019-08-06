@@ -24,16 +24,12 @@ const createCommentTemplates = (commentList, displayInfo) => {
 	
 	commentList.forEach((comment) => {
 		let commentInfo = {};
-		let date = comment.createdDate;
-		let day = date.dayOfMonth;
-		let month = date.monthValue - 1;
-		let year = date.year;
 		let commentTemplate;
 
 		commentInfo.comment = comment.comment;
 		commentInfo.score = `${comment.score}.0`;
 		commentInfo.reservationEmail = comment.reservationEmail;
-		commentInfo.createdDate = `${year} ${month} ${day}`;
+		commentInfo.createdDate = comment.createdDate;
 		commentInfo.productDescription = displayInfo.productDescription;
 
 		if (comment.commentImages.length >= 1) {
