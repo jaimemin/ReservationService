@@ -47,7 +47,10 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		}
 		
 		List<Comment> comments = commentDao.selectComments(displayInfoId);
-		double average = comments.stream().mapToDouble(Comment::getScore).average().orElse(0.0);
+		double average = comments.stream()
+				.mapToDouble(Comment::getScore)
+				.average()
+				.orElse(0.0);
 		
 		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
 		displayInfoResponse.setAverageCommentScore(average);
