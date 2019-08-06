@@ -55,6 +55,7 @@ const initiateSliding = () => {
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
 			alert("오류가 발생했습니다");
+			window.location.href="/Reservation/";
 			return;
 		}
     	
