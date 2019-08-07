@@ -18,7 +18,7 @@
 	</resultMap>
 
 
-	<select id="selectComments" parameterType="int" resultMap="commentList">
+	<select id="selectComments" parameterType="map" resultMap="commentList">
 		SELECT
 			comment.comment AS 'comment',
 			comment.id AS commentId,
@@ -38,7 +38,7 @@
 				ON product.id = comment.product_id
 		INNER JOIN
 			reservation_info
-				ON reservation_info.id =comment.reservation_info_id
+				ON reservation_info.id = comment.reservation_info_id
 		INNER JOIN
 			display_info
 				ON display_info.product_id = product.id
@@ -46,6 +46,9 @@
 			display_info.id = #{displayInfoId}
 		ORDER BY
 			commentId DESC
+		<if test="isDetailPage">
+			LIMIT 3
+		</if>
 	</select>
 	
 	<select id="selectCommentImages" parameterType="int" resultType="CommentImage">
@@ -70,5 +73,17 @@
 					= commentImage.reservation_info_id
 		WHERE
 			commentImage.reservation_user_comment_id = #{commentId}
+	</select>
+	
+	<select id="selectCommentListSize" parameterType="int" resultType="_int">
+		SELECT
+			COUNT(*)
+		FROM
+			reservation_user_comment AS comment
+		INNER JOIN
+			display_info
+				ON comment.product_id = display_info.product_id
+		WHERE
+			display_info.id = #{displayInfoId}
 	</select>
 </mapper>

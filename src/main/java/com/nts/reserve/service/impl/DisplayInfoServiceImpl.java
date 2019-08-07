@@ -35,7 +35,7 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 	}
 
 	@Override
-	public DisplayInfoResponse getDisplayInfoResponse(int displayInfoId) {
+	public DisplayInfoResponse getDisplayInfoResponse(int displayInfoId, boolean isDetailPage) {
 		if (displayInfoId <= 0) {
 			throw new IllegalArgumentException("invalid displayInfoId");
 		}
@@ -46,7 +46,7 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 			throw new NullPointerException("displayInfo returned null");
 		}
 		
-		List<Comment> comments = commentDao.selectComments(displayInfoId);
+		List<Comment> comments = commentDao.selectComments(displayInfoId, isDetailPage);
 		double average = comments.stream()
 				.mapToDouble(Comment::getScore)
 				.average()
@@ -59,7 +59,8 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		displayInfoResponse.setDisplayInfoImage(displayInfoImageDao.selectDisplayInfoImage(displayInfoId));
 		displayInfoResponse.setProductImages(productImageDao.selectProductImages(displayInfoId));
 		displayInfoResponse.setProductPrices(productPriceDao.selectProductPrices(displayInfoId));
-
+		displayInfoResponse.setCommentsSize(commentDao.selectCommentListSize(displayInfoId));
+		
 		return displayInfoResponse;
 
 	}

@@ -14,13 +14,13 @@ const requestDatas = () => {
 			let datas = JSON.parse(xmlHttpRequest.responseText);
 			
 			createCommentAverageScore(datas.averageCommentScore);
-			createCommentCount(datas.comments);
+			createCommentCount(datas.commentsSize);
 			createComments(datas.comments, datas.displayInfo);
 		}
 	}
     
 	let displayInfoId = document.querySelector("#display_info_id").value;
-	let url = `/Reservation/api/products/${displayInfoId}`;
+	let url = `/Reservation/api/products/${displayInfoId}?is-detail-page=false`;
 	xmlHttpRequest.open("GET", url);
 	xmlHttpRequest.send();
 }

@@ -35,8 +35,9 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/{displayInfoId}")
-	public DisplayInfoResponse getDisplayInfoResponse(@PathVariable("displayInfoId") int displayInfoId) {
-		return displayInfoService.getDisplayInfoResponse(displayInfoId);
+	public DisplayInfoResponse getDisplayInfoResponse(@PathVariable("displayInfoId") int displayInfoId,
+				@RequestParam(name = "is-detail-page", required = false, defaultValue = "true") boolean isDetailPage) {
+		return displayInfoService.getDisplayInfoResponse(displayInfoId, isDetailPage);
 	}
 
 }
