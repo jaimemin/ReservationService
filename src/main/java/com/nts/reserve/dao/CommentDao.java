@@ -16,4 +16,6 @@ public interface CommentDao {
 	List<CommentImage> selectCommentImages(int commentId);
 	
 	int selectCommentListSize(int displayInfoId);
+	
+	Double selectCommentScoreAverage(int displayInfoId);
 }

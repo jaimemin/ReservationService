@@ -209,12 +209,16 @@ const requestDatas = () => {
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
 			alert("오류가 발생했습니다");
-			window.location.href="/Reservation/";
 			return;
 		}
 	
 		if(xmlHttpRequest.readyState === COMPLETE_STATE) {
 			let datas = JSON.parse(xmlHttpRequest.responseText);
+			
+			if (datas.displayInfo === null) {
+				alert("조회할 상품이 없습니다");
+				return;
+			}
     		
 			productImageTemplates = createProductImageTemplates(datas.productImages, datas.displayInfo);
 			showProductImages(productImageTemplates);

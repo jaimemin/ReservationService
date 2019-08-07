@@ -21,7 +21,7 @@ public class MainController {
 	}
 
 	@GetMapping(path = "/review/{displayInfoId}")
-	public String allReview(@PathVariable int displayInfoId, Model model) {
+	public String allReview(@PathVariable("displayInfoId") int displayInfoId, Model model) {
 		model.addAttribute("displayInfoId", displayInfoId);
 
 		return "review";

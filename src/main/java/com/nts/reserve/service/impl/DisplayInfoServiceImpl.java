@@ -1,7 +1,6 @@
 package com.nts.reserve.service.impl;
 
 import java.util.List;
-import java.util.stream.DoubleStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,19 +40,22 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		}
 		
 		DisplayInfo displayInfo = displayInfoDao.selectDisplayInfo(displayInfoId);
+
+		List<Comment> comments = commentDao.selectComments(displayInfoId, isDetailPage);
+		double scoreAverage;
 		
-		if(displayInfo == null) {
-			throw new NullPointerException("displayInfo returned null");
+		if(isDetailPage == true) {
+			Double average = commentDao.selectCommentScoreAverage(displayInfoId);
+			scoreAverage = (average == null) ? 0.0 : average;
+		} else {
+			scoreAverage = comments.stream()
+					.mapToDouble(Comment::getScore)
+					.average()
+					.orElse(0.0);
 		}
 		
-		List<Comment> comments = commentDao.selectComments(displayInfoId, isDetailPage);
-		double average = comments.stream()
-				.mapToDouble(Comment::getScore)
-				.average()
-				.orElse(0.0);
-		
 		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
-		displayInfoResponse.setAverageCommentScore(average);
+		displayInfoResponse.setAverageCommentScore(scoreAverage);
 		displayInfoResponse.setComments(comments);
 		displayInfoResponse.setDisplayInfo(displayInfo);
 		displayInfoResponse.setDisplayInfoImage(displayInfoImageDao.selectDisplayInfoImage(displayInfoId));
