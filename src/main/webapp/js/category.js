@@ -58,7 +58,6 @@ const initializeButtonLimit = () => {
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
 			alert("오류가 발생했습니다");
-			window.location.href="/Reservation/";
 			return;
 		}
 	
@@ -82,7 +81,6 @@ const requestCategories = (categoryIndex) => {
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
 			alert("오류가 발생했습니다");
-			window.location.href="/Reservation/";
 			return;
 		}
 	
@@ -101,7 +99,6 @@ const requestProducts = (event) => {
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
 			alert("오류가 발생했습니다");
-			window.location.href="/Reservation/";
     		return;
 		}
 	

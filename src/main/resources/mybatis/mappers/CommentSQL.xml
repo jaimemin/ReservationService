@@ -3,6 +3,7 @@
 
 <mapper namespace="com.nts.reserve.dao.CommentDao">
 	<resultMap id="commentList" type="Comment">
+		<id property="commentId" column="commentId"/>
 		<result property="comment" column="comment" />
 		<result property="commentId" column="commentId" />
 		<result property="createdDate" column="createdDate" />
@@ -78,6 +79,18 @@
 	<select id="selectCommentListSize" parameterType="int" resultType="_int">
 		SELECT
 			COUNT(*)
+		FROM
+			reservation_user_comment AS comment
+		INNER JOIN
+			display_info
+				ON comment.product_id = display_info.product_id
+		WHERE
+			display_info.id = #{displayInfoId}
+	</select>
+	
+	<select id="selectCommentScoreAverage" parameterType="int" resultType="double">
+		SELECT
+			AVG(comment.score)
 		FROM
 			reservation_user_comment AS comment
 		INNER JOIN

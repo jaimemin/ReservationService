@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Comment {
@@ -79,7 +81,7 @@ public class Comment {
 
 	@JsonProperty("reservationEmail")
 	public String getReservationEmailView() {
-		return (reservationEmail == null) ? null : reservationEmail.substring(0, 4) + "****";
+		return StringUtils.substring(reservationEmail, 0, 4) + "****";
 	}
 
 	public void setReservationEmail(String reservationEmail) {
