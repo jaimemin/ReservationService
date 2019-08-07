@@ -12,11 +12,10 @@ const createCommentAverageScore = (averageCommentScore) => {
 	}
 }
 
-const createCommentCount = (commentList) => {
-	let numOfComments = commentList.length;
+const createCommentCount = (commentSize) => {
 	let commentCount = document.querySelector(".join_count > .green");
 	
-	commentCount.innerText = `${numOfComments}건`;
+	commentCount.innerText = `${commentSize}건`;
 }
 
 const createCommentTemplates = (commentList, displayInfo) => {
@@ -53,11 +52,7 @@ const createDetailPageComments = (commentList, displayInfo) => {
 	
 	if(commentTemplates.length === 0) {
 		innerHTML = `<li>등록된 댓글이 없습니다</li>`;
-	} else if (commentTemplates.length > 3) {
-		for(let template = 0; template < 3; template++) {
-			innerHTML += commentTemplates[template];
-		}
-	} else if (commentTemplates.length > 0) {
+	} else {
 		commentTemplates.forEach((template) => {
 			innerHTML += template;
 		});

@@ -222,7 +222,7 @@ const requestDatas = () => {
 			fillProductContentTemplate(datas.displayInfo);
 			
 			createCommentAverageScore(datas.averageCommentScore);
-			createCommentCount(datas.comments);
+			createCommentCount(datas.commentsSize);
 			createDetailPageComments(datas.comments, datas.displayInfo);
 			
 			createDetailDirectionTemplate(datas.displayInfo, datas.displayInfoImage);
@@ -232,7 +232,7 @@ const requestDatas = () => {
 	}
     
 	let displayInfoId = document.querySelector("#display_info_id").value;
-	let url = `/Reservation/api/products/${displayInfoId}`;
+	let url = `/Reservation/api/products/${displayInfoId}?is-detail-page=true`;
 	xmlHttpRequest.open("GET", url);
 	xmlHttpRequest.send();
 }

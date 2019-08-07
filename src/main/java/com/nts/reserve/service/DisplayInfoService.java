@@ -3,5 +3,5 @@ package com.nts.reserve.service;
 import com.nts.reserve.dto.DisplayInfoResponse;
 
 public interface DisplayInfoService {
-	DisplayInfoResponse getDisplayInfoResponse(int displayInfoId);
+	DisplayInfoResponse getDisplayInfoResponse(int displayInfoId, boolean isDetailPage);
 }

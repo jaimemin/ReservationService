@@ -19,8 +19,12 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public List<Comment> getComments(int displayInfoId) {
-		return commentDao.selectComments(displayInfoId);
+	public List<Comment> getComments(int displayInfoId, boolean isDetailPage) {
+		return commentDao.selectComments(displayInfoId, isDetailPage);
 	}
 
+	@Override
+	public int getCommentListSize(int displayInfoId) {
+		return commentDao.selectCommentListSize(displayInfoId);
+	}
 }

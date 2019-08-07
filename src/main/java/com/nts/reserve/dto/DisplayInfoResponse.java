@@ -9,6 +9,7 @@ public class DisplayInfoResponse {
 	private DisplayInfoImage displayInfoImage;
 	private List<ProductImage> productImages;
 	private List<ProductPrice> productPrices;
+	private int commentsSize;
 
 	public Double getAverageCommentScore() {
 		return averageCommentScore;
@@ -58,11 +59,19 @@ public class DisplayInfoResponse {
 		this.productPrices = productPrices;
 	}
 
+	public int getCommentsSize() {
+		return commentsSize;
+	}
+
+	public void setCommentsSize(int commentsSize) {
+		this.commentsSize = commentsSize;
+	}
+
 	@Override
 	public String toString() {
-		return "DisplayInfoEntity [averageCommentScore=" + averageCommentScore + ", comments=" + comments
+		return "DisplayInfoResponse [averageCommentScore=" + averageCommentScore + ", comments=" + comments
 				+ ", displayInfo=" + displayInfo + ", displayInfoImage=" + displayInfoImage + ", productImages="
-				+ productImages + ", productPrices=" + productPrices + "]";
+				+ productImages + ", productPrices=" + productPrices + ", commentsSize=" + commentsSize + "]";
 	}
 
 }
