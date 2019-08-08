@@ -11,7 +11,6 @@ import com.nts.reserve.dao.DisplayInfoImageDao;
 import com.nts.reserve.dao.ProductImageDao;
 import com.nts.reserve.dao.ProductPriceDao;
 import com.nts.reserve.dto.Comment;
-import com.nts.reserve.dto.DisplayInfo;
 import com.nts.reserve.dto.DisplayInfoResponse;
 import com.nts.reserve.service.DisplayInfoService;
 
@@ -51,6 +50,7 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 					.average()
 					.orElse(0.0);
 		}
+		
 		
 		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
 		displayInfoResponse.setAverageCommentScore(scoreAverage);
