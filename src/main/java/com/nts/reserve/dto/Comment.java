@@ -79,7 +79,7 @@ public class Comment {
 		return reservationEmail;
 	}
 
-	@JsonProperty("reservationEmail")
+	@JsonProperty("maskedReservationEmail")
 	public String getReservationEmailView() {
 		return StringUtils.substring(reservationEmail, 0, 4) + "****";
 	}

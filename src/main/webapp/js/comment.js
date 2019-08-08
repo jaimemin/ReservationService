@@ -28,7 +28,7 @@ const createCommentTemplates = (commentList, displayInfo) => {
 		commentInfo.comment = comment.comment;
 		commentInfo.score = `${comment.score}.0`;
 		commentInfo.reservationEmail = comment.reservationEmail;
-		commentInfo.createdDate = comment.createdDate;
+		commentInfo.createdDate = comment.createdDateView;
 		commentInfo.productDescription = displayInfo.productDescription;
 
 		if (comment.commentImages.length >= 1) {
