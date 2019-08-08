@@ -38,8 +38,6 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		if (displayInfoId <= 0) {
 			throw new IllegalArgumentException("invalid displayInfoId");
 		}
-		
-		DisplayInfo displayInfo = displayInfoDao.selectDisplayInfo(displayInfoId);
 
 		List<Comment> comments = commentDao.selectComments(displayInfoId, isDetailPage);
 		double scoreAverage;
@@ -57,7 +55,7 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
 		displayInfoResponse.setAverageCommentScore(scoreAverage);
 		displayInfoResponse.setComments(comments);
-		displayInfoResponse.setDisplayInfo(displayInfo);
+		displayInfoResponse.setDisplayInfo(displayInfoDao.selectDisplayInfo(displayInfoId));
 		displayInfoResponse.setDisplayInfoImage(displayInfoImageDao.selectDisplayInfoImage(displayInfoId));
 		displayInfoResponse.setProductImages(productImageDao.selectProductImages(displayInfoId));
 		displayInfoResponse.setProductPrices(productPriceDao.selectProductPrices(displayInfoId));
