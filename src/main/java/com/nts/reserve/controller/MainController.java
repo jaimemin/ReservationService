@@ -26,4 +26,23 @@ public class MainController {
 
 		return "review";
 	}
+	
+	@GetMapping(path = "/reserve/{displayInfoId}")
+	public String reserve(@PathVariable("displayInfoId") int displayInfoId, Model model) {
+		model.addAttribute("displayInfoId", displayInfoId);
+		
+		return "reserve";
+	}
+	
+	@GetMapping(path = "/my-reservation")
+	public String myReservation()
+	{
+		return "myreservation";
+	}
+	
+	@GetMapping(path = "/booking-login")
+	public String bookingLogin()
+	{
+		return "bookinglogin";
+	}
 }

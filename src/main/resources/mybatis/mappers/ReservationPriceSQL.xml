@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nts.reserve.dao.ReservationInfoDao">
+	<select id="selectReservationPrices" parameterType="int" resultType="ReservationPrice">
+		SELECT id,
+			reservation_info_id,
+			product_price_id,
+			'count'
+		FROM
+			reservation_info_price
+		WHERE
+			reservation_info_id = #{reservationInfoId};
+	</select>
+
+	<select id="selectTotalPrice" resultType="_int">
+		SELECT 
+			SUM(reservationPrice.count * productPrice.price) AS 'TotalSum'
+		FROM 
+			reservation_info_price AS reservationPrice
+		INNER JOIN 
+			product_price AS productPrice
+				ON reservationPrice.product_price_id = productPrice.id
+		WHERE 
+			reservationPrice.reservation_info_id = #{reservationInfoId}
+	</select>
+
+	<insert id="insertReservationPrices" parameterType="ReservationPrice" 
+		useGeneratedKeys="true" keyColumn="id">
+		INSERT INTO
+			reservation_info_price (
+				reservation_info_id,
+				product_price_id,
+				count
+			)
+		VALUES
+			<foreach 
+				collection="reservationPriceList" 
+				item="reservationPrice" 
+				separator=",">
+				(
+					#{reservationPrice.reservationInfoId},
+					#{reservationPrice.productPriceId},
+					#{reservationPrice.count}
+				)
+			</foreach>
+	</insert>
+</mapper>

@@ -1,0 +1,19 @@
+package com.nts.reserve.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import com.nts.reserve.dto.ReservationInfo;
+
+@Repository
+public interface ReservationInfoDao {
+	ReservationInfo selectReservationInfo(int reservationInfoId);
+	
+	List<ReservationInfo> selectReservationInfos(@Param("reservationEmail") String reservationEmail);
+	
+	int insertReservation(ReservationInfo reservation);
+	
+	int updateReservation(int reservationInfoId);
+}
