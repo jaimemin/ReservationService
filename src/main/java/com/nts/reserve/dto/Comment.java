@@ -44,7 +44,7 @@ public class Comment {
 
 	@JsonProperty("createdDate")
 	public String getCreatedDateView() {
-		return (createdDate == null) ? null : createdDate.format(DateTimeFormatter.ofPattern("yyyy.M.d."));
+		return createdDate.format(DateTimeFormatter.ofPattern("yyyy.M.d."));
 	}
 
 	public void setCreatedDate(LocalDateTime createdDate) {
