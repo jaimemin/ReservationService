@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nts.reserve.dao.CommentDao">
+	<resultMap id="commentList" type="Comment">
+		<id property="commentId" column="commentId"/>
+		<result property="comment" column="comment" />
+		<result property="commentId" column="commentId" />
+		<result property="createdDate" column="createdDate" />
+		<result property="modifiedDate" column="modifiedDate" />
+		<result property="productId" column="productId" />
+		<result property="reservationDate" column="reservationDate" />
+		<result property="reservationEmail" column="reservationEmail" />
+		<result property="reservationInfoId" column="reservationInfoId" />
+		<result property="reservationName" column="reservationName" />
+		<result property="reservationTelephone" column="reservationTelephone" />
+		<result property="score" column="score" />
+		<collection property="commentImages" column="commentId" javaType="java.util.List" ofType="CommentImage" select="selectCommentImages" />
+	</resultMap>
+
+
+	<select id="selectComments" parameterType="map" resultMap="commentList">
+		SELECT
+			comment.comment AS 'comment',
+			comment.id AS commentId,
+			comment.create_date AS createdDate,
+			comment.modify_date AS modifiedDate,
+			product.id AS productId,
+			reservation_info.reservation_date AS reservationDate,
+			reservation_info.reservation_email AS reservationEmail,
+			reservation_info.id AS reservationInfoId,
+			reservation_info.reservation_name AS reservationName,
+			reservation_info.reservation_tel AS reservationTelephone,
+			comment.score AS score
+		FROM
+			product
+		INNER JOIN
+			reservation_user_comment AS comment
+				ON product.id = comment.product_id
+		INNER JOIN
+			reservation_info
+				ON reservation_info.id = comment.reservation_info_id
+		INNER JOIN
+			display_info
+				ON display_info.product_id = product.id
+		WHERE
+			display_info.id = #{displayInfoId}
+		ORDER BY
+			commentId DESC
+		<if test="isDetailPage">
+			LIMIT 3
+		</if>
+	</select>
+	
+	<select id="selectCommentImages" parameterType="int" resultType="CommentImage">
+		SELECT
+			file_info.content_type AS contentType,
+			file_info.create_date AS createdDate,
+			file_info.delete_flag AS deleteFlag,
+			file_info.id AS fileId,
+			file_info.file_name AS fileName,
+			file_info.modify_date AS modifiedDate,
+			file_info.save_file_name AS saveFileName,
+			commentImage.id AS id,
+			reservation_info.id AS reservationInfoId
+		FROM
+			file_info
+		INNER JOIN
+			reservation_user_comment_image AS commentImage
+				ON file_info.id = commentImage.file_id
+		INNER JOIN
+			reservation_info
+				ON reservation_info.id 
+					= commentImage.reservation_info_id
+		WHERE
+			commentImage.reservation_user_comment_id = #{commentId}
+	</select>
+	
+	<select id="selectCommentListSize" parameterType="int" resultType="_int">
+		SELECT
+			COUNT(*)
+		FROM
+			reservation_user_comment AS comment
+		INNER JOIN
+			display_info
+				ON comment.product_id = display_info.product_id
+		WHERE
+			display_info.id = #{displayInfoId}
+	</select>
+	
+	<select id="selectCommentScoreAverage" parameterType="int" resultType="double">
+		SELECT
+			AVG(comment.score)
+		FROM
+			reservation_user_comment AS comment
+		INNER JOIN
+			display_info
+				ON comment.product_id = display_info.product_id
+		WHERE
+			display_info.id = #{displayInfoId}
+	</select>
+</mapper>

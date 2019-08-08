@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nts.reserve.dao.DisplayInfoImageDao">
+	<select id="selectDisplayInfoImage" parameterType="int" resultType="DisplayInfoImage">
+		SELECT
+			file_info.content_type AS contentType,
+			file_info.create_date AS createdDate,
+			file_info.delete_flag AS deleteFlag,
+			file_info.id AS fileId,
+			file_info.file_name AS fileName,
+			file_info.modify_date AS modifiedDate,
+			file_info.save_file_name AS saveFileName,
+			display_info.id AS displayInfoId,
+			display_info_image.id AS id
+		FROM
+			file_info
+		INNER JOIN
+			display_info_image
+				ON file_info.id = display_info_image.file_id
+		INNER JOIN
+			display_info
+				ON display_info.id = display_info_image.display_info_id
+		WHERE
+			display_info.id = #{displayInfoId}
+	</select>
+</mapper>

@@ -1,0 +1,23 @@
+.show {
+	display: block;
+}
+
+.place_right {
+	right: 100%;
+}
+
+.swipe {
+	-webkit-transition: transform 0.5s;
+	-moz-transition: transform 0.5s;
+	-ms-transition: transform 0.5s;
+	-o-transition: transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.swipe_right {
+	transform: translateX(100%);
+}
+
+.swipe_left {
+	transform: translateX(-100%);
+}
