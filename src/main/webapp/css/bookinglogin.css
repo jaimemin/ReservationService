@@ -5331,7 +5331,7 @@ select {
 }
 
 .group_visual .visua ../img .item ../img_bg:before, .group_visual .visua
-	../img .item .visual_txt, .group_visual .visua ../img .item .vr {
+	 ../img .item .visual_txt, .group_visual .visua ../img .item .vr {
 	position: absolute;
 	bottom: 0;
 	top: 0;
@@ -6853,14 +6853,14 @@ select {
 }
 
 .detail_area .detail_info .detail_info_group .detail_info_lst .i
-	../img_group {
+	 ../img_group {
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-bottom: 20px
 }
 
 .detail_area .detail_info .detail_info_group .detail_info_lst .link_des
-	../img {
+	 ../img {
 	display: block
 }
 
@@ -8481,7 +8481,7 @@ select {
 	margin-top: 10px
 }
 
-.section_subscribe .subscribe_detail .detail ../img_thum../img_second {
+.section_subscribe .subscribe_detail .detail ../img_thum ../img_second {
 	margin: 15px 0 20px
 }
 
@@ -9198,7 +9198,7 @@ select {
 }
 
 .section_booking_further .group_option_further .option_further .details .details_thumb
-	../img_border {
+	 ../img_border {
 	width: 100px;
 	height: 100px
 }
@@ -9274,7 +9274,7 @@ select {
 }
 
 .section_booking_further .group_option_further .option_further .details_switch .details_thumb
-	../img_border {
+	 ../img_border {
 	width: 127px;
 	height: 127px
 }
@@ -9344,7 +9344,7 @@ select {
 
 .section_booking_further.slot_option_further .group_option_further .option_further .details .details_thumb,
 	.section_booking_further.slot_option_further .group_option_further .option_further .details
-	../img_border {
+	 ../img_border {
 	width: 140px;
 	height: 140px
 }
@@ -14907,7 +14907,7 @@ select {
 }
 
 .section_review_list .short_review_area .thumb_area .thumb
-	../img_vertical_top {
+	 ../img_vertical_top {
 	vertical-align: top
 }
 
@@ -15828,31 +15828,31 @@ select {
 }
 
 .event .section_visual .group_visual .container_visual .visua ../img .item.ite
-	../img_1 {
+	 ../img_1 {
 	background-image:
 		url(https://ssl.pstatic.net/../img3.search/imp/resrv/manage/images/event/exhibitions1_m.jpg?1512241400)
 }
 
 .event .section_visual .group_visual .container_visual .visua ../img .item.ite
-	../img_2 {
+	 ../img_2 {
 	background-image:
 		url(https://ssl.pstatic.net/../img3.search/imp/resrv/manage/images/event/exhibitions2_m.jpg?1512241400)
 }
 
 .event .section_visual .group_visual .container_visual .visua ../img .item.ite
-	../img_3 {
+	 ../img_3 {
 	background-image:
 		url(https://ssl.pstatic.net/../img3.search/imp/resrv/manage/images/event/exhibitions3_m.jpg?1512241400)
 }
 
 .event .section_visual .group_visual .container_visual .visua ../img .item.ite
-	../img_4 {
+	 ../img_4 {
 	background-image:
 		url(https://ssl.pstatic.net/../img3.search/imp/resrv/manage/images/event/exhibitions4_m.jpg?1512241400)
 }
 
 .event .section_visual .group_visual .container_visual .visua ../img .item.ite
-	../img_5 {
+	 ../img_5 {
 	background-image:
 		url(https://ssl.pstatic.net/../img3.search/imp/resrv/manage/images/event/exhibitions5_m.jpg?1512241400)
 }
@@ -15882,8 +15882,8 @@ select {
 }
 
 .event .section_event_tab .event_tab_lst>.item .anchor, .event .section_visual .group_visual .container_visual .visua
-	../img .item .event_txt .event_txt_adr, .event .section_visual .group_visual .container_visual .visua
-	../img .item .event_txt .event_txt_dsc {
+	 ../img .item .event_txt .event_txt_adr, .event .section_visual .group_visual .container_visual .visua
+	 ../img .item .event_txt .event_txt_dsc {
 	font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
 		Helvetica Nenu, Helvetica, Roboto, Arial, NanumGothicWebR, '맑은 고딕',
 		MalgunGothic, '돋움', Dotum, sans-serif;
@@ -15901,7 +15901,7 @@ select {
 }
 
 .event .section_visual .group_visual .container_visual .visua ../img .item
-	../img_right_border {
+	 ../img_right_border {
 	z-index: 10;
 	position: absolute;
 	top: 0;
@@ -17590,7 +17590,7 @@ body.en .subscribe_banner .subscribe_strapline {
 }
 
 .talk .wrap_booking_inquiries .bk_ct2 .cnt_bk_box .wrap_bk_box .lst_bk_box .bk_item.on
-	../img_act_border {
+	 ../img_act_border {
 	z-index: 10;
 	position: absolute;
 	top: 0;
@@ -17604,7 +17604,7 @@ body.en .subscribe_banner .subscribe_strapline {
 }
 
 .talk .wrap_booking_inquiries .bk_ct2 .cnt_bk_box .wrap_bk_box .lst_bk_box .bk_item.on
-	../img_bg_light {
+	 ../img_bg_light {
 	z-index: 5;
 	position: absolute;
 	top: 0;
