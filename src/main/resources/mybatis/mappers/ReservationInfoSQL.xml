@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nts.reserve.dao.ReservationInfoDao">
+	<resultMap id="reservationInfo" type="ReservationInfo">
+		<id property="id" column="id" />
+		<result property="id" column="id" />
+		<result property="displayInfoId" column="displayInfoId" />
+		<result property="productId" column="productId" />
+		<result property="reservationName" column="reservationName" />
+		<result property="reservationEmail" column="reservationEmail" />
+		<result property="reservationTelephone" column="reservationTelephone" />
+		<result property="reservationDate" column="reservationDate" />
+		<result property="createdDate" column="createdDate" />
+		<result property="modifiedDate" column="modifiedDate" />
+		<collection 
+			property="reservationPrices" 
+			column="id"
+			javaType="java.util.List" 
+			ofType="ReservationPrice"
+			select="ReservationPriceDao.selectReservationPrices">
+		</collection>
+	</resultMap>
+	
+	<resultMap id="reservationInfos" type="ReservationInfo">
+		<id property="id" column="id" />
+		<result property="id" column="id" />
+		<result property="displayInfoId" column="displayInfoId" />
+		<result property="productId" column="productId" />
+		<result property="reservationName" column="reservationName" />
+		<result property="reservationEmail" column="reservationEmail" />
+		<result property="reservationTelephone" column="reservationTelephone" />
+		<result property="reservationDate" column="reservationDate" />
+		<result property="createdDate" column="createdDate" />
+		<result property="modifiedDate" column="modifiedDate" />
+		 <collection
+ 			property="displayInfo"
+ 			column="displayInfoId"
+ 			select="DisplayInfoDao.selectDisplayInfo">
+ 		</collection>
+		<collection
+ 			property="totalPrice"
+ 			column="id"
+ 			javaType="int"
+ 			ofType="int"
+ 			select="ReservationPriceDao.selectTotalPrice">
+ 		</collection>
+	</resultMap>
+
+	<select id="selectReservationInfo" parameterType="int" resultMap="reservationInfo">
+		SELECT
+			id,
+			display_info_id AS displayInfoId,
+			product_id AS productId,
+			reservation_name AS reservationName,
+			reservation_email AS reservationEmail,
+			reservation_tel AS reservationTelephone,
+			reservation_date AS reservationDate,
+			create_date AS createdDate,
+			modify_date AS modifiedDate
+		FROM
+			reservation_info
+		WHERE
+			reservation_info = #{reservationInfoId}
+	</select>
+	
+	<select id="selectReservationInfos" parameterType="String" resultMap="reservationInfos">
+		SELECT
+			id,
+			display_info_id AS displayInfoId,
+			product_id AS productId,
+			reservation_name AS reservationName,
+			reservation_email AS reservationEmail,
+			reservation_tel AS reservationTelephone,
+			reservation_date AS reservationDate,
+			create_date AS createdDate,
+			modify_date AS modifiedDate
+		FROM
+			reservation_info
+		WHERE
+			reservation_email = #{reservationEmail}
+	</select> 
+	
+	<update id="deleteReservation" parameterType="ReservationInfo">
+		UPDATE 
+			reservation_info
+		SET 
+			cancel_flag = 1
+		WHERE 
+			id = #{reservationInfoId}
+	</update>
+
+	<insert id="insertReservation" parameterType="ReservationInfo" 
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO 
+			reservation_info (
+				display_info_id,
+				product_id,
+				reservation_name,
+				reservation_tel,
+				reservation_email,
+				reservation_date,
+				create_date,
+				modify_date
+			)
+		VALUES (
+			#{displayInfoId},
+			#{productId},
+			#{reservationName},
+			#{reservationTel},
+			#{reservationEmail},
+			#{reservationDate},
+			NOW(),
+			NOW()
+		)
+	</insert>
+</mapper>
