@@ -42,7 +42,7 @@ public class Comment {
 		return createdDate;
 	}
 
-	@JsonProperty("createdDate")
+	@JsonProperty("createdDateView")
 	public String getCreatedDateView() {
 		return createdDate.format(DateTimeFormatter.ofPattern("yyyy.M.d."));
 	}
@@ -79,7 +79,7 @@ public class Comment {
 		return reservationEmail;
 	}
 
-	@JsonProperty("maskedReservationEmail")
+	@JsonProperty("reservationEmail")
 	public String getReservationEmailView() {
 		return StringUtils.substring(reservationEmail, 0, 4) + "****";
 	}
