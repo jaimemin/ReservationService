@@ -42,7 +42,7 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		List<Comment> comments = commentDao.selectComments(displayInfoId, isDetailPage);
 		double scoreAverage;
 		
-		if(isDetailPage == true) {
+		if(isDetailPage) {
 			Double average = commentDao.selectCommentScoreAverage(displayInfoId);
 			scoreAverage = (average == null) ? 0.0 : average;
 		} else {
