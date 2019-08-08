@@ -6,6 +6,11 @@
 	<display-name>Archetype Created Web Application</display-name>
 	<error-page>
 		<error-code>404</error-code>
-		<location>/WEB-INF/views/error404.jsp</location>
+		<location>/htmls/error404.html</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>400</error-code>
+		<location>/htmls/error400.html</location>
 	</error-page>
 </web-app>
