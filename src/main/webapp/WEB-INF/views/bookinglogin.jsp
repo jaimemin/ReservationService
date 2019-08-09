@@ -80,7 +80,7 @@ ng\:form {
 					<div class="login_form">
 						<label class="label_form" for="resrv_id"
 							translate="CM-BOOKING_NUMBER">예약자 이메일 입력</label> <input
-							type="text"
+							type="email"
 							class="login_input ng-pristine ng-untouched ng-valid ng-empty"
 							id="resrv_id" name="resrv_email" aria-invalid="false"
 							placeholder="crong@naver.com" title="예매자이메일">
