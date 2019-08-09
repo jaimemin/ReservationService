@@ -80,7 +80,7 @@
 		WHERE
 			reservation_email = #{reservationEmail}
 		<choose>
-			<when test="ticketType == 0">
+			<when test="reservationType == 0">
 				<![CDATA[
 					AND
 						DATE_FORMAT(reservation_info.reservation_date, "%Y-c-%e") >= DATE_FORMAT(NOW(), "%Y-%c-%e")
@@ -88,7 +88,7 @@
 				AND 
 					reservation_info.cancel_flag = 0
 			</when>
-			<when test="ticketType == 1">
+			<when test="reservationType == 1">
 				<![CDATA[
 					AND
 						DATE_FORMAT(reservation_info.reservation_date, "%Y-c-%e") < DATE_FORMAT(NOW(), "%Y-%c-%e")
@@ -96,7 +96,7 @@
 				AND 
 					reservation_info.cancel_flag = 0
 			</when>
-			<when test="ticketType == 2">
+			<when test="reservationType == 2">
 				AND 
 					reservation_info.cancel_flag = 1
 			</when>
