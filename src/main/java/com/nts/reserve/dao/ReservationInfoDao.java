@@ -11,7 +11,8 @@ import com.nts.reserve.dto.ReservationInfo;
 public interface ReservationInfoDao {
 	ReservationInfo selectReservationInfo(int reservationInfoId);
 	
-	List<ReservationInfo> selectReservationInfos(@Param("reservationEmail") String reservationEmail);
+	List<ReservationInfo> selectReservationInfos(@Param("reservationEmail") String reservationEmail,
+			@Param("reservationType") int reservationType);
 	
 	int insertReservation(ReservationInfo reservation);
 	

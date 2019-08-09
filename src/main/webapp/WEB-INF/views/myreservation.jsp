@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -93,7 +94,7 @@
 														class="item_dsc"> 업체명이 없습니다. </em></li>
 												</ul>
 												<div class="price_summary">
-											
+
 													<span class="price_tit">결제 예정금액</span> <em
 														class="price_amount"> <span>000,000,000</span> <span
 														class="unit">원</span>

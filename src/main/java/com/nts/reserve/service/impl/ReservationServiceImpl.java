@@ -31,8 +31,8 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public List<ReservationInfo> getReservationInfos(String reservationEmail) {
-		return reservationInfoDao.selectReservationInfos(reservationEmail);
+	public List<ReservationInfo> getReservationInfos(String reservationEmail, int ticketType) {
+		return reservationInfoDao.selectReservationInfos(reservationEmail, ticketType);
 	}
 
 	@Override
