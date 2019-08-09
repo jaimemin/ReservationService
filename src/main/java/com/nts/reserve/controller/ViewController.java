@@ -2,6 +2,7 @@ package com.nts.reserve.controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.Cookie;
@@ -16,14 +17,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.nts.reserve.dto.ReservationInfo;
 import com.nts.reserve.service.DisplayInfoService;
 import com.nts.reserve.service.ReservationService;
 
 @Controller
 public class ViewController {
-	private static final int CONFIRMED = 0;
-	private static final int USED = 1;
-	private static final int CANCELED = 2;
 	private static final int MAX_PASSED_DAY = 5;
 	private final ReservationService reservationService;
 	private final DisplayInfoService displayInfoService;
@@ -62,12 +61,7 @@ public class ViewController {
 	public String reserve(@PathVariable("displayInfoId") int displayInfoId, ModelMap modelMap) {
 		modelMap.addAttribute("displayInfoId", displayInfoId);
 		modelMap.addAttribute("displayInfo", displayInfoService.getDisplayInfo(displayInfoId));
-		modelMap.addAttribute("reservationDate", 
-				DateTimeFormatter
-					.ofPattern("yyyy.M.d.")
-					.format(LocalDate
-							.now()
-							.plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1)));
+		modelMap.addAttribute("reservationDate", getReservationDate());
 
 		return "reserve";
 	}
@@ -79,9 +73,15 @@ public class ViewController {
 			return "redirect:/booking-login";
 		}
 
-		modelMap.addAttribute("confirmedList", reservationService.getReservationInfos(reservationEmail, CONFIRMED));
-		modelMap.addAttribute("usedList", reservationService.getReservationInfos(reservationEmail, USED));
-		modelMap.addAttribute("canceledList", reservationService.getReservationInfos(reservationEmail, CANCELED));
+		List<ReservationInfo> confirmedList = reservationService.getConfirmedReservationInfos(reservationEmail);
+		List<ReservationInfo> usedList = reservationService.getUsedReservationInfos(reservationEmail);
+		List<ReservationInfo> canceledList = reservationService.getCanceledReservationInfos(reservationEmail);
+		int totalListSize = confirmedList.size() + usedList.size() + canceledList.size();
+		
+		modelMap.addAttribute("confirmedList", confirmedList);
+		modelMap.addAttribute("usedList", usedList);
+		modelMap.addAttribute("canceledList", canceledList);
+		modelMap.addAttribute("totalReservation", totalListSize);
 
 		return "myreservation";
 	}
@@ -90,13 +90,13 @@ public class ViewController {
 	public String bookingLogin() {
 		return "bookinglogin";
 	}
+	
+	private String getReservationDate() {
+		return DateTimeFormatter
+				.ofPattern("yyyy.M.d.")
+				.format(LocalDate
+						.now()
+						.plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
 
-	@GetMapping(path = "/login")
-	public String login(@RequestParam(name = "resrv_email") String reservationEmail, HttpServletResponse response) {
-		Cookie cookie = new Cookie("reservationEmail", reservationEmail);
-		cookie.setMaxAge(-1);
-		response.addCookie(cookie);
-
-		return "redirect:/my-reservation";
 	}
 }
