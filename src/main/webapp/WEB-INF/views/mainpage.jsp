@@ -29,7 +29,7 @@
 					</a>
 				</h1>
 				<c:choose>
-					<c:when test="${reservationEmail ne null}">
+					<c:when test="${not empty reservationEmail}">
 						<a href="/Reservation/my-reservation" class="btn_my">
 							<span>${reservationEmail}</span>
 						</a>

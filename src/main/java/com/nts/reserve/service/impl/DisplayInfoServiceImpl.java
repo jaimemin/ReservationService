@@ -40,21 +40,9 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		}
 
 		List<Comment> comments = commentDao.selectComments(displayInfoId, isDetailPage);
-		double scoreAverage;
-		
-		if(isDetailPage) {
-			Double average = commentDao.selectCommentScoreAverage(displayInfoId);
-			scoreAverage = (average == null) ? 0.0 : average;
-		} else {
-			scoreAverage = comments.stream()
-					.mapToDouble(Comment::getScore)
-					.average()
-					.orElse(0.0);
-		}
-		
-		
+
 		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
-		displayInfoResponse.setAverageCommentScore(scoreAverage);
+		displayInfoResponse.setAverageCommentScore(commentDao.selectCommentScoreAverage(displayInfoId));
 		displayInfoResponse.setComments(comments);
 		displayInfoResponse.setDisplayInfo(displayInfoDao.selectDisplayInfo(displayInfoId));
 		displayInfoResponse.setDisplayInfoImage(displayInfoImageDao.selectDisplayInfoImage(displayInfoId));

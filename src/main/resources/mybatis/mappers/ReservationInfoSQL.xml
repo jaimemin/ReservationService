@@ -18,7 +18,7 @@
 			column="id"
 			javaType="java.util.List" 
 			ofType="ReservationPrice"
-			select="ReservationPriceDao.selectReservationPrices">
+			select="selectReservationPrices">
 		</collection>
 	</resultMap>
 	
@@ -36,14 +36,14 @@
 		 <collection
  			property="displayInfo"
  			column="displayInfoId"
- 			select="DisplayInfoDao.selectDisplayInfo">
+ 			select="com.nts.reserve.dao.DisplayInfoDao.selectDisplayInfo">
  		</collection>
 		<collection
  			property="totalPrice"
  			column="id"
  			javaType="int"
  			ofType="int"
- 			select="ReservationPriceDao.selectTotalPrice">
+ 			select="selectTotalPrice">
  		</collection>
 	</resultMap>
 
@@ -83,7 +83,7 @@
 			<when test="reservationType == 0">
 				<![CDATA[
 					AND
-						DATE_FORMAT(reservation_info.reservation_date, "%Y-c-%e") >= DATE_FORMAT(NOW(), "%Y-%c-%e")
+						reservation_info.reservation_date >= NOW()
 				]]>	
 				AND 
 					reservation_info.cancel_flag = 0
@@ -91,7 +91,7 @@
 			<when test="reservationType == 1">
 				<![CDATA[
 					AND
-						DATE_FORMAT(reservation_info.reservation_date, "%Y-c-%e") < DATE_FORMAT(NOW(), "%Y-%c-%e")
+						reservation_info.reservation_date < NOW()
 				]]>	
 				AND 
 					reservation_info.cancel_flag = 0
@@ -107,7 +107,8 @@
 		UPDATE 
 			reservation_info
 		SET 
-			cancel_flag = 1
+			cancel_flag = 1,
+			modify_date = NOW()
 		WHERE 
 			id = #{reservationInfoId}
 	</update>

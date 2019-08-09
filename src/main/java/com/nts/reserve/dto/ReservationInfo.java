@@ -1,6 +1,7 @@
 package com.nts.reserve.dto;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ReservationInfo {
@@ -10,7 +11,7 @@ public class ReservationInfo {
 	private int displayInfoId;
 	private String reservationName;
 	private String reservationTelephone;
-	private String reservatoinEmail;
+	private String reservationEmail;
 	private LocalDateTime reservationDate;
 	private int cancelFlag;
 	private LocalDateTime createdDate;
@@ -66,16 +67,20 @@ public class ReservationInfo {
 		this.reservationTelephone = reservationTelephone;
 	}
 
-	public String getReservatoinEmail() {
-		return reservatoinEmail;
+	public String getReservationEmail() {
+		return reservationEmail;
 	}
 
-	public void setReservatoinEmail(String reservatoinEmail) {
-		this.reservatoinEmail = reservatoinEmail;
+	public void setReservationEmail(String reservationEmail) {
+		this.reservationEmail = reservationEmail;
 	}
 
 	public LocalDateTime getReservationDate() {
 		return reservationDate;
+	}
+	
+	public String getReservationDateView() {
+		return reservationDate.format(DateTimeFormatter.ofPattern("yyyy.M.d."));
 	}
 
 	public void setReservationDate(LocalDateTime reservationDate) {
@@ -126,7 +131,7 @@ public class ReservationInfo {
 	public String toString() {
 		return "ReservationInfo [id=" + id + ", productId=" + productId + ", displayInfo=" + displayInfo
 				+ ", displayInfoId=" + displayInfoId + ", reservationName=" + reservationName
-				+ ", reservationTelephone=" + reservationTelephone + ", reservatoinEmail=" + reservatoinEmail
+				+ ", reservationTelephone=" + reservationTelephone + ", reservationEmail=" + reservationEmail
 				+ ", reservationDate=" + reservationDate + ", cancelFlag=" + cancelFlag + ", createdDate=" + createdDate
 				+ ", modifiedDate=" + modifiedDate + ", totalPrice=" + totalPrice + ", reservationPrices="
 				+ reservationPrices + "]";

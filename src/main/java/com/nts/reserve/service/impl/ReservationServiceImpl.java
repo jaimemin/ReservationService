@@ -15,6 +15,9 @@ import com.nts.reserve.service.ReservationService;
 @Service
 @Transactional
 public class ReservationServiceImpl implements ReservationService {
+	private static final int CONFIRMED = 0;
+	private static final int USED = 1;
+	private static final int CANCELED = 2;
 	private final ReservationInfoDao reservationInfoDao;
 	private final ReservationPriceDao reservationPriceDao;
 	
@@ -31,8 +34,18 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public List<ReservationInfo> getReservationInfos(String reservationEmail, int reservationType) {
-		return reservationInfoDao.selectReservationInfos(reservationEmail, reservationType);
+	public List<ReservationInfo> getConfirmedReservationInfos(String reservationEmail) {
+		return reservationInfoDao.selectReservationInfos(reservationEmail, CONFIRMED);
+	}
+	
+	@Override
+	public List<ReservationInfo> getUsedReservationInfos(String reservationEmail) {
+		return reservationInfoDao.selectReservationInfos(reservationEmail, USED);
+	}
+	
+	@Override
+	public List<ReservationInfo> getCanceledReservationInfos(String reservationEmail) {
+		return reservationInfoDao.selectReservationInfos(reservationEmail, CANCELED);
 	}
 
 	@Override
