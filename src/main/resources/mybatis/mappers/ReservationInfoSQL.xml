@@ -64,7 +64,7 @@
 			reservation_info = #{reservationInfoId}
 	</select>
 	
-	<select id="selectReservationInfos" parameterType="String" resultMap="reservationInfos">
+	<select id="selectReservationInfos" parameterType="map" resultMap="reservationInfos">
 		SELECT
 			id,
 			display_info_id AS displayInfoId,
@@ -79,6 +79,28 @@
 			reservation_info
 		WHERE
 			reservation_email = #{reservationEmail}
+		<choose>
+			<when test="ticketType == 0">
+				<![CDATA[
+					AND
+						DATE_FORMAT(reservation_info.reservation_date, "%Y-c-%e") >= DATE_FORMAT(NOW(), "%Y-%c-%e")
+				]]>	
+				AND 
+					reservation_info.cancel_flag = 0
+			</when>
+			<when test="ticketType == 1">
+				<![CDATA[
+					AND
+						DATE_FORMAT(reservation_info.reservation_date, "%Y-c-%e") < DATE_FORMAT(NOW(), "%Y-%c-%e")
+				]]>	
+				AND 
+					reservation_info.cancel_flag = 0
+			</when>
+			<when test="ticketType == 2">
+				AND 
+					reservation_info.cancel_flag = 1
+			</when>
+		</choose>
 	</select> 
 	
 	<update id="deleteReservation" parameterType="ReservationInfo">

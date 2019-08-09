@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <!-- saved from url=(0042)https://m.booking.naver.com/booked/confirm -->
 <html lang="ko" class="no-js">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
-@charset "UTF-8"; 
+@charset "UTF-8";
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak,
-	.x-ng-cloak, .ng-hide:not (.ng-hide-animate ){
+	.x-ng-cloak, .ng-hide:not (.ng-hide-animate ) {
 	display: none !important;
 }
 
@@ -49,6 +50,7 @@ ng\:form {
 <title translate="CM-NBOOKING">네이버 예약</title>
 <link rel="stylesheet" href="/Reservation/css/bookinglogin.css">
 </head>
+
 <body class="biz  ko">
 
 	<app> <toast-alert class="top_info hide booking_alert">
@@ -64,14 +66,14 @@ ng\:form {
 		<booked-confirm>
 		<div class="booking_login">
 			<h1 class="login_header">
-				<a href="/Reservation/" class="nbooking_logo spr_bi txt_logo">
-					<span translate="CM-NBOOKING">네이버 예약</span>
+				<a href="/Reservation/" class="nbooking_logo spr_bi txt_logo"> <span
+					translate="CM-NBOOKING">네이버 예약</span>
 				</a>
 			</h1>
 			<!---->
 			<div>
 				<form name="confirm_form" class="ng-pristine ng-valid" id="form1"
-					action="Reservation/my-reservation">
+					action="/Reservation/login">
 					<h2 class="login_header_sub border_bottom">
 						<span translate="CM-NON_MEMBER_BK_CONFIRMATION">비회원 예약확인</span>
 					</h2>
@@ -180,6 +182,6 @@ ng\:form {
 	</div>
 	</translater-modal> </app>
 
-
 </body>
+
 </html>
