@@ -209,13 +209,13 @@
 														<ul class="detail">
 															<li class="item"><span class="item_tit">일정</span> <em
 																class="item_dsc">
-																	${localDateTimeFormat.format(item.getReservationDate())}
+																	<fmt:formatNumber value="${reservedItem.totalPrice}" pattern="###,###,###" /></span>
 															</em></li>
 															<li class="item"><span class="item_tit">내역</span> <em
 																class="item_dsc"> 내역이 없습니다. </em></li>
 															<li class="item"><span class="item_tit">장소</span> <em
 																class="item_dsc">
-																	${item.getProduct().getPlaceName()} </em></li>
+																	${reservedItem.displayInfo.placeName} </em></li>
 															<li class="item"><span class="item_tit">업체</span> <em
 																class="item_dsc"> 업체명이 없습니다. </em></li>
 														</ul>
