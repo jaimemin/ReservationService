@@ -31,8 +31,8 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public List<ReservationInfo> getReservationInfos(String reservationEmail, int ticketType) {
-		return reservationInfoDao.selectReservationInfos(reservationEmail, ticketType);
+	public List<ReservationInfo> getReservationInfos(String reservationEmail, int reservationType) {
+		return reservationInfoDao.selectReservationInfos(reservationEmail, reservationType);
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public void addReservation(ReservationInfo reservation) {
+	public int addReservation(ReservationInfo reservation) {
 		reservationInfoDao.insertReservation(reservation);
 		
 		List<ReservationPrice> reservationPrices = reservation.getReservationPrices();
@@ -49,6 +49,8 @@ public class ReservationServiceImpl implements ReservationService {
 			.peek(price -> price.setReservationInfoId(reservation.getId()));
 		
 		reservationPriceDao.insertReservationPrices(reservationPrices);
+		
+		return reservation.getId();
 	}
 
 }

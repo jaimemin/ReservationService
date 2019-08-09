@@ -9,9 +9,9 @@ import com.nts.reserve.dto.ReservationInfo;
 public interface ReservationService {
 	ReservationInfo getReservationInfo(int reservationInfoId);
 	
-	List<ReservationInfo> getReservationInfos(String reservationEmail, int ticketType);
+	List<ReservationInfo> getReservationInfos(String reservationEmail, int reservationType);
 	
 	int modifyReservation(int reservationInfoId);
 	
-	void addReservation(ReservationInfo reservation);
+	int addReservation(ReservationInfo reservation);
 }
