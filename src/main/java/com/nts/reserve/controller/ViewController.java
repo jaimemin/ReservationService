@@ -5,9 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nts.reserve.dto.ReservationInfo;
 import com.nts.reserve.service.DisplayInfoService;
@@ -77,7 +73,7 @@ public class ViewController {
 		List<ReservationInfo> usedList = reservationService.getUsedReservationInfos(reservationEmail);
 		List<ReservationInfo> canceledList = reservationService.getCanceledReservationInfos(reservationEmail);
 		int totalListSize = confirmedList.size() + usedList.size() + canceledList.size();
-		
+
 		modelMap.addAttribute("confirmedList", confirmedList);
 		modelMap.addAttribute("usedList", usedList);
 		modelMap.addAttribute("canceledList", canceledList);
@@ -90,13 +86,10 @@ public class ViewController {
 	public String bookingLogin() {
 		return "bookinglogin";
 	}
-	
+
 	private String getReservationDate() {
-		return DateTimeFormatter
-				.ofPattern("yyyy.M.d.")
-				.format(LocalDate
-						.now()
-						.plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
+		return DateTimeFormatter.ofPattern("yyyy.M.d.")
+				.format(LocalDate.now().plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
 
 	}
 }
