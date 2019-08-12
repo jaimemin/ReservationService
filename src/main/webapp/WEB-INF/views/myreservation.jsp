@@ -296,7 +296,7 @@
 	</div>
 	<!--// 취소 팝업 -->
 
-	
+	<script src="/Reservation/js/myreservation.js"></script>
 </body>
 
 </html>
