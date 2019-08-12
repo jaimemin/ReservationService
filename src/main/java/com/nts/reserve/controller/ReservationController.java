@@ -2,6 +2,7 @@ package com.nts.reserve.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,10 +20,18 @@ public class ReservationController {
 		this.reservationService = reservationService;
 	}
 	
-	@PostMapping(value = "/reserve", consumes = "applicaiton/json")
-	public ReservationInfo reserve(@RequestBody ReservationInfo reservation) {
-		int reservationInfoId = reservationService.addReservation(reservation);
+	@PutMapping(value = "/reserve")
+	public ReservationInfo cancel(@RequestBody String reservationId) {
+		int reservedId = Integer.parseInt(reservationId);
+		reservationService.cancelReservation(reservedId);
 		
-		return reservationService.getReservationInfo(reservationInfoId);
+		return reservationService.getReservationInfo(reservedId);
+	}
+	
+	@PostMapping(value = "/reserve")
+	public ReservationInfo reserve(@RequestBody ReservationInfo reservation) {
+		reservationService.addReservation(reservation);
+		
+		return reservationService.getReservationInfo(reservation.getId());
 	}
 }

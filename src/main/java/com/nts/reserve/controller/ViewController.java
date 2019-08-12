@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.nts.reserve.dto.DisplayInfoResponse;
 import com.nts.reserve.dto.ReservationInfo;
 import com.nts.reserve.service.DisplayInfoService;
 import com.nts.reserve.service.ReservationService;
@@ -24,7 +25,8 @@ public class ViewController {
 	private final DisplayInfoService displayInfoService;
 
 	@Autowired
-	public ViewController(ReservationService reservationService, DisplayInfoService displayInfoService) {
+	public ViewController(ReservationService reservationService
+			, DisplayInfoService displayInfoService) {
 		this.reservationService = reservationService;
 		this.displayInfoService = displayInfoService;
 	}
@@ -55,8 +57,12 @@ public class ViewController {
 
 	@GetMapping(path = "/reserve/{displayInfoId}")
 	public String reserve(@PathVariable("displayInfoId") int displayInfoId, ModelMap modelMap) {
+		DisplayInfoResponse displayInfoResponse = displayInfoService.getDisplayInfoResponse(displayInfoId, false);
+		
 		modelMap.addAttribute("displayInfoId", displayInfoId);
 		modelMap.addAttribute("displayInfo", displayInfoService.getDisplayInfo(displayInfoId));
+		modelMap.addAttribute("productImage", displayInfoResponse.getProductImages());
+		modelMap.addAttribute("displayInfoResponse", displayInfoResponse);
 		modelMap.addAttribute("reservationDate", getReservationDate());
 
 		return "reserve";

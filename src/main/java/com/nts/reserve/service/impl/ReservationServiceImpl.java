@@ -49,7 +49,7 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public int modifyReservation(int reservationInfoId) {
+	public int cancelReservation(int reservationInfoId) {
 		return reservationInfoDao.updateReservation(reservationInfoId);
 	}
 
@@ -61,9 +61,7 @@ public class ReservationServiceImpl implements ReservationService {
 		reservationPrices.stream()
 			.peek(price -> price.setReservationInfoId(reservation.getId()));
 		
-		reservationPriceDao.insertReservationPrices(reservationPrices);
-		
-		return reservation.getId();
+		return reservationPriceDao.insertReservationPrices(reservationPrices);
 	}
 
 }
