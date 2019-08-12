@@ -13,7 +13,7 @@ public interface ReservationService {
 	
 	List<ReservationInfo> getCanceledReservationInfos(String reservationEmail);
 
-	int modifyReservation(int reservationInfoId);
+	int cancelReservation(int reservationInfoId);
 
 	int addReservation(ReservationInfo reservation);
 }

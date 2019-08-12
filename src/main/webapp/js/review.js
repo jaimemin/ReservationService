@@ -30,5 +30,5 @@ const requestDatas = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    requestDatas();
+	requestDatas();
 });
