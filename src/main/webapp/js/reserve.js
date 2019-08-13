@@ -129,13 +129,13 @@ const reserveTicket = () => {
 	params.reservationTelephone = document.querySelector("#tel").value;
 	params.reservationDate = document.querySelector("#reservation_date").innerText;
 	params.reservationPrices = [];
+	
 	ticketPriceList.forEach((ticketPrice) => {
 		let reservationPrice = {
 			"productPriceId": ticketPrice.querySelector("#price_id").value,
 			"count": Number(ticketPrice.querySelector(".count_control_input").value)
 		};
 
-		console.log(typeof reservationPrice.count);
 		params.reservationPrices.push(reservationPrice);
 	});
 	
@@ -260,8 +260,8 @@ const updateReserveButton = () => {
 }
 
 const registerReserveButtonEvents = () => {
-	window.addEventListener("click", updateReserveButton);
-	window.addEventListener("input", updateReserveButton);
+	document.addEventListener("click", updateReserveButton);
+	document.addEventListener("input", updateReserveButton);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

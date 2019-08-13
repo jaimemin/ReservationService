@@ -3,6 +3,7 @@ package com.nts.reserve.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 
 import com.nts.reserve.dao.ProductDao;
@@ -40,7 +41,13 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> getProducts(int categoryId, int start) {
-		return productDao.selectProducts(categoryId, start, UPPER_LIMIT_COUNT, THUMBNAIL);
+		List<Product> products = productDao.selectProducts(categoryId, start, UPPER_LIMIT_COUNT, THUMBNAIL);
+		if (products == null) {
+			throw new DataRetrievalFailureException(
+				"The expedted data could not be retrieved. categoryId: " + categoryId);
+		}
+
+		return products;
 	}
 
 	@Override
