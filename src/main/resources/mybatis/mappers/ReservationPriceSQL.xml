@@ -15,7 +15,9 @@
 
 	<select id="selectTotalPrice" resultType="_int">
 		SELECT 
-			SUM(reservationPrice.count * productPrice.price) AS 'TotalSum'
+			SUM(reservationPrice.count 
+				* productPrice.price 
+				* (100 - productPrice.discount_rate) / 100) AS 'TotalSum'
 		FROM 
 			reservation_info_price AS reservationPrice
 		INNER JOIN 

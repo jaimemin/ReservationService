@@ -21,6 +21,7 @@ import com.nts.reserve.service.ReservationService;
 @Controller
 public class ViewController {
 	private static final int MAX_PASSED_DAY = 5;
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy. MM. dd.");
 	private final ReservationService reservationService;
 	private final DisplayInfoService displayInfoService;
 
@@ -94,7 +95,7 @@ public class ViewController {
 	}
 
 	private String getReservationDate() {
-		return DateTimeFormatter.ofPattern("yyyy. MM. dd.")
+		return DATE_TIME_FORMATTER
 				.format(LocalDate.now().plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
 
 	}

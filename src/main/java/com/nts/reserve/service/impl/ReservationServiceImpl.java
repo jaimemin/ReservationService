@@ -1,6 +1,7 @@
 package com.nts.reserve.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,14 +58,15 @@ public class ReservationServiceImpl implements ReservationService {
 	public int addReservation(ReservationInfo reservation) {
 		reservationInfoDao.insertReservation(reservation);
 		
+		int reservationInfoId = reservation.getId();
 		List<ReservationPrice> reservationPrices = reservation.getReservationPrices();
 		for(ReservationPrice reservationPrice : reservationPrices) {
-			reservationPrice.setReservationInfoId(reservation.getId());
+			reservationPrice.setReservationInfoId(reservationInfoId);
 		}
 		
 		reservationPriceDao.insertReservationPrices(reservationPrices);
 		
-		return reservation.getId();
+		return reservationInfoId;
 	}
 
 }
