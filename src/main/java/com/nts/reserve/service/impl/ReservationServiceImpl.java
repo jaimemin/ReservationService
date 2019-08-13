@@ -58,10 +58,13 @@ public class ReservationServiceImpl implements ReservationService {
 		reservationInfoDao.insertReservation(reservation);
 		
 		List<ReservationPrice> reservationPrices = reservation.getReservationPrices();
-		reservationPrices.stream()
-			.peek(price -> price.setReservationInfoId(reservation.getId()));
+		for(ReservationPrice reservationPrice : reservationPrices) {
+			reservationPrice.setReservationInfoId(reservation.getId());
+		}
 		
-		return reservationPriceDao.insertReservationPrices(reservationPrices);
+		reservationPriceDao.insertReservationPrices(reservationPrices);
+		
+		return reservation.getId();
 	}
 
 }

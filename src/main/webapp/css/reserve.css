@@ -1,0 +1,9 @@
+.show_warning {
+	visibility: visible;
+	position: relative;
+}
+
+.hide_warning {
+	visibility: hidden;
+	position: absolute;
+}

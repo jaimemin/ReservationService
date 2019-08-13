@@ -94,7 +94,7 @@ public class ViewController {
 	}
 
 	private String getReservationDate() {
-		return DateTimeFormatter.ofPattern("yyyy.M.d.")
+		return DateTimeFormatter.ofPattern("yyyy. MM. dd.")
 				.format(LocalDate.now().plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
 
 	}

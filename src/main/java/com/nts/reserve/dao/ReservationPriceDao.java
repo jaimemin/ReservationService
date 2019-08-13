@@ -2,6 +2,7 @@ package com.nts.reserve.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.nts.reserve.dto.ReservationPrice;
@@ -12,5 +13,5 @@ public interface ReservationPriceDao {
 	
 	int selectTotalPrice(int reservationInfoId);
 	
-	int insertReservationPrices(List<ReservationPrice> reservationPrices);
+	int insertReservationPrices(@Param("reservationPrices") List<ReservationPrice> reservationPrices);
 }

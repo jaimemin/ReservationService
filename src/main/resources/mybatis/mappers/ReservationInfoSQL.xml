@@ -18,7 +18,7 @@
 			column="id"
 			javaType="java.util.List" 
 			ofType="ReservationPrice"
-			select="selectReservationPrices">
+			select="com.nts.reserve.dao.ReservationPriceDao.selectReservationPrices">
 		</collection>
 	</resultMap>
 	
@@ -43,7 +43,7 @@
  			column="id"
  			javaType="int"
  			ofType="int"
- 			select="selectTotalPrice">
+ 			select="com.nts.reserve.dao.ReservationPriceDao.selectTotalPrice">
  		</collection>
 	</resultMap>
 
@@ -61,7 +61,7 @@
 		FROM
 			reservation_info
 		WHERE
-			reservation_info = #{reservationInfoId}
+			id = #{reservationInfoId}
 	</select>
 	
 	<select id="selectReservationInfos" parameterType="map" resultMap="reservationInfos">
@@ -83,7 +83,7 @@
 			<when test="reservationType == 0">
 				<![CDATA[
 					AND
-						reservation_info.reservation_date >= NOW()
+						reservation_info.reservation_date >= DATE_FORMAT(NOW(), "%Y-%c-%e")
 				]]>	
 				AND 
 					reservation_info.cancel_flag = 0
@@ -91,7 +91,7 @@
 			<when test="reservationType == 1">
 				<![CDATA[
 					AND
-						reservation_info.reservation_date < NOW()
+						reservation_info.reservation_date < DATE_FORMAT(NOW(), "%Y-%c-%e")
 				]]>	
 				AND 
 					reservation_info.cancel_flag = 0
@@ -103,7 +103,7 @@
 		</choose>
 	</select> 
 	
-	<update id="deleteReservation" parameterType="ReservationInfo">
+	<update id="updateReservation" parameterType="int">
 		UPDATE 
 			reservation_info
 		SET 
@@ -130,7 +130,7 @@
 			#{displayInfoId},
 			#{productId},
 			#{reservationName},
-			#{reservationTel},
+			#{reservationTelephone},
 			#{reservationEmail},
 			#{reservationDate},
 			NOW(),
