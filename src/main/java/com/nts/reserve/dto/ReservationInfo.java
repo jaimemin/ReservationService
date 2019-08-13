@@ -1,19 +1,23 @@
 package com.nts.reserve.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ReservationInfo {
 	private int id;
-	private int productId;
 	private DisplayInfo displayInfo;
 	private int displayInfoId;
+	private int productId;
 	private String reservationName;
 	private String reservationTelephone;
 	private String reservationEmail;
-	private LocalDateTime reservationDate;
 	private int cancelFlag;
+	@JsonFormat(pattern = "yyyy. MM. dd.")
+	private LocalDate reservationDate;
 	private LocalDateTime createdDate;
 	private LocalDateTime modifiedDate;
 	private int totalPrice;
@@ -75,15 +79,15 @@ public class ReservationInfo {
 		this.reservationEmail = reservationEmail;
 	}
 
-	public LocalDateTime getReservationDate() {
+	public LocalDate getReservationDate() {
 		return reservationDate;
 	}
 	
 	public String getReservationDateView() {
-		return reservationDate.format(DateTimeFormatter.ofPattern("yyyy.M.d."));
+		return reservationDate.format(DateTimeFormatter.ofPattern("yyyy. MM. dd."));
 	}
 
-	public void setReservationDate(LocalDateTime reservationDate) {
+	public void setReservationDate(LocalDate reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 

@@ -25,10 +25,14 @@ const cancelReservation = () => {
 		}
 	}
 
+	let params = {};
+	let reservationId = Number(document.querySelector(".booking_number").innerText.replace(/[^0-9]/g, ""));
+	params.id = reservationId;
+	
 	let url = `/Reservation/api/reserve`;
-	let reservationId = document.querySelector(".booking_number").innerText.replace(/[^0-9]/g, "");
 	xmlHttpRequest.open("PUT", url);
-	xmlHttpRequest.send(reservationId);
+	xmlHttpRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+	xmlHttpRequest.send(JSON.stringify(params));
 }
 
 document.addEventListener("DOMContentLoaded", () => {

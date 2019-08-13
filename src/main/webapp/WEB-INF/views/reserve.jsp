@@ -13,6 +13,7 @@
 		content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
 	<title>네이버 예약</title>
 	<link href="/Reservation/css/style.css" rel="stylesheet">
+	<link href="/Reservation/css/reserve.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,6 +67,8 @@
 						<c:forEach var="productPrice" items="${displayInfoResponse.productPrices}">
 							<div class="qty">
 								<fmt:formatNumber value="${productPrice.price}" pattern="#,###" var="formattedPrice"/>
+								<fmt:formatNumber value="${productPrice.price * (100 - productPrice.discountRate) / 100}" pattern="#,###" var="formattedDiscountPrice"/>
+								<input type="hidden" id="price_id" value="${productPrice.id}">
 								<div class="count_control">
 									<!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
 									<div class="clearfix">
@@ -82,12 +85,12 @@
 								</div>
 								<div class="qty_info_icon">
 									<strong class="product_amount"> <span>${productPrice.priceTypeName}</span>
-									</strong> <strong class="product_price"> <span class="price">${formattedPrice}</span>
+									</strong> <strong class="product_price"> <span class="price">${formattedDiscountPrice}</span>
 										<span class="price_type">원</span>
 									</strong> <em class="product_dsc">${formattedPrice}원 (${productPrice.discountRate}% 할인가)</em>
 								</div>
 							</div>
-						</c:forEach>
+						</c:forEach> 
 					</div>
 				</div>
 				<div class="section_booking_form">
@@ -105,17 +108,17 @@
 									<div class="inline_control">
 										<input type="text" name="name" id="name" class="text"
 											placeholder="네이버" maxlength="17">
-										<div class="warning_msg name">이름을 입력해야 합니다.</div>
+										<div class="warning_msg name show_warning">이름을 입력해야 합니다.</div>
 									</div>
 								</div>
 								<div class="inline_form">
 									<label class="label" for="tel"> <span
 										class="spr_book ico_nessasary">필수</span> <span>연락처</span>
 									</label>
-									<div class="inline_control tel_wrap">
+									<div class="inline_control">
 										<input type="tel" name="tel" id="tel" class="tel" value=""
 											placeholder="휴대폰 입력 시 예매내역 문자발송">
-										<div class="warning_msg tel">형식이 틀렸습니다.</div>
+										<div class="warning_msg tel show_warning">형식이 틀렸습니다.</div>
 									</div>
 								</div>
 								<div class="inline_form">
@@ -125,14 +128,14 @@
 									<div class="inline_control">
 										<input type="email" name="email" id="email" class="email"
 											value="" placeholder="crong@codesquad.kr" maxlength="50">
-										<div class="warning_msg email">형식이 틀렸습니다.</div>
+										<div class="warning_msg email show_warning">형식이 틀렸습니다.</div>
 									</div>
 								</div>
 								<div class="inline_form last">
 									<label class="label" for="message">예매내용</label>
 									<div class="inline_control">
 										<p class="inline_txt selected">
-											<span id="reservateDate">${reservationDate}</span>, 총 <span
+											<span id="reservation_date">${reservationDate}</span>, 총 <span
 												id="totalCount">0</span>매
 										</p>
 									</div>
@@ -154,7 +157,7 @@
 						<div class="agreement">
 							<span class="chk_txt_span"> <i
 								class="spr_book ico_arr_ipc2"></i> <span>개인정보 제3자 제공 동의</span>
-							</span> <a class="btn_agreement"> <span class="btn_text">보기</span> <i
+							</span> <a class="btn_agreement"> <span class="btn_text" id="show_agreement1">보기</span> <i
 								class="fn fn-down2"></i>
 							</a>
 							<div class="useragreement_details">
@@ -172,7 +175,7 @@
 						<div class="agreement">
 							<span class="chk_txt_span"> <i
 								class="spr_book ico_arr_ipc2"></i> <span>개인정보 제3자 제공 동의</span>
-							</span> <a href="#" class="btn_agreement"> <span class="btn_text">보기</span>
+							</span> <a href="#" class="btn_agreement"> <span class="btn_text" id="show_agreement2">보기</span>
 								<i class="fn fn-down2"></i>
 							</a>
 							<div class="useragreement_details custom_details_wrap">
@@ -214,7 +217,8 @@
 	</footer>
 	<input type="hidden" id="display_info_id" value="${displayInfoId }">
 	<input type="hidden" id="product_id" value="${displayInfo.productId}">
-	<input type="hidden" id="price_id" value="${productPrice.id}">
+	
+	<script src="/Reservation/js/reserve.js"></script>
 </body>
 
 </html>

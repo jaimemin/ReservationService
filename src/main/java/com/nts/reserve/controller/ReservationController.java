@@ -20,18 +20,17 @@ public class ReservationController {
 		this.reservationService = reservationService;
 	}
 	
-	@PutMapping(value = "/reserve")
-	public ReservationInfo cancel(@RequestBody String reservationId) {
-		int reservedId = Integer.parseInt(reservationId);
-		reservationService.cancelReservation(reservedId);
-		
-		return reservationService.getReservationInfo(reservedId);
-	}
-	
-	@PostMapping(value = "/reserve")
-	public ReservationInfo reserve(@RequestBody ReservationInfo reservation) {
-		reservationService.addReservation(reservation);
+	@PutMapping(value = "/reserve", consumes = "application/json")
+	public ReservationInfo cancel(@RequestBody ReservationInfo reservation) {
+		reservationService.cancelReservation(reservation.getId());
 		
 		return reservationService.getReservationInfo(reservation.getId());
+	}
+	
+	@PostMapping(value = "/reserve", consumes = "application/json")
+	public ReservationInfo reserve(@RequestBody ReservationInfo reservation) {
+		int reservationId = reservationService.addReservation(reservation);
+		
+		return reservationService.getReservationInfo(reservationId);
 	}
 }
