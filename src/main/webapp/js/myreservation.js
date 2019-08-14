@@ -16,19 +16,28 @@ const showDialog = (event) => {
 	let popupName = dialog.querySelector(".popup_name");
 	let reservedDate = dialog.querySelector(".sm");
 	let cancelButton = dialog.querySelector(".btn_gray");
+	let closeButton = dialog.querySelector(".popup_btn_close");
 	let confirmButton = dialog.querySelector(".btn_green");
 	let cardBody = event.target.closest(".card_body");
 	let reservationId = Number(cardBody.querySelector(".booking_number").innerText.replace(/[^0-9]/g, ""));
 	
 	popupName.innerText = cardBody.querySelector(".product_description").innerText;
 	reservedDate.innerText = cardBody.querySelector(".item_dsc").innerText;
-	dialog.style.display = "block";
+	dialog.classList.toggle("hide_dialog");
+	dialog.classList.toggle("show_dialog");
 	
+	closeButton.addEventListener("click", () => {
+		dialog.classList.toggle("hide_dialog");
+		dialog.classList.toggle("show_dialog");
+	});
 	cancelButton.addEventListener("click", () => {
-		dialog.style.display = "none";
+		dialog.classList.toggle("hide_dialog");
+		dialog.classList.toggle("show_dialog");
 	});
 	confirmButton.addEventListener("click", () => {
-		dialog.style.display = "none";
+		dialog.classList.toggle("hide_dialog");
+		dialog.classList.toggle("show_dialog");
+		
 		cancelReservation(reservationId);
 	});
 }
