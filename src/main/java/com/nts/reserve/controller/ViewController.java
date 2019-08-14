@@ -96,6 +96,7 @@ public class ViewController {
 		modelMap.addAttribute("usedList", usedList);
 		modelMap.addAttribute("canceledList", canceledList);
 		modelMap.addAttribute("totalReservation", totalListSize);
+		modelMap.addAttribute("reservationEmail", reservationEmail);
 
 		return "myreservation";
 	}
