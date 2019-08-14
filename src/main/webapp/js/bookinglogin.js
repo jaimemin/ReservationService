@@ -1,3 +1,5 @@
+let emailValid = false;
+
 const registerInputKeyDownEvent = () => {
 	let email = document.querySelector(".login_input");
 	
@@ -23,4 +25,13 @@ const checkEmailValidation = (event) => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	registerInputKeyDownEvent();
+	document.addEventListener("input", () => {
+		let registerButton = document.querySelector(".login_btn.confirm");
+		
+		if (emailValid) {
+			registerButton.disabled = false;
+		} else {
+			registerButton.disabled = true;
+		}
+	});
 });

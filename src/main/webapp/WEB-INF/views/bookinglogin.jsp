@@ -87,7 +87,7 @@
 							placeholder="crong@naver.com" title="예매자이메일">
 						<div class="warning_msg email show_warning">형식이 틀렸습니다.</div>
 					</div>
-					<button type="submit" form="form1" class="login_btn confirm">
+					<button type="submit" form="form1" class="login_btn confirm" disabled>
 						<span translate="CM-MY_BOOKING_CHECK">내 예약 확인</span>
 					</button>
 					<!---->
