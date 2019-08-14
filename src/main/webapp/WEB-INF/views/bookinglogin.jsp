@@ -5,50 +5,51 @@
 <html lang="ko" class="no-js">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css">
-@charset "UTF-8";
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak,
-	.x-ng-cloak, .ng-hide:not (.ng-hide-animate ) {
-	display: none !important;
-}
-
-ng\:form {
-	display: block;
-}
-
-.ng-animate-shim {
-	visibility: hidden;
-}
-
-.ng-anchor {
-	position: absolute;
-}
-</style>
-<!--<base href="/">-->
-<base href=".">
-<!--[if IE]>
-      <script type="text/javascript">
-         // Fix for IE ignoring relative base tags.
-         (function () {
-             var baseTag = document.getElementsByTagName('base')[ 0 ];
-             baseTag.href = baseTag.href;
-         })();
-      </script>
-      <![endif]-->
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
-<meta http-equiv="pragma" content="no-cache">
-<meta name="description"
-	content="네이버 예약, 네이버 예약이 연동된 곳 어디서나 바로 예약하고, 네이버 예약 홈(나의예약)에서 모두 관리할 수 있습니다.">
-<meta name="viewport"
-	content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
-<meta name="format-detection"
-	content="telephone=no, address=no, email=no">
-<title translate="CM-NBOOKING">네이버 예약</title>
-<link rel="stylesheet" href="/Reservation/css/bookinglogin.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+	@charset "UTF-8";
+	
+	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak,
+		.x-ng-cloak, .ng-hide:not (.ng-hide-animate ) {
+		display: none !important;
+	}
+	
+	ng\:form {
+		display: block;
+	}
+	
+	.ng-animate-shim {
+		visibility: hidden;
+	}
+	
+	.ng-anchor {
+		position: absolute;
+	}
+	</style>
+	<!--<base href="/">-->
+	<base href=".">
+	<!--[if IE]>
+	      <script type="text/javascript">
+	         // Fix for IE ignoring relative base tags.
+	         (function () {
+	             var baseTag = document.getElementsByTagName('base')[ 0 ];
+	             baseTag.href = baseTag.href;
+	         })();
+	      </script>
+	      <![endif]-->
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta name="description"
+		content="네이버 예약, 네이버 예약이 연동된 곳 어디서나 바로 예약하고, 네이버 예약 홈(나의예약)에서 모두 관리할 수 있습니다.">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<meta name="format-detection"
+		content="telephone=no, address=no, email=no">
+	<title translate="CM-NBOOKING">네이버 예약</title>
+	<link rel="stylesheet" href="/Reservation/css/bookinglogin.css">
+	<link rel="stylesheet" href="/Reservation/css/reserve.css">
 </head>
 
 <body class="biz  ko">
@@ -84,6 +85,7 @@ ng\:form {
 							class="login_input ng-pristine ng-untouched ng-valid ng-empty"
 							id="resrv_id" name="resrv_email" aria-invalid="false"
 							placeholder="crong@naver.com" title="예매자이메일">
+						<div class="warning_msg email show_warning">형식이 틀렸습니다.</div>
 					</div>
 					<button type="submit" form="form1" class="login_btn confirm">
 						<span translate="CM-MY_BOOKING_CHECK">내 예약 확인</span>
@@ -182,6 +184,7 @@ ng\:form {
 	</div>
 	</translater-modal> </app>
 
+	<script src="/Reservation/js/bookinglogin.js"></script>
 </body>
 
 </html>
