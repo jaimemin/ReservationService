@@ -13,6 +13,7 @@
 	content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
 <title>네이버 예약</title>
 <link href="/Reservation/css/style.css" rel="stylesheet">
+<link href="/Reservation/css/myreservation.css" rel="stylesheet">
 </head>
 
 <body>
@@ -270,7 +271,7 @@
 
 	<!-- 취소 팝업 -->
 	<!-- [D] 활성화 display:block, 아니오 버튼 or 닫기 버튼 클릭 시 숨김 display:none; -->
-	<div class="popup_booking_wrapper" style="display: none;">
+	<div class="popup_booking_wrapper hide_dialog">
 		<div class="dimm_dark" style="display: block"></div>
 		<div class="popup_booking refund">
 			<h1 class="pop_tit">
