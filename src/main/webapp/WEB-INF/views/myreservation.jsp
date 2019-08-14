@@ -199,7 +199,8 @@
 											<div class="right"></div>
 										</div>
 									</div>
-								</c:if> <c:forEach items="${canceledList}" var="reservedItem">
+								</c:if> 
+								<c:forEach items="${canceledList}" var="reservedItem">
 									<article class="card_item">
 										<a href="#" class="link_booking_details">
 											<div class="card_body">
