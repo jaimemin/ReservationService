@@ -1,5 +1,16 @@
 const ERROR_STATUS = 400;
 const COMPLETE_STATE = 4;
+const PRICE_TYPE = {
+	'A': '성인',
+	'Y': '청소년',
+	'B': '유아',
+	'S': '셋트',
+	'D': '장애인',
+	'C': '지역주민',
+	'E': '얼리버드',
+	'V': 'VIP',
+	'D': '평일'
+};
 
 let ticketPriceList = [];
 let nameValid = false;
@@ -10,51 +21,33 @@ let agreementChecked = false;
 const checkEmailValidation = (event) => {
 	let email = event.target.value;
 	let emailWarningText = document.querySelector(".warning_msg.email");
+	emailValid = email.match(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);
 	
-	if (email.match(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i)) {
+	if (emailValid) {
 		emailWarningText.classList.remove("show_warning");
 		emailWarningText.classList.add("hide_warning");
-		
-		emailValid = true;
-	} else {
-		emailWarningText.classList.add("show_warning");
-		emailWarningText.classList.remove("hide_warning");
-		
-		emailValid = false;
 	}
 }
 
 const checkTelephoneValidation = (event) => {
 	let telephone = event.target.value;
 	let telephoneWarningText = document.querySelector(".warning_msg.tel");
+	telephoneValid = telephone.match(/01[016789]-[0-9]{3,4}-[0-9]{4}/);
 	
-	if (telephone.match(/01[016789]-[0-9]{3,4}-[0-9]{4}/)) {
+	if (telephoneValid) {
 		telephoneWarningText.classList.remove("show_warning");
 		telephoneWarningText.classList.add("hide_warning");
-		
-		telephoneValid = true;
-	} else {
-		telephoneWarningText.classList.add("show_warning");
-		telephoneWarningText.classList.remove("hide_warning");
-		
-		telephoneValid = false;
 	}
 }
 
 const checkNameValidation = (event) => {
 	let name = event.target.value;
 	let nameWarningText = document.querySelector(".warning_msg.name");
+	nameValid = name.match(/.+/g);
 	
-	if (name.match(/.+/g)) {
+	if (nameValid) {
 		nameWarningText.classList.remove("show_warning");
 		nameWarningText.classList.add("hide_warning");
-
-		nameValid = true;
-	} else {
-		nameWarningText.classList.add("show_warning");
-		nameWarningText.classList.remove("hide_warning");
-
-		nameValid = false;
 	}
 }
 
@@ -66,16 +59,6 @@ const registerInputKeyDownEvent = () => {
 	name.addEventListener("input", checkNameValidation);
 	telephone.addEventListener("input", checkTelephoneValidation);
 	email.addEventListener("input", checkEmailValidation);
-}
-
-const isReserveReady = () => {
-	let totalTicketCount = document.querySelector("#totalCount");
-	
-	return totalTicketCount.innerText > 0
-		&& nameValid 
-		&& telephoneValid 
-		&& emailValid
-		&& agreementChecked;
 }
 
 const clickCheckBox = (event) => {
@@ -106,6 +89,40 @@ const registerAgreementClickEvent = () => {
 	firstAgreementButton.addEventListener("click", showAgreementContent);
 	secondAgreementButton.addEventListener("click", showAgreementContent);
 }
+
+const checkInputValidation = () => {
+	let emailWarningText = document.querySelector(".warning_msg.email");
+	let telephoneWarningText = document.querySelector(".warning_msg.tel");
+	let nameWarningText = document.querySelector(".warning_msg.name");
+	
+	if (nameValid) {
+		nameWarningText.classList.remove("show_warning");
+		nameWarningText.classList.add("hide_warning");
+	} else {
+		nameWarningText.classList.add("show_warning");
+		nameWarningText.classList.remove("hide_warning");
+	}
+	
+	if (emailValid) {
+		emailWarningText.classList.remove("show_warning");
+		emailWarningText.classList.add("hide_warning");
+	} else {
+		emailWarningText.classList.add("show_warning");
+		emailWarningText.classList.remove("hide_warning");
+	}
+	
+	if (telephoneValid) {
+		telephoneWarningText.classList.remove("show_warning");
+		telephoneWarningText.classList.add("hide_warning");
+	} else {
+		telephoneWarningText.classList.add("show_warning");
+		telephoneWarningText.classList.remove("hide_warning");
+	}
+	
+	return nameValid 
+		&& emailValid 
+		&& telephoneValid;
+}
 	
 const reserveTicket = () => {
 	let xmlHttpRequest = new XMLHttpRequest();
@@ -120,7 +137,19 @@ const reserveTicket = () => {
 			window.location.href = "/Reservation/my-reservation";
 		}
 	}
-
+	
+	if (checkInputValidation() === false) {
+		alert("입력한 항목을 다시 확인해주세요.");
+		return;
+	}
+	
+	let totalTicketCount = document.querySelector("#totalCount").innerText;
+	
+	if(totalTicketCount <= 0) {
+		alert("티켓을 하나 이상 구매하셔야합니다.");
+		return;
+	}
+	
 	let params = {};
 	params.displayInfoId = document.querySelector("#display_info_id").value;
 	params.productId = document.querySelector("#product_id").value;
@@ -249,43 +278,16 @@ const setTicketPrices = () => {
 
 const setTicketPriceType = (ticketPrice) => {
 	let ticketPriceType = ticketPrice.querySelector(".product_price_type");
+	let key = ticketPriceType.innerText;
 	
-	switch(ticketPriceType.innerText) {
-	case "A":
-		ticketPriceType.innerText = "성인";
-		break;
-	case "Y":
-		ticketPriceType.innerText = "청소년";
-		break;
-	case "B":
-		ticketPriceType.innerText = "유아";
-		break;
-	case "S":
-		ticketPriceType.innerText = "셋트";
-		break;
-	case "D":
-		ticketPriceType.innerText = "장애인";
-		break;
-	case "C":
-		ticketPriceType.innerText = "지역주민";
-		break;
-	case "E":
-		ticketPriceType.innerText = "얼리버드";
-		break;
-	case "V":
-		ticketPriceType.innerText = "VIP";
-		break;
-	case "D":
-		ticketPriceType.innerText = "평일";
-		break;
-	}
+	ticketPriceType.innerText = PRICE_TYPE[key];
 }
 
 const updateReserveButton = () => {
 	let reserveButtonWrap = document.querySelector(".bk_btn_wrap");
 	let reserveButton = document.querySelector(".bk_btn");
-	
-	if (isReserveReady()) {
+
+	if (agreementChecked) {
 		reserveButtonWrap.classList.remove("disable");
 		reserveButton.disabled = false;
 	} else {
@@ -296,7 +298,6 @@ const updateReserveButton = () => {
 
 const registerReserveButtonEvents = () => {
 	document.addEventListener("click", updateReserveButton);
-	document.addEventListener("input", updateReserveButton);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
