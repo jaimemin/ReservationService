@@ -27,8 +27,8 @@
 						class="spr_bi ico_bk_logo">예약</span>
 					</a>
 				</h1>
-				<a href="#" class="btn_my"> <span title="내예약"
-					class="viewReservation"></span>
+				<a href="#" class="btn_my"> <span title="로그아웃"
+					class="viewReservation">로그아웃</span>
 				</a>
 			</header>
 		</div>
@@ -298,7 +298,8 @@
 		</div>
 	</div>
 	<!--// 취소 팝업 -->
-
+	<input type="hidden" id="reservation_email" value="${reservationEmail}">
+	
 	<script src="/Reservation/js/myreservation.js"></script>
 </body>
 

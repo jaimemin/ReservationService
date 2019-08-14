@@ -3,12 +3,22 @@ const COMPLETE_STATE = 4;
 
 const registerClickEvents = () => {
 	let confirmedReservations = document.querySelector(".card.confirmed").querySelectorAll(".card_item");
+	let logoutButton = document.querySelector(".viewReservation");
 	
+	logoutButton.addEventListener("click", logout);
 	confirmedReservations.forEach((reservation) => {
 		let cancelButton = reservation.querySelector(".booking_cancel .btn")
 		
 		cancelButton.addEventListener("click", showDialog);
 	});
+	
+}
+
+const logout = () => {
+	let email = document.querySelector("#reservation_email").value;
+	
+	document.cookie = `reservationEmail=${email}; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+	window.location.href = "/Reservation/";
 }
 
 const showDialog = (event) => {
