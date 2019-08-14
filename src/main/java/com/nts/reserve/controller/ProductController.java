@@ -21,8 +21,7 @@ public class ProductController {
 	private final DisplayInfoService displayInfoService;
 
 	@Autowired
-	public ProductController(ProductService productService
-			, DisplayInfoService displayInfoService) {
+	public ProductController(ProductService productService, DisplayInfoService displayInfoService) {
 		this.productService = productService;
 		this.displayInfoService = displayInfoService;
 	}
@@ -31,12 +30,20 @@ public class ProductController {
 	public List<Product> getProducts(
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
+		if (categoryId < 0) {
+			throw new IllegalArgumentException("invalid categoryId: categoryId must not be under zero");
+		}
+
 		return productService.getProducts(categoryId, start);
 	}
 
 	@GetMapping("/products/{displayInfoId}")
 	public DisplayInfoResponse getDisplayInfoResponse(@PathVariable("displayInfoId") int displayInfoId,
 				@RequestParam(name = "is-detail-page", required = false, defaultValue = "true") boolean isDetailPage) {
+		if (displayInfoId <= 0) {
+			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
+		}
+		
 		return displayInfoService.getDisplayInfoResponse(displayInfoId, isDetailPage);
 	}
 

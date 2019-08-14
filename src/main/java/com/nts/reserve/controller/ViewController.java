@@ -26,8 +26,7 @@ public class ViewController {
 	private final DisplayInfoService displayInfoService;
 
 	@Autowired
-	public ViewController(ReservationService reservationService
-			, DisplayInfoService displayInfoService) {
+	public ViewController(ReservationService reservationService, DisplayInfoService displayInfoService) {
 		this.reservationService = reservationService;
 		this.displayInfoService = displayInfoService;
 	}
@@ -43,6 +42,10 @@ public class ViewController {
 	@GetMapping(path = "/detail/{displayInfoId}")
 	public String detail(@PathVariable("displayInfoId") int displayInfoId,
 			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, Model modelMap) {
+		if (displayInfoId <= 0) {
+			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
+		}
+
 		modelMap.addAttribute("displayInfoId", displayInfoId);
 		modelMap.addAttribute("reservationEmail", reservationEmail);
 
@@ -51,6 +54,10 @@ public class ViewController {
 
 	@GetMapping(path = "/review/{displayInfoId}")
 	public String allReview(@PathVariable("displayInfoId") int displayInfoId, Model model) {
+		if (displayInfoId <= 0) {
+			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
+		}
+
 		model.addAttribute("displayInfoId", displayInfoId);
 
 		return "review";
@@ -58,8 +65,12 @@ public class ViewController {
 
 	@GetMapping(path = "/reserve/{displayInfoId}")
 	public String reserve(@PathVariable("displayInfoId") int displayInfoId, ModelMap modelMap) {
+		if (displayInfoId <= 0) {
+			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
+		}
+
 		DisplayInfoResponse displayInfoResponse = displayInfoService.getDisplayInfoResponse(displayInfoId, false);
-		
+
 		modelMap.addAttribute("displayInfoId", displayInfoId);
 		modelMap.addAttribute("displayInfo", displayInfoService.getDisplayInfo(displayInfoId));
 		modelMap.addAttribute("productImage", displayInfoResponse.getProductImages());
@@ -96,7 +107,8 @@ public class ViewController {
 
 	private String getReservationDate() {
 		return DATE_TIME_FORMATTER
-				.format(LocalDate.now().plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
-
+				.format(LocalDate
+						.now()
+						.plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
 	}
 }

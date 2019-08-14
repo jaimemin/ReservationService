@@ -36,10 +36,6 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 
 	@Override
 	public DisplayInfoResponse getDisplayInfoResponse(int displayInfoId, boolean isDetailPage) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId");
-		}
-
 		List<Comment> comments = commentDao.selectComments(displayInfoId, isDetailPage);
 
 		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
@@ -56,19 +52,11 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 	
 	@Override
 	public DisplayInfo getDisplayInfo(int displayInfoId) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId");
-		}
-		
 		return displayInfoDao.selectDisplayInfo(displayInfoId);
 	}
 	
 	@Override
 	public DisplayInfoImage getDisplayInfoImage(int displayInfoId) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId");
-		}
-		
 		return displayInfoImageDao.selectDisplayInfoImage(displayInfoId);
 	}
 }

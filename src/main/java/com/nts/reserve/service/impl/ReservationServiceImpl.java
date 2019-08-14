@@ -60,6 +60,7 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		int reservationInfoId = reservation.getId();
 		List<ReservationPrice> reservationPrices = reservation.getReservationPrices();
+		
 		for(ReservationPrice reservationPrice : reservationPrices) {
 			reservationPrice.setReservationInfoId(reservationInfoId);
 		}

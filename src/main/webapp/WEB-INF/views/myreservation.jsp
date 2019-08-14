@@ -64,8 +64,8 @@
 					<div class="wrap_mylist">
 						<ul class="list_cards" ng-if="bookedLists.length > 0">
 							<!--[D] 예약확정: .confirmed, 취소된 예약&이용완료: .used 추가 card -->
-							<li class="card confirmed"><c:if
-									test="${confirmedList.size() gt 0}">
+							<li class="card confirmed">
+								<c:if test="${confirmedList.size() gt 0}">
 									<div class="link_booking_details">
 										<div class="card_header">
 											<div class="left"></div>
@@ -85,7 +85,7 @@
 												<div class="middle">
 													<div class="card_detail">
 														<em class="booking_number">No.${reservedItem.id}</em>
-														<h4 class="tit">${reservedItem.displayInfo.productDescription}</h4>
+														<h4 class="tit product_description">${reservedItem.displayInfo.productDescription}</h4>
 														<ul class="detail">
 															<li class="item"><span class="item_tit">일정</span> <em
 																class="item_dsc">${reservedItem.reservationDateView}
@@ -274,7 +274,8 @@
 		<div class="dimm_dark" style="display: block"></div>
 		<div class="popup_booking refund">
 			<h1 class="pop_tit">
-				<span>서비스명/상품명</span> <small class="sm">2000.0.00.(월)2000.0.00.(일)</small>
+				<span class="popup_name"></span> 
+				<small class="sm"></small>
 			</h1>
 			<div class="nomember_alert">
 				<p>취소하시겠습니까?</p>
