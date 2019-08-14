@@ -87,7 +87,7 @@
 									<strong class="product_amount"> <span>${productPrice.priceTypeName}</span>
 									</strong> <strong class="product_price"> <span class="price">${formattedDiscountPrice}</span>
 										<span class="price_type">원</span>
-									</strong> <em class="product_dsc">${formattedPrice}원 (${productPrice.discountRate}% 할인가)</em>
+									</strong> <em class="product_dsc"><s>${formattedPrice}원</s> (${productPrice.discountRate}% 할인가)</em>
 								</div>
 							</div>
 						</c:forEach> 

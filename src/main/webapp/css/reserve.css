@@ -1,6 +1,7 @@
 .show_warning {
 	visibility: visible;
 	position: relative;
+	color: red;
 }
 
 .hide_warning {

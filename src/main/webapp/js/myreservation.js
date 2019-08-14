@@ -7,11 +7,33 @@ const registerClickEvents = () => {
 	confirmedReservations.forEach((reservation) => {
 		let cancelButton = reservation.querySelector(".booking_cancel .btn")
 		
-		cancelButton.addEventListener("click", cancelReservation);
+		cancelButton.addEventListener("click", showDialog);
 	});
 }
 
-const cancelReservation = () => {
+const showDialog = (event) => {
+	let dialog = document.querySelector(".popup_booking_wrapper");
+	let popupName = dialog.querySelector(".popup_name");
+	let reservedDate = dialog.querySelector(".sm");
+	let cancelButton = dialog.querySelector(".btn_gray");
+	let confirmButton = dialog.querySelector(".btn_green");
+	let cardBody = event.target.closest(".card_body");
+	let reservationId = Number(cardBody.querySelector(".booking_number").innerText.replace(/[^0-9]/g, ""));
+	
+	popupName.innerText = cardBody.querySelector(".product_description").innerText;
+	reservedDate.innerText = cardBody.querySelector(".item_dsc").innerText;
+	dialog.style.display = "block";
+	
+	cancelButton.addEventListener("click", () => {
+		dialog.style.display = "none";
+	});
+	confirmButton.addEventListener("click", () => {
+		dialog.style.display = "none";
+		cancelReservation(reservationId);
+	});
+}
+
+const cancelReservation = (reservationId) => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {
 		if(xmlHttpRequest.status >= ERROR_STATUS) {
@@ -26,7 +48,6 @@ const cancelReservation = () => {
 	}
 
 	let params = {};
-	let reservationId = Number(document.querySelector(".booking_number").innerText.replace(/[^0-9]/g, ""));
 	params.id = reservationId;
 	
 	let url = `/Reservation/api/reserve`;

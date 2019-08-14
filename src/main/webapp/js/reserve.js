@@ -2,10 +2,10 @@ const ERROR_STATUS = 400;
 const COMPLETE_STATE = 4;
 
 let ticketPriceList = [];
-let isNameValid = false;
-let isTelephoneValid = false;
-let isEmailValid = false;
-let isAgreementChecked = false;
+let nameValid = false;
+let telephoneValid = false;
+let emailValid = false;
+let agreementChecked = false;
 
 const checkEmailValidation = (event) => {
 	let email = event.target.value;
@@ -15,12 +15,12 @@ const checkEmailValidation = (event) => {
 		emailWarningText.classList.remove("show_warning");
 		emailWarningText.classList.add("hide_warning");
 		
-		isEmailValid = true;
+		emailValid = true;
 	} else {
 		emailWarningText.classList.add("show_warning");
 		emailWarningText.classList.remove("hide_warning");
 		
-		isEmailValid = false;
+		emailValid = false;
 	}
 }
 
@@ -28,16 +28,16 @@ const checkTelephoneValidation = (event) => {
 	let telephone = event.target.value;
 	let telephoneWarningText = document.querySelector(".warning_msg.tel");
 	
-	if (telephone.match(/^\d{3}-\d{3,4}-\d{4}$/)) {
+	if (telephone.match(/01[016789]-[0-9]{3,4}-[0-9]{4}/)) {
 		telephoneWarningText.classList.remove("show_warning");
 		telephoneWarningText.classList.add("hide_warning");
 		
-		isTelephoneValid = true;
+		telephoneValid = true;
 	} else {
 		telephoneWarningText.classList.add("show_warning");
 		telephoneWarningText.classList.remove("hide_warning");
 		
-		isTelephoneValid = false;
+		telephoneValid = false;
 	}
 }
 
@@ -49,12 +49,12 @@ const checkNameValidation = (event) => {
 		nameWarningText.classList.remove("show_warning");
 		nameWarningText.classList.add("hide_warning");
 
-		isNameValid = true;
+		nameValid = true;
 	} else {
 		nameWarningText.classList.add("show_warning");
 		nameWarningText.classList.remove("hide_warning");
 
-		 isNameValid = false;
+		nameValid = false;
 	}
 }
 
@@ -72,10 +72,10 @@ const isReserveReady = () => {
 	let totalTicketCount = document.querySelector("#totalCount");
 	
 	return totalTicketCount.innerText > 0
-		&& isNameValid 
-		&& isTelephoneValid 
-		&& isEmailValid
-		&& isAgreementChecked;
+		&& nameValid 
+		&& telephoneValid 
+		&& emailValid
+		&& agreementChecked;
 }
 
 const clickCheckBox = (event) => {
@@ -83,9 +83,9 @@ const clickCheckBox = (event) => {
 	let reserveButton = document.querySelector(".bk_btn");
 	
 	if (event.target.checked === true) {
-		isAgreementChecked = true;
+		agreementChecked = true;
 	} else {
-		isAgreementChecked = false;
+		agreementChecked = false;
 	}
 }
 
