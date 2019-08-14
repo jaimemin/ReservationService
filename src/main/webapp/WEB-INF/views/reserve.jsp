@@ -84,7 +84,7 @@
 									</div>
 								</div>
 								<div class="qty_info_icon">
-									<strong class="product_amount"> <span>${productPrice.priceTypeName}</span>
+									<strong class="product_amount"> <span class="product_price_type">${productPrice.priceTypeName}</span>
 									</strong> <strong class="product_price"> <span class="price">${formattedDiscountPrice}</span>
 										<span class="price_type">원</span>
 									</strong> <em class="product_dsc"><s>${formattedPrice}원</s> (${productPrice.discountRate}% 할인가)</em>
