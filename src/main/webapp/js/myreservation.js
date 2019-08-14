@@ -23,20 +23,20 @@ const showDialog = (event) => {
 	
 	popupName.innerText = cardBody.querySelector(".product_description").innerText;
 	reservedDate.innerText = cardBody.querySelector(".item_dsc").innerText;
-	dialog.classList.toggle("hide_dialog");
-	dialog.classList.toggle("show_dialog");
+	dialog.classList.remove("hide_dialog");
+	dialog.classList.add("show_dialog");
 	
 	closeButton.addEventListener("click", () => {
-		dialog.classList.toggle("hide_dialog");
-		dialog.classList.toggle("show_dialog");
+		dialog.classList.add("hide_dialog");
+		dialog.classList.remove("show_dialog");
 	});
 	cancelButton.addEventListener("click", () => {
-		dialog.classList.toggle("hide_dialog");
-		dialog.classList.toggle("show_dialog");
+		dialog.classList.add("hide_dialog");
+		dialog.classList.remove("show_dialog");
 	});
 	confirmButton.addEventListener("click", () => {
-		dialog.classList.toggle("hide_dialog");
-		dialog.classList.toggle("show_dialog");
+		dialog.classList.add("hide_dialog");
+		dialog.classList.remove("show_dialog");
 		
 		cancelReservation(reservationId);
 	});
