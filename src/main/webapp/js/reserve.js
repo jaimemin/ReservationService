@@ -252,31 +252,31 @@ const setTicketPriceType = (ticketPrice) => {
 	
 	switch(ticketPriceType.innerText) {
 	case "A":
-		ticketPriceType.innerText = "성인"
+		ticketPriceType.innerText = "성인";
 		break;
 	case "Y":
-		ticketPriceType.innerText = "청소년"
+		ticketPriceType.innerText = "청소년";
 		break;
 	case "B":
-		ticketPriceType.innerText = "유아"
+		ticketPriceType.innerText = "유아";
 		break;
 	case "S":
-		ticketPriceType.innerText = "셋트"
+		ticketPriceType.innerText = "셋트";
 		break;
 	case "D":
-		ticketPriceType.innerText = "장애인"
+		ticketPriceType.innerText = "장애인";
 		break;
 	case "C":
-		ticketPriceType.innerText = "지역주민"
+		ticketPriceType.innerText = "지역주민";
 		break;
 	case "E":
-		ticketPriceType.innerText = "얼리버드"
+		ticketPriceType.innerText = "얼리버드";
 		break;
 	case "V":
-		ticketPriceType.innerText = "VIP"
+		ticketPriceType.innerText = "VIP";
 		break;
 	case "D":
-		ticketPriceType.innerText = "평일"
+		ticketPriceType.innerText = "평일";
 		break;
 	}
 }
