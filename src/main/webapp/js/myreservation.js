@@ -44,26 +44,6 @@ const showDialog = (event) => {
 	});
 }
 
-const getReservationEmail = (cookieName) => {
-	let cookieData = document.cookie;
-	let start = cookieData.indexOf(cookieName);
-	let cookieValue = '';
-	cookieName = cookieName + '=';
-	
-	if(start != -1){
-		start += cookieName.length;
-		
-		let end = cookieData.indexOf(';', start);
-		if(end === -1) {
-			end = cookieData.length;
-		}
-		
-		cookieValue = cookieData.substring(start, end);
-	}
-	
-	return unescape(cookieValue);
-}
-
 const cancelReservation = (reservationId) => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {
@@ -80,7 +60,7 @@ const cancelReservation = (reservationId) => {
 
 	let params = {};
 	params.id = reservationId;
-	params.reservationEmail = getReservationEmail("reservationEmail");
+	params.reservationEmail = document.querySelector("reservation_email").value;
 	
 	let url = `/Reservation/api/reserve`;
 	xmlHttpRequest.open("PUT", url);

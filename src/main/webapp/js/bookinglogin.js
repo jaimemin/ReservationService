@@ -1,5 +1,5 @@
 let emailValid = false;
-let clickedCount = 0;
+let sendButtonClicked = false;
 
 const registerInputKeyDownEvent = () => {
 	let email = document.querySelector(".login_input");
@@ -18,7 +18,7 @@ const checkEmailValidation = (event) => {
 		emailValid = true;
 	} else {
 		
-		if (clickedCount > 0) {
+		if (sendButtonClicked) {
 			emailWarningText.classList.add("show_warning");
 			emailWarningText.classList.remove("hide_warning");
 		}
@@ -34,7 +34,7 @@ const checkFormValidation = (event) => {
 		emailWarningText.classList.add("show_warning");
 		emailWarningText.classList.remove("hide_warning");
 		
-		clickedCount++;
+		sendButtonClicked = true;
 		alert("이메일 형식에 맞게 입력해주세요.");
 		event.preventDefault();
 	}

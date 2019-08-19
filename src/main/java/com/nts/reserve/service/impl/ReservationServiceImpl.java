@@ -3,6 +3,7 @@ package com.nts.reserve.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,7 +50,14 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public int cancelReservation(int reservationInfoId, String reservationEmail) {
-		return reservationInfoDao.updateReservation(reservationInfoId, reservationEmail);
+		int updatedCount = reservationInfoDao.updateReservation(reservationInfoId, reservationEmail);
+		
+		if (updatedCount <= 0) {
+			throw new DataRetrievalFailureException(
+					"Update Failed: reservationInfoId and reservationEmail doesn't match");
+		}
+		
+		return updatedCount;
 	}
 
 	@Override

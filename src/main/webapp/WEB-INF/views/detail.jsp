@@ -22,29 +22,6 @@
 
 <body>
 	<div id="container">
-		<div class="header fade">
-			<header class="header_tit">
-				<h1 class="logo">
-					<a href="/Reservation/" class="lnk_logo" title="네이버"> <span
-						class="spr_bi ico_n_logo">네이버</span>
-					</a> <a href="/Reservation/" class="lnk_logo" title="예약"> <span
-						class="spr_bi ico_bk_logo">예약</span>
-					</a>
-				</h1>
-				<c:choose>
-					<c:when test="${not empty reservationEmail}">
-						<a href="/Reservation/my-reservation" class="btn_my">
-							<span>${reservationEmail}</span>
-						</a>
-					</c:when>
-					<c:otherwise>
-						<a href="/Reservation/booking-login" class="btn_my"> <span
-							class="viewReservation" title="예약확인">예약확인</span>
-						</a>
-					</c:otherwise>
-				</c:choose>
-			</header>
-		</div>
 		<div class="ct main">
 			<div>
 				<div class="section_visual">
@@ -56,9 +33,18 @@
 								class="spr_bi ico_bk_logo">예약</span>
 							</a>
 						</h1>
-						<a href="/Reservation/my-reservation" class="btn_my"> <span
-							class="viewReservation" title="예약확인">예약확인</span>
-						</a>
+						<c:choose>
+							<c:when test="${not empty reservationEmail}">
+								<a href="/Reservation/my-reservation" class="btn_my">
+									<span>${reservationEmail}</span>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/Reservation/booking-login" class="btn_my"> <span
+									class="viewReservation" title="예약확인">예약확인</span>
+								</a>
+							</c:otherwise>
+						</c:choose>
 					</header>
 					<div class="pagination">
 						<div class="bg_pagination"></div>
