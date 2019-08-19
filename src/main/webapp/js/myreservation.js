@@ -5,20 +5,12 @@ const registerClickEvents = () => {
 	let confirmedReservations = document.querySelector(".card.confirmed").querySelectorAll(".card_item");
 	let logoutButton = document.querySelector(".viewReservation");
 	
-	logoutButton.addEventListener("click", logout);
 	confirmedReservations.forEach((reservation) => {
 		let cancelButton = reservation.querySelector(".booking_cancel .btn")
 		
 		cancelButton.addEventListener("click", showDialog);
 	});
 	
-}
-
-const logout = () => {
-	let email = document.querySelector("#reservation_email").value;
-	
-	document.cookie = `reservationEmail=${email}; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
-	window.location.href = "/Reservation/";
 }
 
 const showDialog = (event) => {
@@ -52,6 +44,26 @@ const showDialog = (event) => {
 	});
 }
 
+const getReservationEmail = (cookieName) => {
+	let cookieData = document.cookie;
+	let start = cookieData.indexOf(cookieName);
+	let cookieValue = '';
+	cookieName = cookieName + '=';
+	
+	if(start != -1){
+		start += cookieName.length;
+		
+		let end = cookieData.indexOf(';', start);
+		if(end === -1) {
+			end = cookieData.length;
+		}
+		
+		cookieValue = cookieData.substring(start, end);
+	}
+	
+	return unescape(cookieValue);
+}
+
 const cancelReservation = (reservationId) => {
 	let xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = () => {
@@ -68,6 +80,7 @@ const cancelReservation = (reservationId) => {
 
 	let params = {};
 	params.id = reservationId;
+	params.reservationEmail = getReservationEmail("reservationEmail");
 	
 	let url = `/Reservation/api/reserve`;
 	xmlHttpRequest.open("PUT", url);

@@ -27,8 +27,8 @@
 						class="spr_bi ico_bk_logo">예약</span>
 					</a>
 				</h1>
-				<a href="#" class="btn_my"> <span title="로그아웃"
-					class="viewReservation">로그아웃</span>
+				<a href="/Reservation/logout" class="btn_my"> 
+					<span title="로그아웃" class="viewReservation">로그아웃</span>
 				</a>
 			</header>
 		</div>

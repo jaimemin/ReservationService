@@ -22,7 +22,8 @@ public class ReservationController {
 	
 	@PutMapping(value = "/reserve", consumes = "application/json")
 	public ReservationInfo cancel(@RequestBody ReservationInfo reservation) {
-		reservationService.cancelReservation(reservation.getId());
+		reservationService.cancelReservation(reservation.getId()
+				, reservation.getReservationEmail());
 		
 		return reservationService.getReservationInfo(reservation.getId());
 	}
