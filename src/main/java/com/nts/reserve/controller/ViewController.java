@@ -5,6 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,10 +45,10 @@ public class ViewController {
 	}
 
 	@GetMapping(path = "/detail/{displayInfoId}")
-	public String detail(@PathVariable("displayInfoId") int displayInfoId,
+	public String detail(
+			@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
+			@PathVariable("displayInfoId") int displayInfoId,
 			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, Model modelMap) {
-		validateId(displayInfoId);
-		
 		modelMap.addAttribute("displayInfoId", displayInfoId);
 		modelMap.addAttribute("reservationEmail", reservationEmail);
 
@@ -52,18 +56,20 @@ public class ViewController {
 	}
 
 	@GetMapping(path = "/review/{displayInfoId}")
-	public String allReview(@PathVariable("displayInfoId") int displayInfoId, Model model) {
-		validateId(displayInfoId);
-
+	public String allReview(
+			@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
+			@PathVariable("displayInfoId") int displayInfoId,
+			Model model) {
 		model.addAttribute("displayInfoId", displayInfoId);
 
 		return "review";
 	}
 
 	@GetMapping(path = "/reserve/{displayInfoId}")
-	public String reserve(@PathVariable("displayInfoId") int displayInfoId, ModelMap modelMap) {
-		validateId(displayInfoId);
-
+	public String reserve(
+			@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
+			@PathVariable("displayInfoId") int displayInfoId,
+			ModelMap modelMap) {
 		DisplayInfoResponse displayInfoResponse = displayInfoService.getDisplayInfoResponse(displayInfoId, false);
 
 		modelMap.addAttribute("displayInfoId", displayInfoId);
@@ -106,11 +112,5 @@ public class ViewController {
 				.format(LocalDate
 						.now()
 						.plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
-	}
-	
-	private void validateId(int displayInfoId) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
-		}
 	}
 }

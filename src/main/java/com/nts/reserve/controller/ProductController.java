@@ -2,6 +2,10 @@ package com.nts.reserve.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +32,9 @@ public class ProductController {
 
 	@GetMapping("/products")
 	public List<Product> getProducts(
+			@Valid @NotNull @PositiveOrZero(message = "invalid categoryId: categoryId must not be under zero") 
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
-		if (categoryId < 0) {
-			throw new IllegalArgumentException("invalid categoryId: categoryId must not be under zero");
-		}
-
 		return productService.getProducts(categoryId, start);
 	}
 
