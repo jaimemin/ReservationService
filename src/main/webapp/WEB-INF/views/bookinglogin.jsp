@@ -84,7 +84,7 @@
 							type="email"
 							class="login_input ng-pristine ng-untouched ng-valid ng-empty"
 							id="resrv_id" name="resrv_email" aria-invalid="false"
-							placeholder="crong@naver.com" title="예매자이메일">
+							placeholder="ex) crong@naver.com" title="예매자이메일">
 						<div class="warning_msg email hide_warning">형식이 틀렸습니다.</div>
 					</div>
 					<button type="submit" form="form1" class="login_btn confirm">
