@@ -2,6 +2,9 @@ const ERROR_STATUS = 400;
 const COMPLETE_STATE = 4;
 
 const registerClickEvents = () => {
+	let confirmedList = document.querySelector("#confirmed_list");
+	let usedList = document.querySelector("#used_list");
+	let canceledList = document.querySelector("#canceled_list");
 	let confirmedReservations = document.querySelector(".card.confirmed").querySelectorAll(".card_item");
 	let logoutButton = document.querySelector(".viewReservation");
 	
@@ -10,7 +13,6 @@ const registerClickEvents = () => {
 		
 		cancelButton.addEventListener("click", showDialog);
 	});
-	
 }
 
 const showDialog = (event) => {
