@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -74,10 +75,6 @@ public class ViewController {
 			@Positive(message = "invalid displayInfoId: must be over zero") int displayInfoId,
 			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, 
 			ModelMap modelMap) {
-//		if (displayInfoId <= 0) {
-//			throw new IllegalArgumentException("invalid displayInfoId: must be over zero");
-//		}
-//		
 		DisplayInfoResponse displayInfoResponse = displayInfoService.getDisplayInfoResponse(displayInfoId, false);
 
 		modelMap.addAttribute("displayInfoId", displayInfoId);
@@ -86,7 +83,7 @@ public class ViewController {
 		modelMap.addAttribute("displayInfoResponse", displayInfoResponse);
 		modelMap.addAttribute("reservationDate", getReservationDate());
 		modelMap.addAttribute("reservationEmail", reservationEmail);
-
+		
 		return "reserve";
 	}
 
@@ -96,7 +93,7 @@ public class ViewController {
 		if (StringUtils.isEmpty(reservationEmail)) {
 			return "redirect:/booking-login";
 		}
-
+		
 		List<ReservationInfo> confirmedList = reservationService.getConfirmedReservationInfos(reservationEmail);
 		List<ReservationInfo> usedList = reservationService.getUsedReservationInfos(reservationEmail);
 		List<ReservationInfo> canceledList = reservationService.getCanceledReservationInfos(reservationEmail);
