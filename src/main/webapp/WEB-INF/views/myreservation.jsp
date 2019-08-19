@@ -44,18 +44,24 @@
 								<em class="tit">전체</em> <span class="figure">${totalReservation}</span>
 						</a>
 						</li>
-						<li class="item"><a href="#" class="link_summary_board">
+						<li class="item">
+							<a href="" class="link_summary_board"  id="confirmed_list">
 								<i class="spr_book2 ico_book_ss"></i> <em class="tit">이용예정</em>
 								<span class="figure">${confirmedList.size()}</span>
-						</a></li>
-						<li class="item"><a href="#" class="link_summary_board">
+							</a>
+						</li>
+						<li class="item">
+							<a href="#used_items" class="link_summary_board" id="used_list">
 								<i class="spr_book2 ico_check"></i> <em class="tit">이용완료</em> <span
 								class="figure">${usedList.size()}</span>
-						</a></li>
-						<li class="item"><a href="#" class="link_summary_board">
+							</a>
+						</li>
+						<li class="item">
+							<a href="#canceled_items" class="link_summary_board" id="canceled_list">
 								<i class="spr_book2 ico_back"></i> <em class="tit">취소·환불</em> <span
 								class="figure">${canceledList.size()}</span>
-						</a></li>
+							</a>
+						</li>
 					</ul>
 				</div>
 				<!--// 예약 현황 -->
@@ -125,6 +131,7 @@
 											title="공유하기"></a>
 									</article>
 								</c:forEach>
+								<div id="used_items"></div>
 							</li>
 							<li class="card used">
 								<c:if test="${usedList.size() gt 0}">
@@ -186,6 +193,7 @@
 										</a>
 									</article>
 								</c:forEach>
+								<div  id="canceled_items"></div>
 							</li>
 							<li class="card used cancel">
 								<c:if test="${canceledList.size() gt 0}">
