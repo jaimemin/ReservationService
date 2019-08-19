@@ -9,7 +9,8 @@ const PRICE_TYPE = {
 	'C': '지역주민',
 	'E': '얼리버드',
 	'V': 'VIP',
-	'D': '평일'
+	'D': '평일',
+	'R': 'R석'
 };
 
 let ticketPriceList = [];
