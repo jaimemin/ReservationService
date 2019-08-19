@@ -324,6 +324,10 @@ const registerReserveButtonEvents = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+	if (document.querySelector(".email").disabled) {
+		emailValid = true;
+	}
+	
 	setTicketPrices();
 	registerReserveClickEvent();
 	registerInputKeyDownEvent();

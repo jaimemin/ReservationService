@@ -62,7 +62,7 @@ const cancelReservation = (reservationId) => {
 
 	let params = {};
 	params.id = reservationId;
-	params.reservationEmail = document.querySelector("reservation_email").value;
+	params.reservationEmail = document.querySelector("#reservation_email").value;
 	
 	let url = `/Reservation/api/reserve`;
 	xmlHttpRequest.open("PUT", url);
