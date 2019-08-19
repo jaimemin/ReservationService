@@ -43,10 +43,8 @@ public class ViewController {
 	@GetMapping(path = "/detail/{displayInfoId}")
 	public String detail(@PathVariable("displayInfoId") int displayInfoId,
 			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, Model modelMap) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
-		}
-
+		validateId(displayInfoId);
+		
 		modelMap.addAttribute("displayInfoId", displayInfoId);
 		modelMap.addAttribute("reservationEmail", reservationEmail);
 
@@ -55,9 +53,7 @@ public class ViewController {
 
 	@GetMapping(path = "/review/{displayInfoId}")
 	public String allReview(@PathVariable("displayInfoId") int displayInfoId, Model model) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
-		}
+		validateId(displayInfoId);
 
 		model.addAttribute("displayInfoId", displayInfoId);
 
@@ -66,9 +62,7 @@ public class ViewController {
 
 	@GetMapping(path = "/reserve/{displayInfoId}")
 	public String reserve(@PathVariable("displayInfoId") int displayInfoId, ModelMap modelMap) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
-		}
+		validateId(displayInfoId);
 
 		DisplayInfoResponse displayInfoResponse = displayInfoService.getDisplayInfoResponse(displayInfoId, false);
 
@@ -112,5 +106,11 @@ public class ViewController {
 				.format(LocalDate
 						.now()
 						.plusDays(new Random().nextInt(MAX_PASSED_DAY) + 1));
+	}
+	
+	private void validateId(int displayInfoId) {
+		if (displayInfoId <= 0) {
+			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
+		}
 	}
 }
