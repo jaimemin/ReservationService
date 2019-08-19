@@ -11,6 +11,8 @@ import com.nts.reserve.dao.DisplayInfoImageDao;
 import com.nts.reserve.dao.ProductImageDao;
 import com.nts.reserve.dao.ProductPriceDao;
 import com.nts.reserve.dto.Comment;
+import com.nts.reserve.dto.DisplayInfo;
+import com.nts.reserve.dto.DisplayInfoImage;
 import com.nts.reserve.dto.DisplayInfoResponse;
 import com.nts.reserve.service.DisplayInfoService;
 
@@ -34,26 +36,10 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 
 	@Override
 	public DisplayInfoResponse getDisplayInfoResponse(int displayInfoId, boolean isDetailPage) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId");
-		}
-
 		List<Comment> comments = commentDao.selectComments(displayInfoId, isDetailPage);
-		double scoreAverage;
-		
-		if(isDetailPage) {
-			Double average = commentDao.selectCommentScoreAverage(displayInfoId);
-			scoreAverage = (average == null) ? 0.0 : average;
-		} else {
-			scoreAverage = comments.stream()
-					.mapToDouble(Comment::getScore)
-					.average()
-					.orElse(0.0);
-		}
-		
-		
+
 		DisplayInfoResponse displayInfoResponse = new DisplayInfoResponse();
-		displayInfoResponse.setAverageCommentScore(scoreAverage);
+		displayInfoResponse.setAverageCommentScore(commentDao.selectCommentScoreAverage(displayInfoId));
 		displayInfoResponse.setComments(comments);
 		displayInfoResponse.setDisplayInfo(displayInfoDao.selectDisplayInfo(displayInfoId));
 		displayInfoResponse.setDisplayInfoImage(displayInfoImageDao.selectDisplayInfoImage(displayInfoId));
@@ -62,6 +48,15 @@ public class DisplayInfoServiceImpl implements DisplayInfoService {
 		displayInfoResponse.setCommentsSize(commentDao.selectCommentListSize(displayInfoId));
 		
 		return displayInfoResponse;
-
+	}
+	
+	@Override
+	public DisplayInfo getDisplayInfo(int displayInfoId) {
+		return displayInfoDao.selectDisplayInfo(displayInfoId);
+	}
+	
+	@Override
+	public DisplayInfoImage getDisplayInfoImage(int displayInfoId) {
+		return displayInfoImageDao.selectDisplayInfoImage(displayInfoId);
 	}
 }

@@ -6,9 +6,14 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 @Configuration
-public class DBConfiguration {
+@EnableTransactionManagement
+public class DBConfiguration implements TransactionManagementConfigurer {
 	@Value("${spring.datasource.driver-class-name}")
 	private String driverClassName;
 
@@ -30,6 +35,11 @@ public class DBConfiguration {
 		dataSource.setPassword(password);
 
 		return dataSource;
+	}
+
+	@Override
+	public PlatformTransactionManager annotationDrivenTransactionManager() {
+		return new DataSourceTransactionManager(dataSource());
 	}
 
 }

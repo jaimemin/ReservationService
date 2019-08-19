@@ -184,7 +184,7 @@ const showDirection = (event) => {
 	}
 }
 
-const registerClickEvent = () => {
+const registerClickEvent = (displayInfoId) => {
 	let previousButton = document.querySelector(".prev");
 	let nextButton = document.querySelector(".nxt");
 	let openButton = document.querySelector("._open");
@@ -198,7 +198,7 @@ const registerClickEvent = () => {
 	openButton.addEventListener("click", showProductContent);
 	closeButton.addEventListener("click", showProductContent);
 	reserveButton.addEventListener("click", () => {
-		location.href = "/Reservation/htmls/reserve.html";
+		location.href = `/Reservation/reserve/${displayInfoId}`;
 	});
 	detailTab.addEventListener("click", showDetail);
 	directionTab.addEventListener("click", showDirection);
@@ -231,7 +231,7 @@ const requestDatas = () => {
 			
 			createDetailDirectionTemplate(datas.displayInfo, datas.displayInfoImage);
 			
-			registerClickEvent();
+			registerClickEvent(datas.displayInfo.id);
 		}
 	}
     
