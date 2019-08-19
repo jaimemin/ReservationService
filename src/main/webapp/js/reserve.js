@@ -17,15 +17,23 @@ let nameValid = false;
 let telephoneValid = false;
 let emailValid = false;
 let agreementChecked = false;
+let reserveButtonClicked = false;
 
 const checkEmailValidation = (event) => {
 	let email = event.target.value;
 	let emailWarningText = document.querySelector(".warning_msg.email");
 	emailValid = email.match(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i);
 	
+	if (reserveButtonClicked === false) {
+		return;
+	}
+	
 	if (emailValid) {
 		emailWarningText.classList.remove("show_warning");
 		emailWarningText.classList.add("hide_warning");
+	} else {
+		emailWarningText.classList.add("show_warning");
+		emailWarningText.classList.remove("hide_warning");
 	}
 }
 
@@ -34,9 +42,16 @@ const checkTelephoneValidation = (event) => {
 	let telephoneWarningText = document.querySelector(".warning_msg.tel");
 	telephoneValid = telephone.match(/01[016789]-[0-9]{3,4}-[0-9]{4}/);
 	
+	if (reserveButtonClicked === false) {
+		return;
+	}
+	
 	if (telephoneValid) {
 		telephoneWarningText.classList.remove("show_warning");
 		telephoneWarningText.classList.add("hide_warning");
+	} else {
+		telephoneWarningText.classList.add("show_warning");
+		telephoneWarningText.classList.remove("hide_warning");
 	}
 }
 
@@ -45,9 +60,16 @@ const checkNameValidation = (event) => {
 	let nameWarningText = document.querySelector(".warning_msg.name");
 	nameValid = name.match(/.+/g);
 	
+	if (reserveButtonClicked === false) {
+		return;
+	}
+	
 	if (nameValid) {
 		nameWarningText.classList.remove("show_warning");
 		nameWarningText.classList.add("hide_warning");
+	} else {
+		nameWarningText.classList.add("show_warning");
+		nameWarningText.classList.remove("hide_warning");
 	}
 }
 
@@ -118,7 +140,7 @@ const checkInputValidation = () => {
 		telephoneWarningText.classList.add("show_warning");
 		telephoneWarningText.classList.remove("hide_warning");
 	}
-	
+
 	return nameValid 
 		&& emailValid 
 		&& telephoneValid;
@@ -138,6 +160,7 @@ const reserveTicket = () => {
 		}
 	}
 	
+	reserveButtonClicked = true;
 	if (checkInputValidation() === false) {
 		alert("입력한 항목을 다시 확인해주세요.");
 		return;
