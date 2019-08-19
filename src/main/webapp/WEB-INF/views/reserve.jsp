@@ -126,8 +126,16 @@
 										class="spr_book ico_nessasary">필수</span> <span>이메일</span>
 									</label>
 									<div class="inline_control">
-										<input type="email" name="email" id="email" class="email"
-											value="" placeholder="ex) crong@codesquad.kr" maxlength="50">
+										<c:choose>
+											<c:when test="${not empty reservationEmail}">
+												<input type="email" name="email" id="email" class="email"
+													value="${reservationEmail}" maxlength="50" disabled="disabled">
+											</c:when>
+											<c:otherwise>
+												<input type="email" name="email" id="email" class="email"
+													value="" placeholder="ex) crong@codesquad.kr" maxlength="50">
+											</c:otherwise>
+										</c:choose>
 										<div class="warning_msg email hide_warning">형식이 틀렸습니다.</div>
 									</div>
 								</div>
@@ -217,6 +225,7 @@
 	</footer>
 	<input type="hidden" id="display_info_id" value="${displayInfoId }">
 	<input type="hidden" id="product_id" value="${displayInfo.productId}">
+	<input type="hidden" id="reservation_email" value="${reservationEmail}">
 	
 	<script src="/Reservation/js/reserve.js"></script>
 </body>

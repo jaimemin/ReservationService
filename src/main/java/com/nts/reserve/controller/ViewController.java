@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.nts.reserve.service.DisplayInfoService;
 import com.nts.reserve.service.ReservationService;
 
 @Controller
+@Validated
 public class ViewController {
 	private static final int MAX_PASSED_DAY = 5;
 	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy. MM. dd.");
@@ -48,7 +50,8 @@ public class ViewController {
 	public String detail(
 			@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
 			@PathVariable("displayInfoId") int displayInfoId,
-			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, Model modelMap) {
+			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, 
+			Model modelMap) {
 		modelMap.addAttribute("displayInfoId", displayInfoId);
 		modelMap.addAttribute("reservationEmail", reservationEmail);
 
@@ -67,9 +70,14 @@ public class ViewController {
 
 	@GetMapping(path = "/reserve/{displayInfoId}")
 	public String reserve(
-			@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
-			@PathVariable("displayInfoId") int displayInfoId,
+			@Valid @PathVariable("displayInfoId") @NotNull 
+			@Positive(message = "invalid displayInfoId: must be over zero") int displayInfoId,
+			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, 
 			ModelMap modelMap) {
+//		if (displayInfoId <= 0) {
+//			throw new IllegalArgumentException("invalid displayInfoId: must be over zero");
+//		}
+//		
 		DisplayInfoResponse displayInfoResponse = displayInfoService.getDisplayInfoResponse(displayInfoId, false);
 
 		modelMap.addAttribute("displayInfoId", displayInfoId);
@@ -77,6 +85,7 @@ public class ViewController {
 		modelMap.addAttribute("productImage", displayInfoResponse.getProductImages());
 		modelMap.addAttribute("displayInfoResponse", displayInfoResponse);
 		modelMap.addAttribute("reservationDate", getReservationDate());
+		modelMap.addAttribute("reservationEmail", reservationEmail);
 
 		return "reserve";
 	}
