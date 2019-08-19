@@ -15,7 +15,13 @@
 		<result property="reservationName" column="reservationName" />
 		<result property="reservationTelephone" column="reservationTelephone" />
 		<result property="score" column="score" />
-		<collection property="commentImages" column="commentId" javaType="java.util.List" ofType="CommentImage" select="selectCommentImages" />
+		<collection 
+			property="commentImages" 
+			column="commentId" 
+			javaType="java.util.List" 
+			ofType="CommentImage" 
+			select="selectCommentImages">
+		</collection>
 	</resultMap>
 
 

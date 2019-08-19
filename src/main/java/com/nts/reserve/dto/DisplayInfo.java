@@ -2,6 +2,8 @@ package com.nts.reserve.dto;
 
 import java.time.LocalDateTime;
 
+import org.springframework.web.bind.annotation.PostMapping;
+
 public class DisplayInfo {
 	private int categoryId;
 	private String categoryName;
