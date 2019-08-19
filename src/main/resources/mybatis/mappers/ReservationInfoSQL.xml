@@ -80,7 +80,7 @@
 		WHERE
 			reservation_email = #{reservationEmail}
 		<choose>
-			<when test="reservationType == 0">
+			<when test="reservationType eq 0">
 				<![CDATA[
 					AND
 						reservation_info.reservation_date >= DATE_FORMAT(NOW(), "%Y-%c-%e")
@@ -88,7 +88,7 @@
 				AND 
 					reservation_info.cancel_flag = 0
 			</when>
-			<when test="reservationType == 1">
+			<when test="reservationType eq 1">
 				<![CDATA[
 					AND
 						reservation_info.reservation_date < DATE_FORMAT(NOW(), "%Y-%c-%e")
@@ -96,14 +96,14 @@
 				AND 
 					reservation_info.cancel_flag = 0
 			</when>
-			<when test="reservationType == 2">
+			<when test="reservationType eq 2">
 				AND 
 					reservation_info.cancel_flag = 1
 			</when>
 		</choose>
 	</select> 
 	
-	<update id="updateReservation" parameterType="int">
+	<update id="updateReservation" parameterType="map">
 		UPDATE 
 			reservation_info
 		SET 
@@ -111,6 +111,8 @@
 			modify_date = NOW()
 		WHERE 
 			id = #{reservationInfoId}
+		AND
+			reservation_email = #{reservationEmail}
 	</update>
 
 	<insert id="insertReservation" parameterType="ReservationInfo" 

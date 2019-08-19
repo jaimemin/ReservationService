@@ -74,7 +74,7 @@
 			<!---->
 			<div>
 				<form name="confirm_form" class="ng-pristine ng-valid" id="form1"
-					action="/Reservation/login">
+					action="/Reservation/login" onsubmit="checkFormValidation(event);">
 					<h2 class="login_header_sub border_bottom">
 						<span translate="CM-NON_MEMBER_BK_CONFIRMATION">비회원 예약확인</span>
 					</h2>
@@ -85,9 +85,9 @@
 							class="login_input ng-pristine ng-untouched ng-valid ng-empty"
 							id="resrv_id" name="resrv_email" aria-invalid="false"
 							placeholder="crong@naver.com" title="예매자이메일">
-						<div class="warning_msg email show_warning">형식이 틀렸습니다.</div>
+						<div class="warning_msg email hide_warning">형식이 틀렸습니다.</div>
 					</div>
-					<button type="submit" form="form1" class="login_btn confirm" disabled>
+					<button type="submit" form="form1" class="login_btn confirm">
 						<span translate="CM-MY_BOOKING_CHECK">내 예약 확인</span>
 					</button>
 					<!---->

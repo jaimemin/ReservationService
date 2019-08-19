@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,7 +84,7 @@ public class ViewController {
 	@GetMapping(path = "/my-reservation")
 	public String myReservation(@CookieValue(value = "reservationEmail", required = false) String reservationEmail,
 			ModelMap modelMap) {
-		if (reservationEmail == null) {
+		if (StringUtils.isEmpty(reservationEmail)) {
 			return "redirect:/booking-login";
 		}
 

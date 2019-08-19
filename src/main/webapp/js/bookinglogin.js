@@ -1,4 +1,5 @@
 let emailValid = false;
+let clickedCount = 0;
 
 const registerInputKeyDownEvent = () => {
 	let email = document.querySelector(".login_input");
@@ -16,22 +17,29 @@ const checkEmailValidation = (event) => {
 		
 		emailValid = true;
 	} else {
-		emailWarningText.classList.add("show_warning");
-		emailWarningText.classList.remove("hide_warning");
+		
+		if (clickedCount > 0) {
+			emailWarningText.classList.add("show_warning");
+			emailWarningText.classList.remove("hide_warning");
+		}
 		
 		emailValid = false;
 	}
 }
 
+const checkFormValidation = (event) => {
+	let emailWarningText = document.querySelector(".warning_msg.email");
+	
+	if (emailValid === false) {
+		emailWarningText.classList.add("show_warning");
+		emailWarningText.classList.remove("hide_warning");
+		
+		clickedCount++;
+		alert("이메일 형식에 맞게 입력해주세요.");
+		event.preventDefault();
+	}
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 	registerInputKeyDownEvent();
-	document.addEventListener("input", () => {
-		let registerButton = document.querySelector(".login_btn.confirm");
-		
-		if (emailValid) {
-			registerButton.disabled = false;
-		} else {
-			registerButton.disabled = true;
-		}
-	});
 });

@@ -14,7 +14,6 @@ import com.nts.reserve.dto.ReservationPrice;
 import com.nts.reserve.service.ReservationService;
 
 @Service
-@Transactional
 public class ReservationServiceImpl implements ReservationService {
 	private static final int CONFIRMED = 0;
 	private static final int USED = 1;
@@ -50,11 +49,12 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public int cancelReservation(int reservationInfoId) {
-		return reservationInfoDao.updateReservation(reservationInfoId);
+	public int cancelReservation(int reservationInfoId, String reservationEmail) {
+		return reservationInfoDao.updateReservation(reservationInfoId, reservationEmail);
 	}
 
 	@Override
+	@Transactional
 	public int addReservation(ReservationInfo reservation) {
 		reservationInfoDao.insertReservation(reservation);
 		

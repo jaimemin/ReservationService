@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.nts.reserve.dao.ProductDao;
 import com.nts.reserve.dao.ProductImageDao;
@@ -42,7 +43,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getProducts(int categoryId, int start) {
 		List<Product> products = productDao.selectProducts(categoryId, start, UPPER_LIMIT_COUNT, THUMBNAIL);
-		if (products == null) {
+		
+		if (CollectionUtils.isEmpty(products)) {
 			throw new DataRetrievalFailureException(
 				"The expedted data could not be retrieved. categoryId: " + categoryId);
 		}

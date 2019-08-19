@@ -16,5 +16,6 @@ public interface ReservationInfoDao {
 	
 	int insertReservation(ReservationInfo reservation);
 	
-	int updateReservation(int reservationInfoId);
+	int updateReservation(@Param("reservationInfoId") int reservationInfoId, 
+			@Param("reservationEmail") String reservationEmail);
 }
