@@ -107,7 +107,7 @@
 									</label>
 									<div class="inline_control">
 										<input type="text" name="name" id="name" class="text"
-											placeholder="네이버" maxlength="17">
+											placeholder="이름을 입력하세요." maxlength="17">
 										<div class="warning_msg name hide_warning">이름을 입력해야 합니다.</div>
 									</div>
 								</div>
@@ -117,7 +117,7 @@
 									</label>
 									<div class="inline_control">
 										<input type="tel" name="tel" id="tel" class="tel" value=""
-											placeholder="휴대폰 입력 시 예매내역 문자발송">
+											placeholder="ex) 010-0000-0000">
 										<div class="warning_msg tel hide_warning">형식이 틀렸습니다.</div>
 									</div>
 								</div>
@@ -127,7 +127,7 @@
 									</label>
 									<div class="inline_control">
 										<input type="email" name="email" id="email" class="email"
-											value="" placeholder="crong@codesquad.kr" maxlength="50">
+											value="" placeholder="ex) crong@codesquad.kr" maxlength="50">
 										<div class="warning_msg email hide_warning">형식이 틀렸습니다.</div>
 									</div>
 								</div>
