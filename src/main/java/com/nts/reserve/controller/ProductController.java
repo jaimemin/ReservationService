@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +40,9 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/{displayInfoId}")
-	public DisplayInfoResponse getDisplayInfoResponse(@PathVariable("displayInfoId") int displayInfoId,
+	public DisplayInfoResponse getDisplayInfoResponse(@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
+				@PathVariable("displayInfoId") int displayInfoId,
 				@RequestParam(name = "is-detail-page", required = false, defaultValue = "true") boolean isDetailPage) {
-		if (displayInfoId <= 0) {
-			throw new IllegalArgumentException("invalid displayInfoId: displayInfoId must be over zero");
-		}
-		
 		return displayInfoService.getDisplayInfoResponse(displayInfoId, isDetailPage);
 	}
 

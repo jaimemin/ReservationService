@@ -19,6 +19,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nts.reserve.dto.DisplayInfoResponse;
 import com.nts.reserve.dto.ReservationInfo;
@@ -111,6 +112,24 @@ public class ViewController {
 	@GetMapping(path = "/booking-login")
 	public String bookingLogin() {
 		return "bookinglogin";
+	}
+	
+	@GetMapping(path = "/review-write/{reservationInfoId}")
+	public String reviewWrite(@CookieValue(value = "reservationEmail", required = false) String reservationEmail, 
+			@Valid @NotNull @Positive(message = "invalid reservationId: must be over zero") 
+			@PathVariable("reservationInfoId") int reservationInfoId, 
+			ModelMap modelMap) {
+		if (StringUtils.isEmpty(reservationEmail)) {
+			return "redirect:/booking-login";
+		}
+		
+		ReservationInfo reservation = reservationService.getReservationInfo(reservationInfoId);
+		
+		modelMap.addAttribute("reservation", reservation);
+		modelMap.addAttribute("productDescription", 
+			displayInfoService.getDisplayInfo(reservation.getDisplayInfoId()).getProductDescription());
+		
+		return "reviewWrite";
 	}
 
 	private String getReservationDate() {

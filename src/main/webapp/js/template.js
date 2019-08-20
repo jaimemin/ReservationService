@@ -1,9 +1,19 @@
+const thumbnailTemplate = () => (
+	`
+	<a class="anchor">
+		<span class="spr_book ico_del">삭제</span>
+	</a>
+	<img src="" width="130" alt="댓글 첨부 사진" class="item_thumb">
+	<span class="img_border"/>
+	`
+);
+
 const replaceTemplate = (product) => (
 	`
 	<li class="item">
 		<a href="/Reservation/detail/${product.displayInfoId}" class="item_book">
 			<div class="item_preview">
-				<img alt="${product.description}" class="img_thumb" src="http://127.0.0.1:8080/Reservation/${product.saveFileName}">
+				<img alt="${product.description}" class="img_thumb" src="/Reservation/${product.saveFileName}">
 				<span class="img_border"></span>
 			</div>
 			<div class="event_txt">
@@ -46,7 +56,7 @@ const commentWithImageTemplate = (commentInfo) => (
 				<div class="thumb_area">
 					<a href="#" class="thumb" title="이미지 크게 보기"> <img
 						width="90" height="90" class="img_vertical_top"
-						src="http://127.0.0.1:8080/Reservation/${commentInfo.saveFileName}" alt="리뷰이미지">
+						src="/Reservation/${commentInfo.saveFileName}" alt="리뷰이미지">
 					</a> 
 					<span class="img_count" style="display: none;">1</span>
 				</div>
@@ -68,7 +78,7 @@ const commentWithImageTemplate = (commentInfo) => (
 const productImageTemplate = (image, displayInfo) => (	
 	`
 	<li class="item" style="width: 414px;">
-		<img alt="공연 포스터" class="img_thumb" src="http://127.0.0.1:8080/Reservation/${image.saveFileName}">
+		<img alt="공연 포스터" class="img_thumb" src="/Reservation/${image.saveFileName}">
 		<span class="img_bg"></span>
 		<div class="visual_txt">
 			<div class="visual_txt_inn">
@@ -117,7 +127,7 @@ const directionTemplate = (displayInfo, displayInfoImage) => (
 	<div class="detail_location hide">
 		<div class="box_store_info no_topline">
 			<a href="#" class="store_location" title="지도웹으로 연결"> 
-				<img class="store_map img_thumb" alt="map" src="http://127.0.0.1:8080/Reservation//${displayInfoImage.saveFileName}">
+				<img class="store_map img_thumb" alt="map" src="/Reservation//${displayInfoImage.saveFileName}">
 				<span class="img_border"></span> 
 				<span class="btn_map"><i class="spr_book2 ico_mapview"></i></span>
 			</a>
