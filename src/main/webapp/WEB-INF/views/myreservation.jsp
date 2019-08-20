@@ -23,7 +23,7 @@
 				<h1 class="logo">
 					<a href="https://m.naver.com/" class="lnk_logo" title="네이버"> <span
 						class="spr_bi ico_n_logo">네이버</span>
-					</a> <a href="./" class="lnk_logo" title="예약"> <span
+					</a> <a href="/Reservation/" class="lnk_logo" title="예약"> <span
 						class="spr_bi ico_bk_logo">예약</span>
 					</a>
 				</h1>
@@ -175,7 +175,7 @@
 															</em>
 														</div>
 														<div class="booking_cancel">
-															<a href="/Reservation/htmls/reviewWrite.html">
+															<a href="/Reservation/review-write/${reservedItem.id}">
 																<button class="btn">
 																	<span>예매자 리뷰 남기기</span>
 																</button>

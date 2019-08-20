@@ -105,4 +105,47 @@
 		WHERE
 			display_info.id = #{displayInfoId}
 	</select>
+	
+	<insert id="insertComment" parameterType="Comment"
+		keyProperty="commentId" useGeneratedKeys="true">
+		INSERT INTO
+			reservation_user_comment (
+				reservation_info_id,
+				product_id,
+				score,
+				comment,
+				create_date,
+				modify_date
+			)
+			VALUES (
+				#{reservationInfoId},
+				#{productId},
+				#{score},
+				#{comment},
+				NOW(),
+				NOW()
+			)
+	</insert>
+	
+	<insert id="insertCommentImages" parameterType="CommentImage"
+		keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO
+			reservation_user_comment_image (
+				reservation_info_id,
+				reservation_user_comment_id,
+				file_id
+			)
+			VALUES (
+				<foreach 
+					collection="fileInfos" 
+					item="fileInfo" 
+					separator=",">
+					(
+						#{reservationInfoId},
+						#{reservationUserCommentId},
+						#{fileInfo.id}
+					)
+				</foreach>
+			)
+	</insert>
 </mapper>
