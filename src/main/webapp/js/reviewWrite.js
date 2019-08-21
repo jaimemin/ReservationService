@@ -39,7 +39,9 @@ const createForm = () => {
 	formData.append("comment", document.querySelector(".review_textarea").value);
 	formData.append("productId", document.querySelector("#productId").value);
 	formData.append("reservationInfoId", document.querySelector("#reservationInfoId").value);
-	formData.append("imageFile", imageFile.files[0]);
+	for (let index = 0; index < imageFile.files.length; index++) {
+		formData.append("imageFiles[]", imageFile.files[index]);
+	}
 	
 	return formData;
 }
@@ -72,23 +74,23 @@ const addThumbnail = () => {
 		return;
 	}
 	
-	if (!imageTypeValidation(files[0])) {
-		alert("JPEG, PNG, JPG와 같은 확장자만 가능합니다!");
-		return;
-	}
-	
-	let fileReader = new FileReader();
-	
-	fileReader.readAsDataURL(files[0]);
-	fileReader.onload = () => {
-		let thumbnail = document.createElement("li");
-		thumbnail.classList.add("item");
-		thumbnail.style.display="inline-block";
-		thumbnail.innerHTML += thumbnailTemplate();
+	Array.from(files).forEach((file) => {
+		if (!imageTypeValidation(file)) {
+			alert("JPEG, PNG, JPG와 같은 확장자만 가능합니다!");
+			return;
+		}
 		
-		thumbnail.querySelector(".item_thumb").src = fileReader.result;
-		imageThumbnails.innerHTML += thumbnail.innerHTML;
-	}
+		let fileReader = new FileReader();
+		
+		fileReader.readAsDataURL(file);
+		fileReader.onload = () => {
+			let thumbnail = document.createElement("li");
+			thumbnail.innerHTML += thumbnailTemplate();
+			
+			thumbnail.querySelector(".item_thumb").src = fileReader.result;
+			imageThumbnails.innerHTML += thumbnail.innerHTML;
+		}
+	});
 }
 
 const imageTypeValidation = (image) => {

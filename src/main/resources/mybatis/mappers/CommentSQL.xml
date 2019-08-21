@@ -23,6 +23,42 @@
 			select="selectCommentImages">
 		</collection>
 	</resultMap>
+	
+	<resultMap id="comment" type="Comment">
+		<id property="commentId" column="commentId"/>
+		<result property="comment" column="comment" />
+		<result property="commentId" column="commentId" />
+		<result property="score" column="score" />
+		<result property="createdDate" column="createdDate" />
+		<result property="modifiedDate" column="modifiedDate" />
+		<result property="reservationEmail" column="reservationEmail" />
+		<result property="reservationDate" column="reservationDate" />
+		<collection
+			property="commentImages" 
+			column="commentId" 
+			javaType="java.util.List" 
+			ofType="CommentImage" 
+			select="selectCommentImages">
+		</collection>
+	</resultMap>
+
+	<select id="selectComment" parameterType="int" resultMap="comment">
+		SELECT
+			comment.comment AS 'comment',
+			comment.id AS commentId,
+			comment.score,
+			comment.create_date AS createdDate,
+			comment.modify_date AS modifiedDate,
+			reservation_info.reservation_email AS reservationEmail,
+			reservation_info.reservation_date
+		FROM
+			reservation_user_comment AS comment
+		INNER JOIN
+			reservation_info
+				ON comment.reservation_info_id = reservation_info.id
+		WHERE
+			comment.id = #{commentId}
+	</select>
 
 
 	<select id="selectComments" parameterType="map" resultMap="commentList">
@@ -128,24 +164,23 @@
 	</insert>
 	
 	<insert id="insertCommentImages" parameterType="CommentImage"
-		keyProperty="id" useGeneratedKeys="true">
+		keyColumn="id" useGeneratedKeys="true">
 		INSERT INTO
 			reservation_user_comment_image (
 				reservation_info_id,
 				reservation_user_comment_id,
 				file_id
 			)
-			VALUES (
+			VALUES 
 				<foreach 
 					collection="fileInfos" 
 					item="fileInfo" 
 					separator=",">
 					(
 						#{reservationInfoId},
-						#{reservationUserCommentId},
+						#{commentId},
 						#{fileInfo.id}
 					)
 				</foreach>
-			)
 	</insert>
 </mapper>

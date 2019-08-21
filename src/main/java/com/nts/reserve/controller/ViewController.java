@@ -131,6 +131,15 @@ public class ViewController {
 		
 		return "reviewWrite";
 	}
+	
+	@GetMapping(path = "/commentImage/{commentId}")
+	public String commentImage(@Valid @NotNull @Positive(message = "invalid commentId: must be over zero")
+		@PathVariable("commentId") int commentId, 
+		Model model) {
+		model.addAttribute("commentId", commentId);
+		
+		return "commentImage";
+	}
 
 	private String getReservationDate() {
 		return DATE_TIME_FORMATTER

@@ -11,6 +11,8 @@ import com.nts.reserve.dto.FileInfo;
 
 @Repository
 public interface CommentDao {
+	Comment selectComment(int commentId);
+	
 	List<Comment> selectComments(@Param("displayInfoId") int displayInfoId,
 			@Param("isDetailPage") boolean isDetailPage);
 

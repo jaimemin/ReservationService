@@ -1,10 +1,11 @@
 const thumbnailTemplate = () => (
 	`
-	<a class="anchor">
-		<span class="spr_book ico_del">삭제</span>
-	</a>
-	<img src="" width="130" alt="댓글 첨부 사진" class="item_thumb">
-	<span class="img_border"/>
+	<li class="item" style="display: inner-block;">
+		<a class="anchor">
+			<span class="spr_book ico_del">삭제</span>
+		</a>
+		<img src="" width="130" alt="댓글 첨부 사진" class="item_thumb">
+	</li>
 	`
 );
 
@@ -54,9 +55,9 @@ const commentWithImageTemplate = (commentInfo) => (
 		<div>
 			<div class="review_area">
 				<div class="thumb_area">
-					<a href="#" class="thumb" title="이미지 크게 보기"> <img
+					<a href="/Reservation/commentImage/${commentInfo.id}" class="thumb" title="이미지 크게 보기"> <img
 						width="90" height="90" class="img_vertical_top"
-						src="/Reservation/${commentInfo.saveFileName}" alt="리뷰이미지">
+						src="/Reservation/api/review-write/${commentInfo.id}/image" alt="댓글 이미지">
 					</a> 
 					<span class="img_count" style="display: none;">1</span>
 				</div>

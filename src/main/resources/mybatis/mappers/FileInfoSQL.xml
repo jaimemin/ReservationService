@@ -17,12 +17,12 @@
 			<foreach
 				collection="fileInfos"
 				item="fileInfo"
-				separator=",">
+				separator=","> 
 				(
 					#{fileInfo.contentType},
 					#{fileInfo.fileName},
 					#{fileInfo.saveFileName},
-					#{file.deleteFlag},
+					#{fileInfo.deleteFlag},
 					NOW(),
 					NOW()
 				)

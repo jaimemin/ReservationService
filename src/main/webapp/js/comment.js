@@ -25,6 +25,7 @@ const createCommentTemplates = (commentList, displayInfo) => {
 		let commentInfo = {};
 		let commentTemplate;
 
+		commentInfo.id = comment.commentId;
 		commentInfo.comment = comment.comment;
 		commentInfo.score = `${comment.score}.0`;
 		commentInfo.reservationEmail = comment.reservationEmail;

@@ -31,6 +31,11 @@ public class CommentServiceImpl implements CommentService {
 		this.fileInfoDao = fileInfoDao;
 		this.fileManager = fileManager;
 	}
+	
+	@Override
+	public Comment getComment(int commentId) {
+		return commentDao.selectComment(commentId);
+	}
 
 	@Override
 	public List<Comment> getComments(int displayInfoId, boolean isDetailPage) {
