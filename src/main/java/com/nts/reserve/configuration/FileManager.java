@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,12 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.nts.reserve.dto.FileInfo;
 
 @Component
-@PropertySource({ "classpath:/property/application.properties" })
 public class FileManager {
 	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
 	private static final int MAX_FILE_SIZE = 1024;
 	
-	@Value("${path}")
+	@Value("${file.path}")
 	private String filePath;
 
 	public List<FileInfo> saveFiles(List<MultipartFile> imageFiles) throws IOException {
