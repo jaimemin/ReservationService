@@ -1,4 +1,4 @@
-package com.nts.reserve.configuration;
+package com.nts.reserve.handler;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,14 +11,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.nts.reserve.dto.FileInfo;
 
 @Component
-public class FileManager {
+public class FileHandler {
 	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
-	private static final int MAX_FILE_SIZE = 1024;
 	
 	@Value("${file.path}")
 	private String filePath;
@@ -36,14 +36,9 @@ public class FileManager {
 			String saveFileName = filePath + fileName;
 
 			try (
-				FileOutputStream fos = new FileOutputStream(saveFileName);
-				InputStream is = imageFile.getInputStream();) {
-					int readCount = 0;
-					byte[] buffer = new byte[MAX_FILE_SIZE];
-				
-					while ((readCount = is.read(buffer)) != -1) {
-						fos.write(buffer, 0, readCount);
-				}
+				FileOutputStream fileOutputStream = new FileOutputStream(saveFileName);
+				InputStream inputStream = imageFile.getInputStream();) {
+				FileCopyUtils.copy(inputStream, fileOutputStream);
 
 				FileInfo fileInfo = new FileInfo();
 				fileInfo.setContentType(imageFile.getContentType());
