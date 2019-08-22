@@ -32,7 +32,7 @@
 		<div class="ct">
 			<div class="ct_wrap">
 				<div class="top_title review_header">
-					<a href="./myreservation" class="btn_back" title="이전 화면으로 이동">
+					<a href="/Reservation/myreservation" class="btn_back" title="이전 화면으로 이동">
 						<i class="fn fn-backward1"></i>
 					</a>
 					<h2>

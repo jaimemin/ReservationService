@@ -1,6 +1,10 @@
 const MAX_RATING = 5;
+const MIN_TEXT = 5;
+const MAX_TEXT = 400;
 const ERROR_STATUS = 400;
 const COMPLETE_STATE = 4;
+
+let listIndex = 0;
 
 const registerButtonClickEvent = () => {
 	let registerButton = document.querySelector(".box_bk_btn .bk_btn");
@@ -85,7 +89,7 @@ const addThumbnail = () => {
 		fileReader.readAsDataURL(file);
 		fileReader.onload = () => {
 			let thumbnail = document.createElement("li");
-			thumbnail.innerHTML += thumbnailTemplate();
+			thumbnail.innerHTML += thumbnailTemplate(listIndex++);
 			
 			thumbnail.querySelector(".item_thumb").src = fileReader.result;
 			imageThumbnails.innerHTML += thumbnail.innerHTML;
@@ -104,10 +108,41 @@ const removeThumbnail = (event) => {
 			|| event.target.classList.contains("ico_del")) {
 		let imageInput = document.querySelector(".review_write_footer > #reviewImageFileOpenInput");
 		
+		let index = indexInList(event.target.closest("li"));
 		event.target.closest("li").remove();
-		imageInput.value = "";
+		let fileList = new DataTransfer();
+		
+		let idx = 0;
+		Array.from(imageInput.files).forEach((file) => {
+			if (idx !== index) {
+				fileList.items.add(file);
+			}
+			
+			idx++;
+		});
+		
+		console.log(imageInput.files);
+		imageInput.files = fileList.files;
+		console.log(imageInput.files);
 		event.stopPropagation();
 	}
+}
+
+const indexInList = (node) => {
+	let children = node.parentNode.childNodes;
+	let index = 0;
+	
+	for (let idx = 0; idx < children.length; idx++) {
+		if (children[idx] == node) {
+			return index;
+		}
+		
+		if (children[idx].nodeType == 1) {
+			index++;
+		}
+	}
+	
+	return -1;
 }
 
 const registerRatingStarEvent = () => {
@@ -163,8 +198,8 @@ const registerTextAreaEvents = () => {
 const limitTextArea = () => {
 	let textArea = document.querySelector(".review_textarea");
 	
-	textArea.minLength = 5;
-	textArea.maxLength = 400;
+	textArea.minLength = MIN_TEXT;
+	textArea.maxLength = MAX_TEXT;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
