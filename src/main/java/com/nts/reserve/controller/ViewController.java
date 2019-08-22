@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.nts.reserve.dto.DisplayInfoResponse;
 import com.nts.reserve.dto.ReservationInfo;
+import com.nts.reserve.service.CommentService;
 import com.nts.reserve.service.DisplayInfoService;
 import com.nts.reserve.service.ReservationService;
 
@@ -30,11 +31,15 @@ public class ViewController {
 	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy. MM. dd.");
 	private final ReservationService reservationService;
 	private final DisplayInfoService displayInfoService;
+	private final CommentService commentService;
 
 	@Autowired
-	public ViewController(ReservationService reservationService, DisplayInfoService displayInfoService) {
+	public ViewController(ReservationService reservationService
+			, DisplayInfoService displayInfoService
+			, CommentService commentService) {
 		this.reservationService = reservationService;
 		this.displayInfoService = displayInfoService;
+		this.commentService = commentService;
 	}
 
 	@GetMapping(path = "/")
@@ -133,7 +138,7 @@ public class ViewController {
 	public String commentImage(@Valid @Positive(message = "invalid commentId: must be over zero")
 		@PathVariable("commentId") int commentId, 
 		Model model) {
-		model.addAttribute("commentId", commentId);
+		model.addAttribute("commentImages", commentService.getComment(commentId).getCommentImages());
 		
 		return "commentImage";
 	}

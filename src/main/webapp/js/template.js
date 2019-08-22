@@ -49,7 +49,7 @@ const commentWithoutImageTemplate = (commentInfo) => (
 	`
 );
 
-const commentWithImageTemplate = (commentInfo) => (
+const commentWithImageTemplate = (commentInfo, imageCount) => (
 	`
 	<li class="list_item">
 		<div>
@@ -58,6 +58,7 @@ const commentWithImageTemplate = (commentInfo) => (
 					<a href="/Reservation/commentImage/${commentInfo.id}" class="thumb" title="이미지 크게 보기"> <img
 						width="90" height="90" class="img_vertical_top"
 						src="/Reservation/api/review-write/${commentInfo.id}/image" alt="댓글 이미지">
+						<span class="comment_image_count">+${imageCount}</span>
 					</a> 
 					<span class="img_count" style="display: none;">1</span>
 				</div>
