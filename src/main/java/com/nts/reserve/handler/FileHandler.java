@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -14,11 +15,13 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.uuid.Generators;
 import com.nts.reserve.dto.FileInfo;
 
 @Component
 public class FileHandler {
-	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
+	// https://github.com/cowtowncoder/java-uuid-generator
+	private static final UUID UUID = Generators.timeBasedGenerator().generate();
 	
 	@Value("${file.path}")
 	private String filePath;
@@ -31,8 +34,7 @@ public class FileHandler {
 		List<FileInfo> fileInfos = new ArrayList<>();
 		
 		for (MultipartFile imageFile : imageFiles) {
-			String fileName = DATE_TIME_FORMATTER.format(LocalDateTime.now()) 
-					+ imageFile.getOriginalFilename();
+			String fileName = UUID + imageFile.getOriginalFilename();
 			String saveFileName = filePath + fileName;
 
 			try (
