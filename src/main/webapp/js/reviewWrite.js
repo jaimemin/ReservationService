@@ -121,9 +121,7 @@ const removeThumbnail = (event) => {
 			idx++;
 		});
 		
-		console.log(imageInput.files);
 		imageInput.files = fileList.files;
-		console.log(imageInput.files);
 		event.stopPropagation();
 	}
 }
@@ -133,11 +131,11 @@ const indexInList = (node) => {
 	let index = 0;
 	
 	for (let idx = 0; idx < children.length; idx++) {
-		if (children[idx] == node) {
+		if (children[idx] === node) {
 			return index;
 		}
 		
-		if (children[idx].nodeType == 1) {
+		if (children[idx].nodeType === 1) {
 			index++;
 		}
 	}
