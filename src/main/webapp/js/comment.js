@@ -35,7 +35,7 @@ const createCommentTemplates = (commentList, displayInfo) => {
 		if (comment.commentImages.length >= 1) {
 			commentInfo.saveFileName = comment.commentImages[0].saveFileName;
 
-			commentTemplate = commentWithImageTemplate(commentInfo);
+			commentTemplate = commentWithImageTemplate(commentInfo, comment.commentImages.length);
 		} else {
 			commentTemplate = commentWithoutImageTemplate(commentInfo);
 		}

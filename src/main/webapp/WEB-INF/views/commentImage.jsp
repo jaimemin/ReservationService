@@ -8,6 +8,12 @@
 <title>확대된 사진</title>
 </head>
 <body>
-	<img src="/Reservation/api/review-write/${commentId}/image" alt="댓글 이미지">
+	<ul style="list-style-type: none;">
+		<c:forEach var="commentImage" items="${commentImages}">
+			<li>
+				<img src="/Reservation/api/review-write?saveFileName=${commentImage.saveFileName}" alt="댓글 이미지">
+			</li>
+		</c:forEach>
+	</ul>
 </body>
 </html>

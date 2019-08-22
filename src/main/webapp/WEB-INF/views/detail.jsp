@@ -13,6 +13,7 @@
 	<title>네이버 예약</title>
 	<link href="/Reservation/css/style.css" rel="stylesheet">
 	<link href="/Reservation/css/detail.css" rel="stylesheet">
+	<link href="/Reservation/css/comment.css" rel="stylesheet">
 <style>
 .container_visual {
 	height: 414px;
