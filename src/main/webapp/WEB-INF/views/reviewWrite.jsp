@@ -123,6 +123,7 @@
 			<span class="copyright">© NAVER Corp.</span>
 		</div>
 	</footer>
+	<input type="hidden" class="hidden_input" id="displayInfoId" value="${reservation.displayInfoId}">
 	
 	<script src="/Reservation/js/reviewWrite.js"></script>
 	<script src="/Reservation/js/template.js"></script>
