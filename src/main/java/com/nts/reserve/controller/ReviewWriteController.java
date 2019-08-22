@@ -41,9 +41,10 @@ public class ReviewWriteController {
 	}
 	
 	@GetMapping("/review-write/{commentId}/image")
-	public byte[] commentImage(@Valid @NotNull @Positive 
+	public byte[] commentImage(@Valid @Positive 
 			@PathVariable("commentId") int commentId) throws IOException {
 		Comment comment = commentService.getComment(commentId);
+		System.out.println(comment.getCommentImages());
 		String saveFileName = comment.getCommentImages().get(0).getSaveFileName();
 		InputStream inputStream = new FileInputStream(saveFileName);
 		

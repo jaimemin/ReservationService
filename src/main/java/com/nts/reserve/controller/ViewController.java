@@ -50,7 +50,7 @@ public class ViewController {
 
 	@GetMapping(path = "/detail/{displayInfoId}")
 	public String detail(
-			@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
+			@Valid @Positive(message = "invalid displayInfoId: must be over zero") 
 			@PathVariable("displayInfoId") int displayInfoId,
 			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, 
 			Model modelMap) {
@@ -62,7 +62,7 @@ public class ViewController {
 
 	@GetMapping(path = "/review/{displayInfoId}")
 	public String allReview(
-			@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
+			@Valid @Positive(message = "invalid displayInfoId: must be over zero") 
 			@PathVariable("displayInfoId") int displayInfoId,
 			Model model) {
 		model.addAttribute("displayInfoId", displayInfoId);
@@ -72,7 +72,7 @@ public class ViewController {
 
 	@GetMapping(path = "/reserve/{displayInfoId}")
 	public String reserve(
-			@Valid @PathVariable("displayInfoId") @NotNull 
+			@Valid @PathVariable("displayInfoId") 
 			@Positive(message = "invalid displayInfoId: must be over zero") int displayInfoId,
 			@CookieValue(value = "reservationEmail", required = false) String reservationEmail, 
 			ModelMap modelMap) {
@@ -116,7 +116,7 @@ public class ViewController {
 	
 	@GetMapping(path = "/review-write/{reservationInfoId}")
 	public String reviewWrite(@CookieValue(value = "reservationEmail", required = false) String reservationEmail, 
-			@Valid @NotNull @Positive(message = "invalid reservationId: must be over zero") 
+			@Valid @Positive(message = "invalid reservationId: must be over zero") 
 			@PathVariable("reservationInfoId") int reservationInfoId, 
 			ModelMap modelMap) {
 		if (StringUtils.isEmpty(reservationEmail)) {
@@ -133,7 +133,7 @@ public class ViewController {
 	}
 	
 	@GetMapping(path = "/commentImage/{commentId}")
-	public String commentImage(@Valid @NotNull @Positive(message = "invalid commentId: must be over zero")
+	public String commentImage(@Valid @Positive(message = "invalid commentId: must be over zero")
 		@PathVariable("commentId") int commentId, 
 		Model model) {
 		model.addAttribute("commentId", commentId);

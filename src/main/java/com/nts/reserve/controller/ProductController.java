@@ -33,14 +33,14 @@ public class ProductController {
 
 	@GetMapping("/products")
 	public List<Product> getProducts(
-			@Valid @NotNull @PositiveOrZero(message = "invalid categoryId: categoryId must not be under zero") 
+			@Valid @PositiveOrZero(message = "invalid categoryId: categoryId must not be under zero") 
 			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
 		return productService.getProducts(categoryId, start);
 	}
 
 	@GetMapping("/products/{displayInfoId}")
-	public DisplayInfoResponse getDisplayInfoResponse(@Valid @NotNull @Positive(message = "invalid displayInfoId: must be over zero") 
+	public DisplayInfoResponse getDisplayInfoResponse(@Valid @Positive(message = "invalid displayInfoId: must be over zero") 
 				@PathVariable("displayInfoId") int displayInfoId,
 				@RequestParam(name = "is-detail-page", required = false, defaultValue = "true") boolean isDetailPage) {
 		return displayInfoService.getDisplayInfoResponse(displayInfoId, isDetailPage);
