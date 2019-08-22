@@ -1,6 +1,6 @@
-const thumbnailTemplate = () => (
+const thumbnailTemplate = (listIndex) => (
 	`
-	<li class="item" style="display: inner-block;">
+	<li class="item" id="${listIndex}" style="display: inner-block;">
 		<a class="anchor">
 			<span class="spr_book ico_del">삭제</span>
 		</a>
