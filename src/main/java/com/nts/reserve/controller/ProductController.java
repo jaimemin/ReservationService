@@ -1,12 +1,17 @@
 package com.nts.reserve.controller;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +28,9 @@ import com.nts.reserve.service.ProductService;
 public class ProductController {
 	private final ProductService productService;
 	private final DisplayInfoService displayInfoService;
+	
+	@Value("${file.path}")
+	private String filePath;
 
 	@Autowired
 	public ProductController(ProductService productService, DisplayInfoService displayInfoService) {
@@ -45,4 +53,10 @@ public class ProductController {
 		return displayInfoService.getDisplayInfoResponse(displayInfoId, isDetailPage);
 	}
 
+	@GetMapping("/products/image")
+	public byte[] productImage(@RequestParam("saveFileName") String saveFileName) throws IOException {
+		InputStream inputStream = new FileInputStream(filePath + saveFileName);
+
+		return IOUtils.toByteArray(inputStream);
+	}
 }

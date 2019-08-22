@@ -19,22 +19,26 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.nts.reserve.dto.Comment;
+import com.nts.reserve.handler.FileHandler;
 import com.nts.reserve.service.CommentService;
 
 @RestController
 @RequestMapping(path = "/api")
 public class ReviewWriteController {
 	private final CommentService commentService;
+	private final FileHandler fileManager;
 	
 	@Autowired
-	public ReviewWriteController(CommentService commentService) {
+	public ReviewWriteController(CommentService commentService, 
+			FileHandler fileManager) {
 		this.commentService = commentService;
+		this.fileManager = fileManager;
 	}
 	
 	@PostMapping("/review-write")
 	public Comment writeReview(@RequestParam(value="imageFiles[]", required=false) List<MultipartFile> imageFiles, 
 			Comment comment) throws IOException {
-		commentService.addComment(comment, imageFiles);
+		commentService.addComment(comment, fileManager.saveFiles(imageFiles));
 		
 		return comment;
 	}
