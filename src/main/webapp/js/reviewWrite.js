@@ -24,7 +24,9 @@ const registerButtonClickEvent = () => {
 			
 			if(xmlHttpRequest.readyState === COMPLETE_STATE) {
 				alert("댓글 등록이 완료되었습니다.");
-				window.history.back();
+				
+				let displayInfoId = document.querySelector("#displayInfoId").value;
+				window.location.href = `/Reservation/detail/${displayInfoId}`;
 			}
 		}
 		
