@@ -24,7 +24,9 @@ public class ProductServiceImpl implements ProductService {
 	private final ProductImageDao productImageDao;
 
 	@Autowired
-	public ProductServiceImpl(ProductDao productDao, ProductPriceDao productPriceDao, ProductImageDao productImageDao) {
+	public ProductServiceImpl(ProductDao productDao
+			, ProductPriceDao productPriceDao
+			, ProductImageDao productImageDao) {
 		this.productDao = productDao;
 		this.productPriceDao = productPriceDao;
 		this.productImageDao = productImageDao;
