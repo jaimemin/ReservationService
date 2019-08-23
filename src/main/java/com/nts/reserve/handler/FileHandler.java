@@ -23,7 +23,7 @@ public class FileHandler {
 	// https://github.com/cowtowncoder/java-uuid-generator
 	private static final UUID UUID = Generators.timeBasedGenerator().generate();
 	
-	@Value("${comment.image.file.path}")
+	@Value("${image.file.path}")
 	private String filePath;
 
 	public List<FileInfo> saveFiles(List<MultipartFile> imageFiles) throws IOException {

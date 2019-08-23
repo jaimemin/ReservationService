@@ -29,7 +29,7 @@ public class ProductController {
 	private final ProductService productService;
 	private final DisplayInfoService displayInfoService;
 	
-	@Value("${comment.image.file.path}")
+	@Value("${image.file.path}")
 	private String filePath;
 
 	@Autowired
