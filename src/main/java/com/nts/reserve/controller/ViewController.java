@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.nts.reserve.dto.DisplayInfoResponse;
+import com.nts.reserve.dto.Product;
 import com.nts.reserve.dto.ReservationInfo;
 import com.nts.reserve.service.CommentService;
 import com.nts.reserve.service.DisplayInfoService;
@@ -58,7 +59,8 @@ public class ViewController {
 	public String thumbnailDetail(
 			@Valid @Positive(message = "invalid productId: must be over zero")
 			@PathVariable("productId") int productId) {
-		int displayInfoId = productService.getProduct(productId).getDisplayInfoId();
+		List<Product> products= productService.getProductInfos(productId);
+		int displayInfoId = products.get(0).getDisplayInfoId();
 		
 		return "redirect:/detail/" + displayInfoId;
 	}

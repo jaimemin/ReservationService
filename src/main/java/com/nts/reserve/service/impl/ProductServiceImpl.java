@@ -42,8 +42,8 @@ public class ProductServiceImpl implements ProductService {
 		return productImageDao.selectProductImageCount(displayInfoId);
 	}
 	
-	public Product getProduct(int productId) {
-		return productDao.selectProduct(productId);
+	public List<Product> getProductInfos(int productId) {
+		return productDao.selectProductInfos(productId);
 	}
 
 	@Override

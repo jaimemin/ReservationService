@@ -18,9 +18,6 @@ import com.nts.reserve.dto.FileInfo;
 
 @Component
 public class FileHandler {
-	// https://github.com/cowtowncoder/java-uuid-generator
-	private static final UUID UUID = Generators.timeBasedGenerator().generate();
-	
 	@Value("${image.file.path}")
 	private String filePath;
 
@@ -32,7 +29,8 @@ public class FileHandler {
 		List<FileInfo> fileInfos = new ArrayList<>();
 		
 		for (MultipartFile imageFile : imageFiles) {
-			String fileName = UUID + imageFile.getOriginalFilename();
+			// https://github.com/cowtowncoder/java-uuid-generator
+			String fileName = Generators.timeBasedGenerator().generate() + imageFile.getOriginalFilename();
 			String saveFileName = filePath + fileName;
 
 			try (
