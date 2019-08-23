@@ -14,6 +14,19 @@
 			product.category_id = #{categoryId}
 	</select>
 	
+	<select id="selectProduct" parameterType="int" resultType="Product">
+		SELECT
+			product.id,
+			display_info.id AS displayInfoId
+		FROM
+			product
+		INNER JOIN
+			display_info
+				ON product.id = display_info.product_id
+		WHERE
+			product.id = #{productId}
+	</select>
+	
 	<select id="selectProducts" parameterType="map" resultType="Product">
 		SELECT 
 			product.id AS id,

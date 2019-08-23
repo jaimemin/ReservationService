@@ -1,9 +1,7 @@
 package com.nts.reserve.controller;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -11,7 +9,6 @@ import javax.validation.constraints.Positive;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,15 +47,12 @@ public class ReviewWriteController {
 			@PathVariable("commentId") int commentId) throws IOException {
 		Comment comment = commentService.getComment(commentId);
 		String saveFileName = comment.getCommentImages().get(0).getSaveFileName();
-		InputStream inputStream = new FileInputStream(saveFileName);
 		
-		return IOUtils.toByteArray(inputStream);
+		return IOUtils.toByteArray(new FileInputStream(saveFileName));
 	}
 	
 	@GetMapping("/review-write")
 	public byte[] commentImage(@RequestParam("saveFileName") String saveFileName) throws IOException {
-		InputStream inputStream = new FileInputStream(saveFileName);
-
-		return IOUtils.toByteArray(inputStream);
+		return IOUtils.toByteArray(new FileInputStream(saveFileName));
 	}
 }

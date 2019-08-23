@@ -131,7 +131,7 @@
 
 	<script type="rv-template" id="promotion_item">
     	<li class="item" id="promotion_image" style="background-image: url(/Reservation/{productImageUrl});">
-        	<a href="#"> 
+        	<a href="/Reservation/products/{productId}"> 
 				<span class="img_btm_border"></span> 
 				<span class="img_right_border"></span> 
 				<span class="img_bg_gra"></span>
