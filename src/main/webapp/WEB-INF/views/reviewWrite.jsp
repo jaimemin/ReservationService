@@ -19,9 +19,9 @@
 		<div class="header fade">
 			<header class="header_tit">
 				<h1 class="logo">
-					<a href="./mainpage.html" class="lnk_logo" title="네이버"> <span
+					<a href="/Reservation/" class="lnk_logo" title="네이버"> <span
 						class="spr_bi ico_n_logo">네이버</span>
-					</a> <a href="./mainpage.html" class="lnk_logo" title="예약"> <span
+					</a> <a href="/Reservation/" class="lnk_logo" title="예약"> <span
 						class="spr_bi ico_bk_logo">예약</span>
 					</a>
 				</h1>
@@ -32,7 +32,7 @@
 		<div class="ct">
 			<div class="ct_wrap">
 				<div class="top_title review_header">
-					<a href="/Reservation/myreservation" class="btn_back" title="이전 화면으로 이동">
+					<a href="/Reservation/my-reservation" class="btn_back" title="이전 화면으로 이동">
 						<i class="fn fn-backward1"></i>
 					</a>
 					<h2>
