@@ -22,6 +22,7 @@ import com.nts.reserve.dto.DisplayInfoResponse;
 import com.nts.reserve.dto.ReservationInfo;
 import com.nts.reserve.service.CommentService;
 import com.nts.reserve.service.DisplayInfoService;
+import com.nts.reserve.service.ProductService;
 import com.nts.reserve.service.ReservationService;
 
 @Controller
@@ -29,14 +30,17 @@ import com.nts.reserve.service.ReservationService;
 public class ViewController {
 	private static final int MAX_PASSED_DAY = 5;
 	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy. MM. dd.");
+	private final ProductService productService;
 	private final ReservationService reservationService;
 	private final DisplayInfoService displayInfoService;
 	private final CommentService commentService;
 
 	@Autowired
-	public ViewController(ReservationService reservationService
+	public ViewController(ProductService productService
+			, ReservationService reservationService
 			, DisplayInfoService displayInfoService
 			, CommentService commentService) {
+		this.productService = productService;
 		this.reservationService = reservationService;
 		this.displayInfoService = displayInfoService;
 		this.commentService = commentService;
@@ -48,6 +52,15 @@ public class ViewController {
 		model.addAttribute("reservationEmail", reservationEmail);
 
 		return "mainpage";
+	}
+	
+	@GetMapping(path = "/products/{productId}")
+	public String thumbnailDetail(
+			@Valid @Positive(message = "invalid productId: must be over zero")
+			@PathVariable("productId") int productId) {
+		int displayInfoId = productService.getProduct(productId).getDisplayInfoId();
+		
+		return "redirect:/detail/" + displayInfoId;
 	}
 
 	@GetMapping(path = "/detail/{displayInfoId}")

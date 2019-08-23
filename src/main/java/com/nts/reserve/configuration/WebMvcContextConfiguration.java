@@ -17,7 +17,7 @@ import com.nts.reserve.interceptor.LogInterceptor;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.nts.reserve.controller", "com.nts.reserve.error" })
+@ComponentScan(basePackages = { "com.nts.reserve.controller", "com.nts.reserve.handler" })
 public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	/**
 	 * 리소스 핸들러 설정 <resources location="/resources/" mapping="/resources/**">

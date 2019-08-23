@@ -2,7 +2,6 @@ package com.nts.reserve.controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -56,8 +55,6 @@ public class ProductController {
 
 	@GetMapping("/products/image")
 	public byte[] productImage(@RequestParam("saveFileName") String saveFileName) throws IOException {
-		InputStream inputStream = new FileInputStream(filePath + saveFileName);
-
-		return IOUtils.toByteArray(inputStream);
+		return IOUtils.toByteArray(new FileInputStream(filePath + saveFileName));
 	}
 }
