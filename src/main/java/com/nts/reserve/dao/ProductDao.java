@@ -10,6 +10,8 @@ import com.nts.reserve.dto.Product;
 @Repository
 public interface ProductDao {
 	int selectCategoryProductCount(@Param("categoryId") int categoryId, @Param("imageType") String imageType);
+	
+	Product selectProduct(int productId);
 
 	List<Product> selectProductInfos(int productId);
 	

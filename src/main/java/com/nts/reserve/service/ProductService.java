@@ -12,6 +12,8 @@ public interface ProductService {
 	int getProductImageCount(int displayInfoId);
 	
 	List<Product> getProductInfos(int productId);
+	
+	Product getProduct(int productId);
 
 	List<Product> getProducts(int categoryId, int start);
 
