@@ -55,7 +55,7 @@ const createForm = () => {
 const isCommentValid = () => {
 	let textArea = document.querySelector(".review_textarea");
 	let countSpan = document.querySelector(".rating > .star_rank");
-	let textAreaValid = textArea.textLength >= 5;
+	let textAreaValid = textArea.textLength >= MIN_TEXT;
 	let starValid = !countSpan.classList.contains("gray_star");
 	
 	return textAreaValid && starValid;

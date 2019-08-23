@@ -29,11 +29,12 @@ public class ProductController {
 	private final ProductService productService;
 	private final DisplayInfoService displayInfoService;
 	
-	@Value("${file.path}")
+	@Value("${comment.image.file.path}")
 	private String filePath;
 
 	@Autowired
-	public ProductController(ProductService productService, DisplayInfoService displayInfoService) {
+	public ProductController(ProductService productService
+			, DisplayInfoService displayInfoService) {
 		this.productService = productService;
 		this.displayInfoService = displayInfoService;
 	}

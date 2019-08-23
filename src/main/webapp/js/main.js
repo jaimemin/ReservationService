@@ -61,7 +61,7 @@ const initiateSliding = () => {
 		if(xmlHttpRequest.readyState === COMPLETE_STATE) {
 			let imageList = JSON.parse(xmlHttpRequest.responseText);
 			imageList.forEach((image) => {
-				promotionImageUrl.push(image.saveFileName);
+				promotionImageUrl.push(`api/products/image?saveFileName=${image.saveFileName}`);
 			});
 
 			createTemplate();
