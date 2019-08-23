@@ -27,6 +27,24 @@
 			product.id = #{productId}
 	</select>
 	
+	<select id="selectProduct" parameterType="int" resultType="Product">
+		SELECT
+			product.id,
+			file_info.save_file_name AS saveFileName
+		FROM
+			product
+		INNER JOIN
+			product_image
+				ON product.id = product_image.product_id
+		INNER JOIN
+			file_info
+				ON file_info.id = product_image.file_id
+		WHERE
+			product.id = #{productId}
+		AND
+			product_image.type = 'th'
+	</select>
+	
 	<select id="selectProducts" parameterType="map" resultType="Product">
 		SELECT 
 			product.id AS id,

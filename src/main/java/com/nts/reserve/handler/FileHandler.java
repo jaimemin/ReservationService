@@ -16,7 +16,7 @@ import com.fasterxml.uuid.Generators;
 import com.nts.reserve.dto.FileInfo;
 
 @Component
-public class FileHandler {
+public class FileHandler {	
 	@Value("${image.file.path}")
 	private String filePath;
 
@@ -29,8 +29,8 @@ public class FileHandler {
 		
 		for (MultipartFile imageFile : imageFiles) {
 			// https://github.com/cowtowncoder/java-uuid-generator
-			String fileName = Generators.timeBasedGenerator().generate() + imageFile.getOriginalFilename();
-			String saveFileName = filePath + fileName;
+			String fileName = imageFile.getOriginalFilename();
+			String saveFileName = filePath + Generators.timeBasedGenerator().generate() + fileName;
 
 			try (
 				FileOutputStream fileOutputStream = new FileOutputStream(saveFileName);

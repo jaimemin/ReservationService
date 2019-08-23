@@ -13,12 +13,14 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.nts.reserve.interceptor.LogInterceptor;
+import com.nts.reserve.interceptor.LoggingInterceptor;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.nts.reserve.controller", "com.nts.reserve.handler" })
 public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
+	private static final int MAX_FILE_SIZE = 10485760;
+	
 	/**
 	 * 리소스 핸들러 설정 <resources location="/resources/" mapping="/resources/**">
 	 */
@@ -58,13 +60,13 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(10485760); // 1024 * 1024 * 10
+		multipartResolver.setMaxUploadSize(MAX_FILE_SIZE);
 		
 		return multipartResolver;
 	}
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LogInterceptor());
+		registry.addInterceptor(new LoggingInterceptor());
 	}
 }

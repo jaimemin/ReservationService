@@ -14,7 +14,7 @@ const replaceTemplate = (product) => (
 	<li class="item">
 		<a href="/Reservation/detail/${product.displayInfoId}" class="item_book">
 			<div class="item_preview">
-				<img alt="${product.description}" class="img_thumb" src="/Reservation/api/products/image?saveFileName=${product.saveFileName}">
+				<img alt="${product.description}" class="img_thumb" src="/Reservation/api/products/${product.id}/image">
 				<span class="img_border"></span>
 			</div>
 			<div class="event_txt">
@@ -129,7 +129,7 @@ const directionTemplate = (displayInfo, displayInfoImage) => (
 	<div class="detail_location hide">
 		<div class="box_store_info no_topline">
 			<a href="#" class="store_location" title="지도웹으로 연결"> 
-				<img class="store_map img_thumb" alt="map" src="/Reservation/api/products/image?saveFileName=${displayInfoImage.saveFileName}">
+				<img class="store_map img_thumb" alt="map" src="/Reservation/api/display/${displayInfoImage.displayInfoId}/image">
 				<span class="img_border"></span> 
 				<span class="btn_map"><i class="spr_book2 ico_mapview"></i></span>
 			</a>

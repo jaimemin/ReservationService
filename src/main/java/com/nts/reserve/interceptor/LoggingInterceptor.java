@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class LogInterceptor extends HandlerInterceptorAdapter {
-	private static final Logger LOGGER = LoggerFactory.getLogger(LogInterceptor.class);
+public class LoggingInterceptor extends HandlerInterceptorAdapter {
+	private static final Logger LOGGER = LoggerFactory.getLogger(LoggingInterceptor.class);
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

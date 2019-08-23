@@ -64,7 +64,7 @@ const initiateSliding = () => {
 			let imageList = JSON.parse(xmlHttpRequest.responseText);
 			imageList.forEach((image) => {
 				let promotionInfo = {};
-				promotionInfo.url = `api/products/image?saveFileName=${image.saveFileName}`;
+				promotionInfo.url = `api/products/${image.productId}/image`;
 				promotionInfo.productId = image.productId;
 				
 				promotionInfos.push(promotionInfo);

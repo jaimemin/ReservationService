@@ -1,6 +1,7 @@
 package com.nts.reserve.controller;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -53,8 +54,16 @@ public class ProductController {
 		return displayInfoService.getDisplayInfoResponse(displayInfoId, isDetailPage);
 	}
 
+	@GetMapping("/products/{productId}/image")
+	public byte[] productImage(@Valid @Positive(message = "invalid productId: must be over zero") 
+		@PathVariable("productId") int productId) throws IOException {
+		String saveFileName = productService.getProduct(productId).getSaveFileName();
+		
+		return IOUtils.toByteArray(new FileInputStream(filePath + saveFileName));
+	}
+	
 	@GetMapping("/products/image")
-	public byte[] productImage(@RequestParam("saveFileName") String saveFileName) throws IOException {
+	public byte[] allProductImage(@RequestParam(name = "saveFileName") String saveFileName) throws IOException {
 		return IOUtils.toByteArray(new FileInputStream(filePath + saveFileName));
 	}
 }

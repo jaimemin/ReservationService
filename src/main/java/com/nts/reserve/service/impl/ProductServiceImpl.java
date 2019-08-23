@@ -45,6 +45,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getProductInfos(int productId) {
 		return productDao.selectProductInfos(productId);
 	}
+	
+	@Override
+	public Product getProduct(int productId) {
+		return productDao.selectProduct(productId);
+	}
 
 	@Override
 	public List<Product> getProducts(int categoryId, int start) {
