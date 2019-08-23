@@ -14,7 +14,7 @@
 			product.category_id = #{categoryId}
 	</select>
 	
-	<select id="selectProduct" parameterType="int" resultType="Product">
+	<select id="selectProductInfos" parameterType="int" resultType="Product">
 		SELECT
 			product.id,
 			display_info.id AS displayInfoId
