@@ -7,7 +7,9 @@ const initiateSliding = () => {
 	const replaceTemplate = (imageUrl, productId) => {
 		const promotion = document.querySelector("#promotion_item").innerHTML;
 		
-		return promotion.replace("{productImageUrl}", imageUrl).replace("{productId}", productId);
+		return promotion
+			.replace("{productImageUrl}", imageUrl)
+			.replace("{productId}", productId);
 	};
 
 	const createTemplate = () => {
