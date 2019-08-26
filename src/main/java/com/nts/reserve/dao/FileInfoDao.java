@@ -9,5 +9,7 @@ import com.nts.reserve.dto.FileInfo;
 
 @Repository
 public interface FileInfoDao {
+	FileInfo selectFileInfo(int fileId);
+	
 	int insertFileInfos(@Param("fileInfos") List<FileInfo> fileInfos);
 }

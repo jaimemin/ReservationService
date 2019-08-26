@@ -16,7 +16,7 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
 		String url = request.getRequestURL().toString();
 		String clientIP = request.getRemoteAddr();
 		
-		LOGGER.info("client ip: {}, url: {}", clientIP, url);
+		LOGGER.info("CLIENT IP: {}\n URL: {}", clientIP, url);
 		
 		return true;
 	}

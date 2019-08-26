@@ -7,11 +7,18 @@ const registerClickEvents = () => {
 	let canceledList = document.querySelector("#canceled_list");
 	let confirmedReservations = document.querySelector(".card.confirmed").querySelectorAll(".card_item");
 	let logoutButton = document.querySelector(".viewReservation");
+	let backToTopButton = document.querySelector("#back_to_top");
 	
 	confirmedReservations.forEach((reservation) => {
 		let cancelButton = reservation.querySelector(".booking_cancel .btn")
 		
 		cancelButton.addEventListener("click", showDialog);
+	});
+	
+	backToTopButton.addEventListener("click", (event) => {
+		document.body.scrollTop = 0; // For Safari
+		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and
+												// Opera
 	});
 }
 
@@ -70,6 +77,19 @@ const cancelReservation = (reservationId) => {
 	xmlHttpRequest.send(JSON.stringify(params));
 }
 
+const addScrollEventListener = () => {
+	window.addEventListener("scroll", () => {
+		let backToTopButton = document.querySelector("#back_to_top");
+		
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			backToTopButton.style.display = "block";
+		} else {
+			backToTopButton.style.display = "none";
+		}
+	});
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+	addScrollEventListener();
 	registerClickEvents();
 });
