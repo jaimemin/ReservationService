@@ -4,7 +4,7 @@ const MAX_TEXT = 400;
 const ERROR_STATUS = 400;
 const COMPLETE_STATE = 4;
 
-let listIndex = 0;
+let reviewWrite = {};
 
 const registerButtonClickEvent = () => {
 	let registerButton = document.querySelector(".box_bk_btn .bk_btn");
@@ -91,7 +91,7 @@ const addThumbnail = () => {
 		fileReader.readAsDataURL(file);
 		fileReader.onload = () => {
 			let thumbnail = document.createElement("li");
-			thumbnail.innerHTML += thumbnailTemplate(listIndex++);
+			thumbnail.innerHTML += thumbnailTemplate();
 			
 			thumbnail.querySelector(".item_thumb").src = fileReader.result;
 			imageThumbnails.innerHTML += thumbnail.innerHTML;
@@ -145,33 +145,43 @@ const indexInList = (node) => {
 	return -1;
 }
 
-const registerRatingStarEvent = () => {
-	let ratingArea = document.querySelector(".review_rating > .rating");
-	let stars = document.querySelectorAll(".rating > .rating_rdo");
-	let countSpan = document.querySelector(".rating > .star_rank");
+reviewWrite.ratingStar = {
+	ratingArea: document.querySelector(".review_rating > .rating"),
+	stars: document.querySelectorAll(".rating > .rating_rdo"),
+	countSpan: document.querySelector(".rating > .star_rank"),
+
+	initialize() {
+		this.registerRatingStarEvent();
+	},
+
+	registerRatingStarEvent() {
+		this.ratingArea.addEventListener("click", (event) => {
+			if (event.target.type === "checkbox") {
+				let rating = event.target.value;
+				
+				this.fillRating(rating);
+				
+				if (rating === 0) {
+					this.countSpan.classList.add("gray_star");
+				} else {
+					this.countSpan.classList.remove("gray_star");
+				}
+			}
+		});
+	},
 	
-	ratingArea.addEventListener("click", (event) => {
-		if (event.target.type === "checkbox") {
-			let rating = event.target.value;
-			
-			for (let index = 0; index < rating; index++) {
-				stars[index].checked = true;
-			}
-			
-			for (let index = rating; index < MAX_RATING; index++) {
-				stars[index].checked = false;
-			}
-			
-			countSpan.innerText = rating;
-			
-			if (rating === 0) {
-				countSpan.classList.add("gray_star");
-			} else {
-				countSpan.classList.remove("gray_star");
-			}
+	fillRating(rating) {
+		for (let index = 0; index < rating; index++) {
+			this.stars[index].checked = true;
 		}
-	});
-}
+		
+		for (let index = rating; index < MAX_RATING; index++) {
+			this.stars[index].checked = false;
+		}
+		
+		this.countSpan.innerText = rating;
+	}
+};
 
 const registerTextAreaEvents = () => {
 	let textArea = document.querySelector(".review_textarea");
@@ -205,7 +215,7 @@ const limitTextArea = () => {
 document.addEventListener("DOMContentLoaded", () => {
 	limitTextArea();
 	registerTextAreaEvents();
-	registerRatingStarEvent();
+	reviewWrite.ratingStar.initialize();
 	registerImageFileEvents();
 	registerButtonClickEvent();
 });

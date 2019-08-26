@@ -14,6 +14,7 @@
 	<title>네이버 예약</title>
 	<link href="/Reservation/css/style.css" rel="stylesheet">
 	<link href="/Reservation/css/myreservation.css" rel="stylesheet">
+	<link href="/Reservation/css/backToTop.css" rel="stylesheet">
 </head>
 
 <body>
@@ -65,7 +66,9 @@
 					</ul>
 				</div>
 				<!--// 예약 현황 -->
-
+				<div class="floating">
+					<button id="back_to_top" title="상단으로">상단으로 &#9650</button>
+				</div>
 				<!-- 내 예약 리스트 -->
 				<c:if test="${totalReservation gt 0}">
 					<div class="wrap_mylist">

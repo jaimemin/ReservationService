@@ -1,6 +1,6 @@
-const thumbnailTemplate = (listIndex) => (
+const thumbnailTemplate = () => (
 	`
-	<li class="item" id="${listIndex}" style="display: inner-block;">
+	<li class="item" style="display: inner-block;">
 		<a class="anchor">
 			<span class="spr_book ico_del">삭제</span>
 		</a>
@@ -80,7 +80,7 @@ const commentWithImageTemplate = (commentInfo, imageCount) => (
 const productImageTemplate = (image, displayInfo) => (	
 	`
 	<li class="item" style="width: 414px;">
-		<img alt="공연 포스터" class="img_thumb" src="/Reservation/api/products/image?saveFileName=${image.saveFileName}">
+		<img alt="공연 포스터" class="img_thumb" src="/Reservation/api/display/${image.fileId}/image">
 		<span class="img_bg"></span>
 		<div class="visual_txt">
 			<div class="visual_txt_inn">
@@ -129,7 +129,7 @@ const directionTemplate = (displayInfo, displayInfoImage) => (
 	<div class="detail_location hide">
 		<div class="box_store_info no_topline">
 			<a href="#" class="store_location" title="지도웹으로 연결"> 
-				<img class="store_map img_thumb" alt="map" src="/Reservation/api/display/${displayInfoImage.displayInfoId}/image">
+				<img class="store_map img_thumb" alt="map" src="/Reservation/api/display/${displayInfoImage.fileId}/image">
 				<span class="img_border"></span> 
 				<span class="btn_map"><i class="spr_book2 ico_mapview"></i></span>
 			</a>

@@ -1,8 +1,8 @@
 package com.nts.reserve.controller;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -28,7 +28,7 @@ import com.nts.reserve.service.ProductService;
 public class ProductController {
 	private final ProductService productService;
 	private final DisplayInfoService displayInfoService;
-	
+
 	@Value("${image.file.path}")
 	private String filePath;
 
@@ -48,22 +48,21 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/{displayInfoId}")
-	public DisplayInfoResponse getDisplayInfoResponse(@Valid @Positive(message = "invalid displayInfoId: must be over zero") 
-				@PathVariable("displayInfoId") int displayInfoId,
-				@RequestParam(name = "is-detail-page", required = false, defaultValue = "true") boolean isDetailPage) {
+	public DisplayInfoResponse getDisplayInfoResponse(
+			@Valid @Positive(message = "invalid displayInfoId: must be over zero") @PathVariable("displayInfoId") int displayInfoId,
+			@RequestParam(name = "is-detail-page", required = false, defaultValue = "true") boolean isDetailPage) {
 		return displayInfoService.getDisplayInfoResponse(displayInfoId, isDetailPage);
 	}
 
 	@GetMapping("/products/{productId}/image")
-	public byte[] productImage(@Valid @Positive(message = "invalid productId: must be over zero") 
-		@PathVariable("productId") int productId) throws IOException {
+	public byte[] productImage(
+			@Valid @Positive(message = "invalid productId: must be over zero") @PathVariable("productId") int productId)
+			throws IOException {
 		String saveFileName = productService.getProduct(productId).getSaveFileName();
-		
-		return IOUtils.toByteArray(new FileInputStream(filePath + saveFileName));
+
+		try (InputStream fileInputStream = new FileInputStream(filePath + saveFileName)) {
+			return IOUtils.toByteArray(fileInputStream);
+		}
 	}
-	
-	@GetMapping("/products/image")
-	public byte[] allProductImage(@RequestParam(name = "saveFileName") String saveFileName) throws IOException {
-		return IOUtils.toByteArray(new FileInputStream(filePath + saveFileName));
-	}
+
 }
