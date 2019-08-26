@@ -1,9 +1,11 @@
 package com.nts.reserve.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
@@ -20,6 +22,7 @@ import com.nts.reserve.service.FileService;
 @RestController
 @RequestMapping(path = "/api")
 public class DisplayController {
+	private static final String NO_IMAGE_PATH = "/img/noimage.png";
 	private final FileService fileService;
 
 	@Value("${image.file.path}")
@@ -32,11 +35,15 @@ public class DisplayController {
 
 	@GetMapping("/display/{fileId}/image")
 	public byte[] displayImage(
-			@Valid @Positive(message = "invalid displayInfoId: must be over zero") @PathVariable("fileId") int fileId)
+			@Valid @Positive(message = "invalid displayInfoId: must be over zero") @PathVariable("fileId") int fileId, 
+			HttpServletRequest request)
 			throws IOException {
-		String saveFileName = fileService.getFileInfo(fileId).getSaveFileName();
-
-		try (InputStream fileInputStream = new FileInputStream(filePath + saveFileName)) {
+		String saveFileName = filePath + fileService.getFileInfo(fileId).getSaveFileName();
+		File imageFile = new File(saveFileName);
+		String defaultImage = request.getServletContext().getRealPath(NO_IMAGE_PATH);
+		String image = imageFile.exists() ? saveFileName : defaultImage;
+		
+		try (InputStream fileInputStream = new FileInputStream(image)) {
 			return IOUtils.toByteArray(fileInputStream);
 		}
 	}
