@@ -39,8 +39,9 @@ public class DisplayController {
 			HttpServletRequest request)
 			throws IOException {
 		String saveFileName = filePath + fileService.getFileInfo(fileId).getSaveFileName();
-		File imageFile = new File(saveFileName);
 		String defaultImage = request.getServletContext().getRealPath(NO_IMAGE_PATH);
+		
+		File imageFile = new File(saveFileName);
 		String image = imageFile.exists() ? saveFileName : defaultImage;
 		
 		try (InputStream fileInputStream = new FileInputStream(image)) {
