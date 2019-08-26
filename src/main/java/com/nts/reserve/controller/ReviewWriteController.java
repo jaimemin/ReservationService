@@ -57,8 +57,9 @@ public class ReviewWriteController {
 		Comment comment = commentService.getComment(commentId);
 		
 		String saveFileName = comment.getCommentImages().get(0).getSaveFileName();
-		File imageFile = new File(saveFileName);
 		String defaultImage = request.getServletContext().getRealPath(NO_IMAGE_PATH);
+		
+		File imageFile = new File(saveFileName);
 		String image = imageFile.exists() ? saveFileName : defaultImage;
 		
 		try (InputStream fileInputStream = new FileInputStream(image)) {
