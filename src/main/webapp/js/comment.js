@@ -58,7 +58,7 @@ const createCommentTemplates = (commentList, displayInfo) => {
 }
 
 const encodedComment = (comment) => {
-	return String(comment).replace(/<(?!br\s*\/?)[^>]+>/g, (character) => { 
+	return String(comment).replace(/[&<>"'`=\/]/g, (character) => { 
 		return entityMap[character]; 
 	});
 }
