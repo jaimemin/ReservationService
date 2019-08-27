@@ -1,0 +1,19 @@
+.floating {
+	position: fixed;
+	text-align: center;
+	left:50%;
+	top: 90%;
+	opacity: 0.9;
+	z-index: 999;
+}
+
+#back_to_top {
+	display: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #0aba16;
+}

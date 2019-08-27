@@ -1,13 +1,15 @@
 const ERROR_STATUS = 400;
 const COMPLETE_STATE = 4;
 
-let promotionImageUrl = [];
+let promotionInfos = [];
 
 const initiateSliding = () => {
-	const replaceTemplate = (imageUrl) => {
+	const replaceTemplate = (imageUrl, productId) => {
 		const promotion = document.querySelector("#promotion_item").innerHTML;
-
-		return promotion.replace("{productImageUrl}", imageUrl);
+		
+		return promotion
+			.replace("{productImageUrl}", imageUrl)
+			.replace("{productId}", productId);
 	};
 
 	const createTemplate = () => {
@@ -15,8 +17,8 @@ const initiateSliding = () => {
 		visualImage.classList.add("visual_img");
 
 		let resultHTML = "";
-		promotionImageUrl.forEach((url) => {
-			resultHTML += replaceTemplate(url);
+		promotionInfos.forEach((promotionInfo) => {
+			resultHTML += replaceTemplate(promotionInfo.url, promotionInfo.productId);
 		});
 
 		visualImage.innerHTML = resultHTML;
@@ -61,7 +63,11 @@ const initiateSliding = () => {
 		if(xmlHttpRequest.readyState === COMPLETE_STATE) {
 			let imageList = JSON.parse(xmlHttpRequest.responseText);
 			imageList.forEach((image) => {
-				promotionImageUrl.push(image.saveFileName);
+				let promotionInfo = {};
+				promotionInfo.url = `api/products/image/${image.productId}`;
+				promotionInfo.productId = image.productId;
+				
+				promotionInfos.push(promotionInfo);
 			});
 
 			createTemplate();

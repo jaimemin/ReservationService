@@ -3,12 +3,12 @@ package com.nts.reserve.dto;
 import java.time.LocalDateTime;
 
 public class CommentImage {
+	private int id;
 	private String contentType;
 	private LocalDateTime createdDate;
 	private boolean deleteFlag;
 	private int fileId;
 	private String fileName;
-	private int id;
 	private LocalDateTime modifiedDate;
 	private int reservationInfoId;
 	private int reservationUserCommentId;
