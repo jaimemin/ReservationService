@@ -11,7 +11,7 @@
 	<ul style="list-style-type: none;">
 		<c:forEach var="commentImage" items="${commentImages}">
 			<li>
-				<img src="/Reservation/api/review-write/image?fileId=${commentImage.fileId}" alt="댓글 이미지">
+				<img src="/Reservation/api/review-write/image?fileId=${commentImage.fileId}" alt="댓글 이미지" onerror='this.src="/Reservation/img/noimage.png"'>
 			</li>
 		</c:forEach>
 	</ul>

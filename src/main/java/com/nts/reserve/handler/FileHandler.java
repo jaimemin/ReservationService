@@ -28,9 +28,8 @@ public class FileHandler {
 		List<FileInfo> fileInfos = new ArrayList<>();
 		
 		for (MultipartFile imageFile : imageFiles) {
-			// https://github.com/cowtowncoder/java-uuid-generator
 			String fileName = imageFile.getOriginalFilename();
-			String saveFileName = filePath + Generators.timeBasedGenerator().generate() + fileName;
+			String saveFileName = generateSaveFileName(fileName);
 
 			try (
 				FileOutputStream fileOutputStream = new FileOutputStream(saveFileName);
@@ -48,6 +47,11 @@ public class FileHandler {
 		}
 		
 		return fileInfos;
+	}
+	
+	private String generateSaveFileName(String fileName) {
+		// https://github.com/cowtowncoder/java-uuid-generator
+		return filePath + Generators.timeBasedGenerator().generate() + fileName;
 	}
 
 }

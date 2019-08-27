@@ -4,7 +4,7 @@ const thumbnailTemplate = () => (
 		<a class="anchor">
 			<span class="spr_book ico_del">삭제</span>
 		</a>
-		<img src="" width="130" alt="댓글 첨부 사진" class="item_thumb">
+		<img src="" width="130" alt="댓글 첨부 사진" class="item_thumb" onerror='this.src="/Reservation/img/noimage.png"'>
 	</li>
 	`
 );
@@ -14,7 +14,7 @@ const replaceTemplate = (product) => (
 	<li class="item">
 		<a href="/Reservation/detail/${product.displayInfoId}" class="item_book">
 			<div class="item_preview">
-				<img alt="${product.description}" class="img_thumb" src="/Reservation/api/products/${product.id}/image">
+				<img alt="${product.description}" class="img_thumb" src="/Reservation/api/products/image/${product.id}" onerror='this.src="/Reservation/img/noimage.png"'>
 				<span class="img_border"></span>
 			</div>
 			<div class="event_txt">
@@ -35,7 +35,9 @@ const commentWithoutImageTemplate = (commentInfo) => (
 		<div>
 			<div class="review_area">
 				<h4 class="resoc_name">${commentInfo.productDescription}</h4>
-				<p class="review">${commentInfo.comment}</p>
+				<p class="review">
+					${commentInfo.comment}
+				</p>
 			</div>
 			<div class="info_area">
 				<div class="review_info">
@@ -57,13 +59,15 @@ const commentWithImageTemplate = (commentInfo, imageCount) => (
 				<div class="thumb_area">
 					<a href="/Reservation/commentImage/${commentInfo.id}" class="thumb" title="이미지 크게 보기"> <img
 						width="90" height="90" class="img_vertical_top"
-						src="/Reservation/api/review-write/${commentInfo.id}/image" alt="댓글 이미지">
+						src="/Reservation/api/review-write/image/${commentInfo.id}" alt="댓글 이미지" onerror='this.src="/Reservation/img/noimage.png"'>
 						<span class="comment_image_count">+${imageCount}</span>
 					</a> 
 					<span class="img_count" style="display: none;">1</span>
 				</div>
 				<h4 class="resoc_name">${commentInfo.productDescription}</h4>
-				<p class="review">${commentInfo.comment}</p>
+				<p class="review">
+					${commentInfo.comment}
+				</p>
 			</div>
 			<div class="info_area">
 				<div class="review_info">
@@ -80,7 +84,7 @@ const commentWithImageTemplate = (commentInfo, imageCount) => (
 const productImageTemplate = (image, displayInfo) => (	
 	`
 	<li class="item" style="width: 414px;">
-		<img alt="공연 포스터" class="img_thumb" src="/Reservation/api/display/${image.fileId}/image">
+		<img alt="공연 포스터" class="img_thumb" src="/Reservation/api/display/${image.fileId}/image" onerror='this.src="/Reservation/img/noimage.png"'>
 		<span class="img_bg"></span>
 		<div class="visual_txt">
 			<div class="visual_txt_inn">
@@ -129,7 +133,7 @@ const directionTemplate = (displayInfo, displayInfoImage) => (
 	<div class="detail_location hide">
 		<div class="box_store_info no_topline">
 			<a href="#" class="store_location" title="지도웹으로 연결"> 
-				<img class="store_map img_thumb" alt="map" src="/Reservation/api/display/${displayInfoImage.fileId}/image">
+				<img class="store_map img_thumb" alt="map" src="/Reservation/api/display/${displayInfoImage.fileId}/image" onerror='this.src="/Reservation/img/noimage.png"'>
 				<span class="img_border"></span> 
 				<span class="btn_map"><i class="spr_book2 ico_mapview"></i></span>
 			</a>

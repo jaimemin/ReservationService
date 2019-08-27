@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
@@ -28,7 +27,6 @@ import com.nts.reserve.service.ProductService;
 @RestController
 @RequestMapping(path = "/api")
 public class ProductController {
-	private static final String NO_IMAGE_PATH = "/img/noimage.png";
 	private final ProductService productService;
 	private final DisplayInfoService displayInfoService;
 
@@ -57,18 +55,14 @@ public class ProductController {
 		return displayInfoService.getDisplayInfoResponse(displayInfoId, isDetailPage);
 	}
 
-	@GetMapping("/products/{productId}/image")
+	@GetMapping("/products/image/{productId}")
 	public byte[] productImage(
-			@Valid @Positive(message = "invalid productId: must be over zero") @PathVariable("productId") int productId, 
-			HttpServletRequest request)
+			@Valid @Positive(message = "invalid productId: must be over zero") 
+			@PathVariable("productId") int productId)
 			throws IOException {
 		String saveFileName = filePath + productService.getProduct(productId).getSaveFileName();
-		String defaultImage = request.getServletContext().getRealPath(NO_IMAGE_PATH);
-		
-		File imageFile = new File(saveFileName);
-		String image = imageFile.exists() ? saveFileName : defaultImage;
 
-		try (InputStream fileInputStream = new FileInputStream(image)) {
+		try (InputStream fileInputStream = new FileInputStream(saveFileName)) {
 			return IOUtils.toByteArray(fileInputStream);
 		}
 	}

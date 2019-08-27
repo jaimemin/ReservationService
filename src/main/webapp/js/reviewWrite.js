@@ -10,8 +10,13 @@ const registerButtonClickEvent = () => {
 	let registerButton = document.querySelector(".box_bk_btn .bk_btn");
 	
 	registerButton.addEventListener("click", () => {
-		if (isCommentValid() === false) {
-			alert("오류가 발생했습니다. 글자 수, 별점을 확인해주세요");
+		if (isRatingValid() === false) {
+			alert("오류가 발생했습니다. 별점을 눌러 평가를 해주세요");
+			return;
+		}
+		
+		if (isTextLengthValid() === false) {
+			alert("오류가 발생했습니다. 글자 수를 확인해주세요");
 			return;
 		}
 		
@@ -52,13 +57,16 @@ const createForm = () => {
 	return formData;
 }
 
-const isCommentValid = () => {
-	let textArea = document.querySelector(".review_textarea");
+const isRatingValid = () => {
 	let countSpan = document.querySelector(".rating > .star_rank");
-	let textAreaValid = textArea.textLength >= MIN_TEXT;
-	let starValid = !countSpan.classList.contains("gray_star");
 	
-	return textAreaValid && starValid;
+	return !countSpan.classList.contains("gray_star");
+}
+
+const isTextLengthValid = () => {
+	let textLength = document.querySelector(".review_textarea").textLength;
+	
+	return textLength >= MIN_TEXT && textLength <= MAX_TEXT;
 }
 
 const registerImageFileEvents = () => {
@@ -205,15 +213,7 @@ const registerTextAreaEvents = () => {
 	}
 }
 
-const limitTextArea = () => {
-	let textArea = document.querySelector(".review_textarea");
-	
-	textArea.minLength = MIN_TEXT;
-	textArea.maxLength = MAX_TEXT;
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-	limitTextArea();
 	registerTextAreaEvents();
 	reviewWrite.ratingStar.initialize();
 	registerImageFileEvents();

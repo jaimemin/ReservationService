@@ -1,3 +1,14 @@
+const entityMap = { 
+	'&': '&amp;', 
+	'<': '&lt;', 
+	'>': '&gt;', 
+	'"': '&quot;', 
+	"'": '&#39;', 
+	'/': '&#x2F;', 
+	'`': '&#x60;', 
+	'=': '&#x3D;' 
+};
+
 const createCommentAverageScore = (averageCommentScore) => {
 	let averageCommentScoreTemplate = document.querySelector("#average_comment_score");
 	let starGraph = document.querySelector(".graph_value");
@@ -26,7 +37,9 @@ const createCommentTemplates = (commentList, displayInfo) => {
 		let commentTemplate;
 
 		commentInfo.id = comment.commentId;
-		commentInfo.comment = comment.comment;
+		commentInfo.comment = String(comment.comment).replace(/[&<>"'`=\/]/g, (s) => { 
+			return entityMap[s]; 
+		});
 		commentInfo.score = `${comment.score}.0`;
 		commentInfo.reservationEmail = comment.reservationEmail;
 		commentInfo.createdDate = comment.createdDateView;
