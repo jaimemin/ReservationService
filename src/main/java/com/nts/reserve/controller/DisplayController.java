@@ -27,7 +27,7 @@ public class DisplayController {
 
 	@Autowired
 	public DisplayController(FileService fileService) {
-		this.fileService = fileService;;
+		this.fileService = fileService;
 	}
 
 	@GetMapping("/display/{fileId}/image")
