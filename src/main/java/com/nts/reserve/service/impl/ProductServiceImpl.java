@@ -24,7 +24,9 @@ public class ProductServiceImpl implements ProductService {
 	private final ProductImageDao productImageDao;
 
 	@Autowired
-	public ProductServiceImpl(ProductDao productDao, ProductPriceDao productPriceDao, ProductImageDao productImageDao) {
+	public ProductServiceImpl(ProductDao productDao
+			, ProductPriceDao productPriceDao
+			, ProductImageDao productImageDao) {
 		this.productDao = productDao;
 		this.productPriceDao = productPriceDao;
 		this.productImageDao = productImageDao;
@@ -38,6 +40,15 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int getProductImageCount(int displayInfoId) {
 		return productImageDao.selectProductImageCount(displayInfoId);
+	}
+	
+	public List<Product> getProductInfos(int productId) {
+		return productDao.selectProductInfos(productId);
+	}
+	
+	@Override
+	public Product getProduct(int productId) {
+		return productDao.selectProduct(productId);
 	}
 
 	@Override

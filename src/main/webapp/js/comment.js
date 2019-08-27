@@ -1,3 +1,14 @@
+const entityMap = { 
+	'&': '&amp;', 
+	'<': '&lt;', 
+	'>': '&gt;', 
+	'"': '&quot;', 
+	"'": '&#39;', 
+	'/': '&#x2F;', 
+	'`': '&#x60;', 
+	'=': '&#x3D;' 
+};
+
 const createCommentAverageScore = (averageCommentScore) => {
 	let averageCommentScoreTemplate = document.querySelector("#average_comment_score");
 	let starGraph = document.querySelector(".graph_value");
@@ -25,7 +36,8 @@ const createCommentTemplates = (commentList, displayInfo) => {
 		let commentInfo = {};
 		let commentTemplate;
 
-		commentInfo.comment = comment.comment;
+		commentInfo.id = comment.commentId;
+		commentInfo.comment = encodedComment(comment.comment);
 		commentInfo.score = `${comment.score}.0`;
 		commentInfo.reservationEmail = comment.reservationEmail;
 		commentInfo.createdDate = comment.createdDateView;
@@ -34,7 +46,7 @@ const createCommentTemplates = (commentList, displayInfo) => {
 		if (comment.commentImages.length >= 1) {
 			commentInfo.saveFileName = comment.commentImages[0].saveFileName;
 
-			commentTemplate = commentWithImageTemplate(commentInfo);
+			commentTemplate = commentWithImageTemplate(commentInfo, comment.commentImages.length);
 		} else {
 			commentTemplate = commentWithoutImageTemplate(commentInfo);
 		}
@@ -43,6 +55,12 @@ const createCommentTemplates = (commentList, displayInfo) => {
 	});
 	
 	return commentTemplates;
+}
+
+const encodedComment = (comment) => {
+	return String(comment).replace(/[&<>"'`=\/]/g, (character) => { 
+		return entityMap[character]; 
+	});
 }
 
 const createDetailPageComments = (commentList, displayInfo) => {

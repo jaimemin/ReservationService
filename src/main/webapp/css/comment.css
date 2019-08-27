@@ -1,0 +1,10 @@
+.comment_image_count {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 24px;
+	height: 24px;
+	vertical-align: bottom;
+	color: white;
+	z-index: 999;
+}

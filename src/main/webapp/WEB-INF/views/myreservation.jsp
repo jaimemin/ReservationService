@@ -14,6 +14,7 @@
 	<title>네이버 예약</title>
 	<link href="/Reservation/css/style.css" rel="stylesheet">
 	<link href="/Reservation/css/myreservation.css" rel="stylesheet">
+	<link href="/Reservation/css/backToTop.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 				<h1 class="logo">
 					<a href="https://m.naver.com/" class="lnk_logo" title="네이버"> <span
 						class="spr_bi ico_n_logo">네이버</span>
-					</a> <a href="./" class="lnk_logo" title="예약"> <span
+					</a> <a href="/Reservation/" class="lnk_logo" title="예약"> <span
 						class="spr_bi ico_bk_logo">예약</span>
 					</a>
 				</h1>
@@ -65,7 +66,9 @@
 					</ul>
 				</div>
 				<!--// 예약 현황 -->
-
+				<div class="floating">
+					<button id="back_to_top" title="상단으로">상단으로 &#9650</button>
+				</div>
 				<!-- 내 예약 리스트 -->
 				<c:if test="${totalReservation gt 0}">
 					<div class="wrap_mylist">
@@ -175,7 +178,7 @@
 															</em>
 														</div>
 														<div class="booking_cancel">
-															<a href="/Reservation/htmls/reviewWrite.html">
+															<a href="/Reservation/review-write/${reservedItem.id}">
 																<button class="btn">
 																	<span>예매자 리뷰 남기기</span>
 																</button>
