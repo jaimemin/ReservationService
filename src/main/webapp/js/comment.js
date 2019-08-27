@@ -37,9 +37,7 @@ const createCommentTemplates = (commentList, displayInfo) => {
 		let commentTemplate;
 
 		commentInfo.id = comment.commentId;
-		commentInfo.comment = String(comment.comment).replace(/[&<>"'`=\/]/g, (s) => { 
-			return entityMap[s]; 
-		});
+		commentInfo.comment = encodedComment(comment.comment);
 		commentInfo.score = `${comment.score}.0`;
 		commentInfo.reservationEmail = comment.reservationEmail;
 		commentInfo.createdDate = comment.createdDateView;
@@ -57,6 +55,12 @@ const createCommentTemplates = (commentList, displayInfo) => {
 	});
 	
 	return commentTemplates;
+}
+
+const encodedComment = (comment) => {
+	return String(comment).replace(/[&<>"'`=\/]/g, (character) => { 
+		return entityMap[character]; 
+	});
 }
 
 const createDetailPageComments = (commentList, displayInfo) => {
