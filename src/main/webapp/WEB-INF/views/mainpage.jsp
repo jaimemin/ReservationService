@@ -130,7 +130,7 @@
 	</footer>
 
 	<script type="rv-template" id="promotion_item">
-    	<li class="item" id="promotion_image" style="background-image: url(/Reservation/{productImageUrl});">
+    	<li class="item" id="promotion_image" style="background-image: url(/Reservation/{productImageUrl}), url(/Reservation/img/noimage.png);">
         	<a href="/Reservation/products/{productId}"> 
 				<span class="img_btm_border"></span> 
 				<span class="img_right_border"></span> 

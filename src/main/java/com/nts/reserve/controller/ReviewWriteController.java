@@ -1,17 +1,16 @@
 package com.nts.reserve.controller;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,10 +27,12 @@ import com.nts.reserve.service.FileService;
 @RestController
 @RequestMapping(path = "/api")
 public class ReviewWriteController {
-	private static final String NO_IMAGE_PATH = "/img/noimage.png";
 	private final CommentService commentService;
 	private final FileService fileService;
 	private final FileHandler fileManager;
+	
+	@Value("${default.image.file.path}")
+	String defaultImage;
 	
 	@Autowired
 	public ReviewWriteController(CommentService commentService, 
@@ -50,34 +51,24 @@ public class ReviewWriteController {
 		return comment;
 	}
 	
-	@GetMapping("/review-write/{commentId}/image")
+	@GetMapping("/review-write/image/{commentId}")
 	public byte[] commentImage(@Valid @Positive 
-			@PathVariable("commentId") int commentId, 
-			HttpServletRequest request) throws IOException {
+			@PathVariable("commentId") int commentId) throws IOException {
 		Comment comment = commentService.getComment(commentId);
 		
 		String saveFileName = comment.getCommentImages().get(0).getSaveFileName();
-		String defaultImage = request.getServletContext().getRealPath(NO_IMAGE_PATH);
 		
-		File imageFile = new File(saveFileName);
-		String image = imageFile.exists() ? saveFileName : defaultImage;
-		
-		try (InputStream fileInputStream = new FileInputStream(image)) {
+		try (InputStream fileInputStream = new FileInputStream(saveFileName)) {
 			return IOUtils.toByteArray(fileInputStream);
-		}
+		} 
 	}
 	
 	@GetMapping("/review-write/image")
 	public byte[] expandedCommentImage(@Valid @Positive
-			@RequestParam(value="fileId") int fileId, 
-			HttpServletRequest request) throws IOException {
+			@RequestParam(value="fileId") int fileId) throws IOException {
 		String saveFileName = fileService.getFileInfo(fileId).getSaveFileName();
-		String defaultImage = request.getServletContext().getRealPath(NO_IMAGE_PATH);
 		
-		File imageFile = new File(saveFileName);
-		String image = imageFile.exists() ? saveFileName : defaultImage;
-		
-		try (InputStream fileInputStream = new FileInputStream(image)) {
+		try (InputStream fileInputStream = new FileInputStream(saveFileName)) {
 			return IOUtils.toByteArray(fileInputStream);
 		}
 	}
