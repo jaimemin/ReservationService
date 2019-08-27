@@ -15,11 +15,18 @@ const registerClickEvents = () => {
 		cancelButton.addEventListener("click", showDialog);
 	});
 	
-	backToTopButton.addEventListener("click", (event) => {
-		document.body.scrollTop = 0; // For Safari
-		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and
-												// Opera
+	backToTopButton.addEventListener("click", () => {
+		smoothScrollToTop();
 	});
+}
+
+const smoothScrollToTop = () => {
+	const position = document.body.scrollTop || document.documentElement.scrollTop;
+	
+	if (position > 0) {
+		window.requestAnimationFrame(smoothScrollToTop);
+		window.scrollTo(0, position - position / 8);
+	}
 }
 
 const showDialog = (event) => {
