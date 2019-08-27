@@ -44,10 +44,12 @@ const registerButtonClickEvent = () => {
 
 const createForm = () => {
 	let imageFile = document.querySelector(".review_write_footer > #reviewImageFileOpenInput");
+	let comment = document.querySelector(".review_textarea").value;
+	comment = comment.replace(/\r?\n/g, '<br />');
 	let formData = new FormData();
 	
 	formData.append("score", document.querySelector(".rating > .star_rank").innerText);
-	formData.append("comment", document.querySelector(".review_textarea").value);
+	formData.append("comment", comment);
 	formData.append("productId", document.querySelector("#productId").value);
 	formData.append("reservationInfoId", document.querySelector("#reservationInfoId").value);
 	for (let index = 0; index < imageFile.files.length; index++) {
